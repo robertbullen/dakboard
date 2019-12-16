@@ -1,0 +1,247 @@
+/* Use Open Sans instead of Roboto because its glyphs are just a little bit more, well, open, which
+   is more readable on a large wall sign. */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif !important;
+    line-height: var(--content-line-height) !important;
+}
+
+:root {
+    --block-margin: 15px;
+    --block-padding: 30px;
+    --block-border-radius: calc(var(--block-margin) / 2);
+
+    --content-line-height: 1.176; /* Equates to font-size / line-height = 0.85 */
+    --content-margin: 45px;
+
+    --one-column-width: calc(100vw / 2 - var(--block-margin) * 1.5);
+    --two-columns-width: calc(100vw - var(--block-margin) * 2);
+
+    --first-column-left: var(--block-margin);
+    --second-column-left: calc(100vw / 2 + var(--block-margin) * 0.5);
+
+    --first-row-top: var(--block-margin);
+    --first-row-content-height: 80px;
+    --first-row-height: calc(var(--first-row-content-height) + var(--block-padding) * 2);
+
+    --second-row-top: calc(var(--first-row-top) + var(--first-row-height) + var(--block-margin));
+
+    --bottom-row-content-height: 80px;
+    --bottom-row-height: calc(var(--bottom-row-content-height) + var(--block-padding) * 2);
+    --bottom-row-top: calc(100vh - var(--block-margin) - var(--bottom-row-height));
+
+    --calendar-top: var(--second-row-top);
+    --calendar-height: calc(
+        100vh - var(--second-row-top) - var(--bottom-row-height) - var(--block-margin) * 2
+    );
+    --calendar-content-height: calc(var(--calendar-height) - var(--block-padding) * 2);
+
+    --weather-top: var(--second-row-top);
+    --weather-content-height: 372px;
+    --weather-height: calc(var(--weather-content-height) + var(--block-padding) * 2);
+
+    --photos-top: calc(var(--weather-top) + var(--weather-height) + var(--block-margin));
+    --photos-height: calc(var(--one-column-width) * 16 / 9);
+
+    --countdown-top: calc(var(--photos-top) + var(--photos-height) + var(--block-margin));
+    --countdown-height: calc(var(--bottom-row-top) - var(--countdown-top) - var(--block-margin));
+}
+
+/* Every individual component/cell is contained by a .block. Give them all the same style. */
+.block {
+    background-color: rgba(35, 17, 31, 0.75) !important;
+    border-radius: var(--block-border-radius) !important;
+    box-sizing: border-box !important;
+    padding: var(--block-padding) !important;
+    position: absolute !important;
+}
+.block > div {
+    padding: 0 !important;
+}
+
+/*
+ * BACKGROUND
+ */
+
+/* Give the background a larger border radius. */
+/* #\35 dddeb97acf03055871e2ed4 {
+    border-radius: calc(var(--block-border-radius) * 2) !important;
+} */
+
+/*
+ * DATE
+ */
+
+#\35 ddde18bf62f5967c36c2cc3 {
+    height: var(--first-row-height) !important;
+    left: var(--first-column-left) !important;
+    top: var(--first-row-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/* There is padding between the time and date. But the time is not displayed in this cell, so
+   remove that padding to left-align properly. */
+#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 {
+    padding-left: 0 !important;
+}
+
+/* Place the date on two lines and take up all the vertical content space. */
+#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 > div {
+    display: block !important;
+    font-size: calc(var(--first-row-content-height) / 2 / var(--content-line-height)) !important;
+}
+
+/*
+ * TIME
+ */
+
+#\35 dddf1d8f62f5942742ee412 {
+    height: var(--first-row-height) !important;
+    left: var(--second-column-left) !important;
+    top: var(--first-row-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/* Grow the font to take up all the vertical content space. */
+#\35 dddf1d8f62f5942742ee412 #time-5dddf1d8f62f5942742ee412 {
+    --content-height: calc(var(--first-row-height) - var(--block-padding) * 2);
+    font-size: var(--content-height) !important;
+    line-height: var(--content-height) !important;
+}
+
+/*
+ * CALENDAR
+ */
+
+#\35 ddded42acf0306d7803f832 {
+    height: var(--calendar-height) !important;
+    left: var(--block-margin) !important;
+    top: var(--second-row-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/* The maximum number of agenda days has been selected, so it's likely that the calendar agenda
+   will be taler than its container. Rather than clip the contents abruptly at the bottom of the
+   cell, gradually fade them to transparent. */
+#\35 ddded42acf0306d7803f832 > .calendar {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black calc(var(--calendar-content-height) - var(--block-padding) * 4),
+        transparent var(--calendar-content-height)
+    ) !important;
+    mask-image: linear-gradient(
+        to bottom,
+        black calc(var(--calendar-content-height) - var(--block-padding) * 4),
+        transparent var(--calendar-content-height)
+    ) !important;
+}
+
+/* There's some left padding around each day container; get rid of it. And redistribute the top
+   padding to the bottom margin. This results in the calendar having a top-left alignment within
+   its cell that agrees with all the other cells. */
+#\35 ddded42acf0306d7803f832 .day-container {
+    padding: 0 !important;
+    margin-bottom: var(--content-margin) !important;
+}
+
+/* Increase the size of the calendar agenda. */
+#\35 ddded42acf0306d7803f832 .calendar-agenda-font-large {
+    font-size: 30px !important;
+}
+
+/* For better proximity, the day title and day events are moved closer together. This margin-bottom
+   negates the margin-top specified by the first <li>. */
+#\35 ddded42acf0306d7803f832 .day {
+    margin-bottom: -12px !important;
+}
+
+/* Slightly tweak the vertical alignment of the minutes portion of the time. */
+#\35 ddded42acf0306d7803f832 .minute-container {
+    padding-top: 0.5em !important;
+}
+
+/* Indent the "No events" text to the same level as the event summaries. */
+#\35 ddded42acf0306d7803f832 .no-events {
+    margin-left: 80px !important;
+}
+
+/*
+ * WEATHER
+ */
+
+#\35 ddde3570f6c13261a03da45 {
+    height: var(--weather-height) !important;
+    left: var(--second-column-left) !important;
+    top: var(--weather-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/* Place the actual and "feels like" temperatures next to each other on the same line by floating
+   the icon to the right. */
+#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large,
+#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2) {
+    display: inline !important;
+}
+#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-current-icon {
+    float: right;
+}
+
+/* Adjust the line-height so that the large temperature aligns to the top of its container. */
+#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
+    line-height: 1;
+}
+
+/* Add the missing degrees symbols to temperatures. */
+#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2)::after,
+#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-high::after,
+#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-low::after {
+    content: '°' !important;
+}
+
+/* Add some vertical separation between "now" and the forecast. */
+#\35 ddde3570f6c13261a03da45 > div > div.weather-item.weather-current {
+    margin-bottom: var(--content-margin) !important;
+}
+
+/* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
+#\35 ddde3570f6c13261a03da45 > div > div.weather-forecast-group {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+#\35 ddde3570f6c13261a03da45 .weather-condensed .weather-forecast {
+    display: inline-block !important;
+    padding: 0 !important;
+}
+
+/*
+ * PHOTOS
+ */
+
+#\35 dddec6ef62f59737f5aec86 {
+    height: var(--photos-height) !important;
+    left: var(--second-column-left) !important;
+    top: var(--photos-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/*
+ * COUNTDOWN
+ */
+
+#\35 dde031336984f176045f044 {
+    height: var(--countdown-height) !important;
+    left: var(--second-column-left) !important;
+    top: var(--countdown-top) !important;
+    width: var(--one-column-width) !important;
+}
+
+/*
+ * NEWS
+ */
+
+#\35 dddf2ebacf030303355d494 {
+    height: var(--bottom-row-height) !important;
+    left: var(--block-margin) !important;
+    top: var(--bottom-row-top) !important;
+    width: var(--two-columns-width) !important;
+}
