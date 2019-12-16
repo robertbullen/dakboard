@@ -49,7 +49,7 @@ body {
 
 /* Every individual component/cell is contained by a .block. Give them all the same style. */
 .block {
-    background-color: rgba(35, 17, 31, 0.75) !important;
+    background-color: rgba(53, 23, 49, 0.67) !important;
     border-radius: var(--block-border-radius) !important;
     box-sizing: border-box !important;
     padding: var(--block-padding) !important;
