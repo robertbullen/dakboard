@@ -51,6 +51,7 @@ body {
 .block {
     background-color: rgba(53, 23, 49, 0.67) !important;
     border-radius: var(--block-border-radius) !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 2.5px 2.5px 5px !important;
     box-sizing: border-box !important;
     padding: var(--block-padding) !important;
     position: absolute !important;
