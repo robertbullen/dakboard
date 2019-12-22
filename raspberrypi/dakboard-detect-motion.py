@@ -1,8 +1,14 @@
-import RPi.GPIO as gpio
 import signal
-import time
 import subprocess
 import sys
+import time
+
+import RPi.GPIO as gpio
+
+
+def qualified_method_name(method) -> str:
+    clazz = method.__self__.__class__
+    return '{0}::{1}'.format(clazz.__name__, method.__name__)
 
 
 # Declare and instantiate a class responsible for the GPIO pins.
@@ -13,7 +19,7 @@ class GpioPins:
     power_indicator_led = 5
 
     def __init__(self):
-        print('initializing gpio')
+        print(qualified_method_name(self.__init__))
         gpio.setwarnings(True)
         gpio.setmode(gpio.BOARD)
         gpio.setup(self.motion_detector, gpio.IN)
@@ -21,39 +27,56 @@ class GpioPins:
         gpio.setup(self.power_indicator_led, gpio.OUT, initial=gpio.HIGH)
 
     def cleanup(self) -> None:
-        print('cleaning up gpio')
+        print(qualified_method_name(self.cleanup))
         gpio.cleanup()
 
     def read_motion_detector(self) -> bool:
         is_motion_detected = bool(gpio.input(self.motion_detector))
-        print('read_motion_detector', is_motion_detected)
+        print(qualified_method_name(self.read_motion_detector), is_motion_detected)
         return is_motion_detected
 
     def write_motion_indicator(self, is_motion_detected: bool) -> None:
-        print('write_motion_indicator', is_motion_detected)
+        print(qualified_method_name(self.write_motion_indicator), is_motion_detected)
         gpio.output(self.motion_indicator_led, is_motion_detected)
-
-
-pins = GpioPins()
 
 
 # Declare and instantiate a class responsible for turning on/off the monitor.
 
 class Monitor:
-    is_on = False
+    __turn_off_command: str
+    __turn_on_command: str
+    __is_on: bool = False
 
-    def turn_on(self) -> None:
-        if not self.is_on:
-            subprocess.run('echo \'on 0\' | cec-client -s -d 1', shell=True)
-            self.is_on = True
+    def __init__(self, turn_off_command: str, turn_on_command: str):
+        print(qualified_method_name(self.__init__))
+        self.__turn_off_command = turn_off_command
+        self.__turn_on_command = turn_on_command
 
     def turn_off(self) -> None:
-        if self.is_on:
-            subprocess.run('echo \'standby 0\' | cec-client -s -d 1', shell=True)
-            self.is_on = False
+        print(qualified_method_name(self.turn_off))
+        if self.__is_on:
+            subprocess.run(self.__turn_off_command, shell=True)
+            self.__is_on = False
+
+    def turn_on(self) -> None:
+        print(qualified_method_name(self.turn_on))
+        if not self.__is_on:
+            subprocess.run(self.__turn_on_command, shell=True)
+            self.__is_on = True
+
+    @staticmethod
+    def cec() -> 'Monitor':
+        return Monitor('echo \'standby 0\' | cec-client -s -d 1', 'echo \'on 0\' | cec-client -s -d 1')
+
+    @staticmethod
+    def video_core() -> 'Monitor':
+        return Monitor('vcgencmd display_power 0', 'vcgencmd display_power 1')
 
 
-monitor = Monitor()
+# Initialize objects.
+
+pins = GpioPins()
+monitor = Monitor.video_core()
 
 
 # Register a signal handler to clean things up.
