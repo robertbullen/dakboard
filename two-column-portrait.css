@@ -1,23 +1,13 @@
-/* Use Open Sans instead of Roboto because its glyphs are just a little bit more, well, open, which
-   is more readable on a large wall sign. */
+/* Use Open Sans because its glyphs are just a little bit more, well, open, which is more readable
+   on a large wall sign compared to DAKboard's default of Roboto. */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
-body {
-	font-family: 'Open Sans', sans-serif !important;
-	line-height: var(--line-height) !important;
-}
 
-/* Specify a font-size that scales proportionally with the vertical resolution.
-
-   The base DAKboard styles specify pixels for the majority of their content. Originally, this
+/* The base DAKboard styles specify pixels for the majority of their content. Originally, this
    design built upon the DAKboard styles while optimizing for a 1080×1920 display, and therefore
    also specified pixels as the primary unit. Later, it was desirable to render this design at both
    1080x1920 and 1440×2560 with nearly no distinguishable difference. So to scale the design
    proportionally, all units are now specified in viewport height units, but calculated from their
    original proportion on the 1080×1920 design. */
-
-body {
-	font-size: calc(16 / 1920 * 100vh) !important;
-}
 
 :root {
 	/* Set some standards for block spacing. */
@@ -68,24 +58,33 @@ body {
 	--photos-height: calc(var(--countdown-top) - var(--photos-top) - var(--block-margin));
 }
 
+/*
+ * GLOBAL
+ */
+
+/* Specify a font-size that scales proportionally with the vertical resolution. */
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: calc(16 / 1920 * 100vh) !important;
+	line-height: var(--line-height) !important;
+}
+
 /* Set colors.
 
-The background color was chosen with the help of [Canva's color palette
-generator](https://www.canva.com/colors/color-palette-generator/), which analyzed the background
-image and came up with the following five color values and names:
-
-#8C145C   rgb(140, 20,  92)   Medium Violet Red
-#36172C   rgb( 54, 23,  44)   Dark Olive Green (which isn't green at all!)
-#A16199   rgb(161, 97, 153)   Rosy Brown
-#622D55   rgb( 98, 45,  85)   Old Rose
-#0B0709   rgb( 11,  7,   9)   Black
-
-Medium Violet Red was then plugged into paletton.com, and using a 4-color tetrad with a 72-degree
-distribution and the Bright Pastel preset, the following four colors were chosen for the calendar
-agenda items. This specific configuration can be recreated at
-<https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB>.
-*/
-
+   The background color was chosen with the help of [Canva's color palette
+   generator](https://www.canva.com/colors/color-palette-generator/), which analyzed the background
+   image and came up with the following five color values and names:
+   
+   #8C145C   rgb(140, 20,  92)   Medium Violet Red
+   #36172C   rgb( 54, 23,  44)   Dark Olive Green (which isn't green at all!)
+   #A16199   rgb(161, 97, 153)   Rosy Brown
+   #622D55   rgb( 98, 45,  85)   Old Rose
+   #0B0709   rgb( 11,  7,   9)   Black
+   
+   Medium Violet Red was then plugged into paletton.com, and using a 4-color tetrad with a 72-degree
+   distribution and the Bright Pastel preset, the following four colors were chosen for the calendar
+   agenda items. This specific configuration can be recreated at
+   <https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB>. */
 .block {
 	background-color: rgba(54, 23, 42, 0.67) !important;
 	box-shadow: rgba(11, 7, 9, 0.5) 2.5px 2.5px 5px !important;
