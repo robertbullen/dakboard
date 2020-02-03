@@ -10,15 +10,28 @@
    original proportion on the 1080×1920 design. */
 
 :root {
+	/* In this author's opinion, with Open Sans a line-height of 1.4 is the minimum for comfortable
+	   reading. But 1.2 can be used in non-paragraph situations without much strain. */
+	--line-height: 1.4;
+	--line-height-tight: 1.2;
+
+	--font-size-body-4: calc(15 / 1920 * 100vh);
+	--font-size-body-3: calc(20 / 1920 * 100vh);
+	--font-size-body-2: calc(25 / 1920 * 100vh);
+	--font-size-body-1: calc(30 / 1920 * 100vh);
+	--font-size-display-2: calc(45 / 1920 * 100vh);
+	--font-size-display-1: calc(75 / 1920 * 100vh);
+
+	--content-space-4: calc(5 / 1920 * 100vh);
+	--content-space-3: calc(10 / 1920 * 100vh);
+	--content-space-2: calc(15 / 1920 * 100vh);
+	--content-space-1: calc(45 / 1920 * 100vh);
+
+	--border-radius: calc(7.5 / 1920 * 100vh);
+
 	/* Set some standards for block spacing. */
 	--block-margin: calc(15 / 1920 * 100vh);
 	--block-padding: calc(30 / 1920 * 100vh);
-	--block-border-radius: calc(var(--block-margin) / 2);
-
-	/* Set some standards for content. A font-size to line-height ratio of 0.85 is the minimum
-	   usable for Open Sans, in this authors opinion. */
-	--line-height: calc(1 / 0.85);
-	--content-margin: calc(45 / 1920 * 100vh);
 
 	/* Calculate the horizontal position and widths of the two-column layout. */
 	--first-column-left: var(--block-margin);
@@ -28,29 +41,49 @@
 	--two-columns-width: calc(100vw - var(--block-margin) * 2);
 
 	/* Calculate the positions of fixed sized blocks based on their content heights. */
-	--first-row-content-height: calc(80 / 1920 * 100vh);
+	--first-row-content-height: var(--font-size-display-1);
 	--first-row-top: var(--block-margin);
 	--first-row-height: calc(var(--first-row-content-height) + var(--block-padding) * 2);
 
 	--second-row-top: calc(var(--first-row-top) + var(--first-row-height) + var(--block-margin));
 
-	--bottom-row-content-height: calc(80 / 1920 * 100vh);
-	--bottom-row-height: calc(var(--bottom-row-content-height) + var(--block-padding) * 2);
-	--bottom-row-top: calc(100vh - var(--block-margin) - var(--bottom-row-height));
+	--news-title-font-size: var(--font-size-body-2);
+	--news-title-height: calc(var(--news-title-font-size) * var(--line-height));
+
+	--news-description-font-size: var(--font-size-body-3);
+	--news-description-height: calc(var(--news-description-font-size) * var(--line-height) * 2);
+
+	--news-content-height: calc(var(--news-title-height) + var(--news-description-height));
+	--news-height: calc(var(--news-content-height) + var(--block-padding) * 2);
+	--news-top: calc(100vh - var(--block-margin) - var(--news-height));
 
 	--weather-content-height: calc(373 / 1920 * 100vh);
 	--weather-top: var(--second-row-top);
 	--weather-height: calc(var(--weather-content-height) + var(--block-padding) * 2);
 
-	--countdown-content-height: calc(138 / 1920 * 100vh);
+	--countdown-title-font-size: var(--font-size-body-1);
+	--countdown-title-margin-bottom: var(--content-space-4);
+	--countdown-title-height: calc(
+		var(--countdown-title-font-size) * var(--line-height) + var(--countdown-title-margin-bottom)
+	);
+
+	--countdown-item-padding: var(--content-space-3);
+	--countdown-item-number-font-size: var(--font-size-display-2);
+	--countdown-item-description-font-size: var(--font-size-body-4);
+	--countdown-item-height: calc(
+		var(--countdown-item-padding) * 2 + var(--countdown-item-number-font-size) +
+			var(--countdown-item-description-font-size)
+	);
+
+	--countdown-content-height: calc(var(--countdown-title-height) + var(--countdown-item-height));
 	--countdown-height: calc(var(--countdown-content-height) + var(--block-padding) * 2);
-	--countdown-top: calc(var(--bottom-row-top) - var(--block-margin) - var(--countdown-height));
+	--countdown-top: calc(var(--news-top) - var(--block-margin) - var(--countdown-height));
 
 	/* Calculate the positions of adjustable height blocks to absorb the remaining vertical space
 	   in each column. */
 	--calendar-top: var(--second-row-top);
 	--calendar-height: calc(
-		100vh - var(--second-row-top) - var(--bottom-row-height) - var(--block-margin) * 2
+		100vh - var(--second-row-top) - var(--news-height) - var(--block-margin) * 2
 	);
 	--calendar-content-height: calc(var(--calendar-height) - var(--block-padding) * 2);
 
@@ -65,7 +98,7 @@
 /* Specify a font-size that scales proportionally with the vertical resolution. */
 body {
 	font-family: 'Open Sans', sans-serif !important;
-	font-size: calc(16 / 1920 * 100vh) !important;
+	font-size: var(--font-size-4) !important;
 	line-height: var(--line-height) !important;
 }
 
@@ -104,7 +137,7 @@ body {
 
 /* Every individual component/cell is contained by a .block. Give them all the same layout. */
 .block {
-	border-radius: var(--block-border-radius) !important;
+	border-radius: var(--border-radius) !important;
 	box-sizing: border-box !important;
 	padding: var(--block-padding) !important;
 	position: absolute !important;
@@ -126,7 +159,7 @@ body {
  * DATE
  */
 
-#\35 ddde18bf62f5967c36c2cc3 {
+.block#\35 ddde18bf62f5967c36c2cc3 {
 	height: var(--first-row-height) !important;
 	left: var(--first-column-left) !important;
 	top: var(--first-row-top) !important;
@@ -135,12 +168,12 @@ body {
 
 /* There is padding between the time and date. But the time is not displayed in this cell, so
    remove that padding to left-align properly. */
-#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 {
+.block#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 {
 	padding-left: 0 !important;
 }
 
 /* Place the date on two lines and take up all the vertical content space. */
-#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 > div {
+.block#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 > div {
 	display: block !important;
 	font-size: calc(var(--first-row-content-height) / 2 / var(--line-height)) !important;
 }
@@ -149,7 +182,7 @@ body {
  * TIME
  */
 
-#\35 dddf1d8f62f5942742ee412 {
+.block#\35 dddf1d8f62f5942742ee412 {
 	height: var(--first-row-height) !important;
 	left: var(--second-column-left) !important;
 	top: var(--first-row-top) !important;
@@ -157,7 +190,7 @@ body {
 }
 
 /* Grow the font to take up all the vertical content space. */
-#\35 dddf1d8f62f5942742ee412 #time-5dddf1d8f62f5942742ee412 {
+.block#\35 dddf1d8f62f5942742ee412 #time-5dddf1d8f62f5942742ee412 {
 	--content-height: calc(var(--first-row-height) - var(--block-padding) * 2);
 	font-size: var(--content-height) !important;
 	line-height: var(--content-height) !important;
@@ -167,7 +200,7 @@ body {
  * CALENDAR
  */
 
-#\35 ddded42acf0306d7803f832 {
+.block#\35 ddded42acf0306d7803f832 {
 	height: var(--calendar-height) !important;
 	left: var(--block-margin) !important;
 	top: var(--second-row-top) !important;
@@ -177,7 +210,7 @@ body {
 /* The maximum number of agenda days has been selected, so it's likely that the calendar agenda
    will be taler than its container. Rather than clip the contents abruptly at the bottom of the
    cell, gradually fade them to transparent. */
-#\35 ddded42acf0306d7803f832 > .calendar {
+.block#\35 ddded42acf0306d7803f832 > .calendar {
 	-webkit-mask-image: linear-gradient(
 		to bottom,
 		black calc(var(--calendar-content-height) - var(--block-padding) * 4),
@@ -193,34 +226,40 @@ body {
 /* There's some left padding around each day container; get rid of it. And redistribute the top
    padding to the bottom margin. This results in the calendar having a top-left alignment within
    its cell that agrees with all the other cells. */
-#\35 ddded42acf0306d7803f832 .day-container {
+.block#\35 ddded42acf0306d7803f832 .day-container {
 	padding: 0 !important;
-	margin-bottom: var(--content-margin) !important;
+	margin-bottom: var(--content-space-1) !important;
+}
+
+/* The agenda can get away with the tighter line height and it actually looks better that way. */
+.block#\35 ddded42acf0306d7803f832 .day-container li {
+	line-height: var(--line-height-tight) !important;
+	margin-top: var(--content-space-3);
 }
 
 /* Indent the agenda items. */
-#\35 ddded42acf0306d7803f832 .day-container .time-container {
-	width: calc(70 / 1920 * 100vh) !important;
+.block#\35 ddded42acf0306d7803f832 .day-container .time-container {
+	width: calc(70 / 1080 * 100vw) !important;
 }
 
-#\35 ddded42acf0306d7803f832 .day-container .event-summary,
-#\35 ddded42acf0306d7803f832 .day-container .no-events {
-	margin-left: calc(80 / 1920 * 100vh) !important;
+.block#\35 ddded42acf0306d7803f832 .day-container .event-summary,
+.block#\35 ddded42acf0306d7803f832 .day-container .no-events {
+	margin-left: calc(80 / 1080 * 100vw) !important;
 }
 
-/* Increase the size of the calendar agenda. */
-#\35 ddded42acf0306d7803f832 .calendar-agenda-font-large {
-	font-size: calc(30 / 1920 * 100vh) !important;
+/* Increase the font size of the calendar agenda. */
+.block#\35 ddded42acf0306d7803f832 .calendar-agenda-font-large {
+	font-size: var(--font-size-body-1) !important;
 }
 
 /* For better proximity, the day title and day events are moved closer together. This margin-bottom
    negates the margin-top specified by the first <li>. */
-#\35 ddded42acf0306d7803f832 .day {
-	margin-bottom: -12px !important;
+.block#\35 ddded42acf0306d7803f832 .day {
+	margin-bottom: calc(var(--content-space-3) * -1) !important;
 }
 
 /* Slightly tweak the vertical alignment of the minutes portion of the time. */
-#\35 ddded42acf0306d7803f832 .minute-container {
+.block#\35 ddded42acf0306d7803f832 .minute-container {
 	padding-top: 0.5em !important;
 }
 
@@ -228,7 +267,7 @@ body {
  * WEATHER
  */
 
-#\35 ddde3570f6c13261a03da45 {
+.block#\35 ddde3570f6c13261a03da45 {
 	height: var(--weather-height) !important;
 	left: var(--second-column-left) !important;
 	top: var(--weather-top) !important;
@@ -237,44 +276,45 @@ body {
 
 /* Place the actual and "feels like" temperatures next to each other on the same line by floating
    the icon to the right. */
-#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large,
-#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2) {
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large,
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2) {
 	display: inline !important;
 }
-#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-current-icon {
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-current-icon {
 	float: right;
 }
 
 /* Adjust the line-height so that the large temperature aligns to the top of its container. */
-#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
 	line-height: 1;
 }
 
 /* Add the missing degrees symbols to temperatures. */
-#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2)::after,
-#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-high::after,
-#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-low::after {
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2)::after,
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-high::after,
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-low::after {
 	content: '°' !important;
 }
 
 /* Add some vertical separation between "now" and the forecast. */
-#\35 ddde3570f6c13261a03da45 > div > div.weather-item.weather-current {
-	margin-bottom: var(--content-margin) !important;
+.block#\35 ddde3570f6c13261a03da45 > div > div.weather-item.weather-current {
+	margin-bottom: var(--content-space-1) !important;
+	--content-space-2: calc(15 / 1920 * 100vh);
 }
 
 /* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
-#\35 ddde3570f6c13261a03da45 > div > div.weather-forecast-group {
+.block#\35 ddde3570f6c13261a03da45 > div > div.weather-forecast-group {
 	display: flex !important;
 	justify-content: space-between !important;
 }
-#\35 ddde3570f6c13261a03da45 .weather-condensed .weather-forecast {
+.block#\35 ddde3570f6c13261a03da45 .weather-condensed .weather-forecast {
 	display: inline-block !important;
 	padding: 0 !important;
 }
 
 /* Make the forecast subitems' margins relative units. (This was the only margin that wasn't.)
    TODO: There are some paddings that should also be addressed,  */
-#\35 ddde3570f6c13261a03da45 .weather-forecast .day {
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .day {
 	margin-bottom: 1rem;
 }
 
@@ -282,7 +322,7 @@ body {
  * PHOTOS
  */
 
-#\35 dddec6ef62f59737f5aec86 {
+.block#\35 dddec6ef62f59737f5aec86 {
 	height: var(--photos-height) !important;
 	left: var(--second-column-left) !important;
 	top: var(--photos-top) !important;
@@ -293,20 +333,87 @@ body {
  * COUNTDOWN
  */
 
-#\35 dde031336984f176045f044 {
+.block#\35 dde031336984f176045f044 {
 	height: var(--countdown-height) !important;
 	left: var(--second-column-left) !important;
 	top: var(--countdown-top) !important;
 	width: var(--one-column-width) !important;
 }
 
+/* Make the layout of the countdown a little more workable. */
+.block#\35 dde031336984f176045f044 > .countdown {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: wrap !important;
+}
+
+/* Set the dimensions of the title on a line all its own. */
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-title {
+	font-size: var(--countdown-title-font-size) !important;
+	margin-bottom: var(--countdown-title-margin-bottom) !important;
+	width: 100% !important;
+}
+
+/* Ensure that all remaining countdown-items are evenly spaced. The actual width isn't important,
+   as long as all countdown-items are assigned the same width, the width is small enough to not
+   cause wrapping of the line, and they are allowed to expand to fill the row. */
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item {
+	border-radius: var(--border-radius) !important;
+	flex-grow: 1 !important;
+	float: none !important;
+	line-height: 1;
+	margin: 0 0 0 var(--content-space-2) !important;
+	padding: var(--countdown-item-padding) !important;
+	width: 1% !important;
+}
+
+/* Scratch the margin on the first countdown-item. */
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(2) {
+	margin-left: 0 !important;
+}
+
+/* Hide the seconds countdown-item because it's a little obnoxious. And there are times when the
+   system is under load that the seconds aren't updated regularly. */
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(5) {
+	display: none !important;
+}
+
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-time {
+	font-size: var(--countdown-item-number-font-size);
+}
+
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-item-description {
+	font-size: var(--countdown-item-description-font-size);
+}
+
 /*
  * NEWS
  */
 
-#\35 dddf2ebacf030303355d494 {
-	height: var(--bottom-row-height) !important;
+.block#\35 dddf2ebacf030303355d494 {
+	height: var(--news-height) !important;
 	left: var(--block-margin) !important;
-	top: var(--bottom-row-top) !important;
+	top: var(--news-top) !important;
 	width: var(--two-columns-width) !important;
+}
+
+/* Give the title just one line, truncating with an ellipsis if necessary. It is capitalized to
+   give it just a bit more distinction from the description without having to add more space. */
+.block#\35 dddf2ebacf030303355d494 .rss-title {
+	font-size: var(--news-title-font-size) !important;
+	line-height: var(--line-height) !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	text-overflow: ellipsis !important;
+	text-transform: capitalize;
+	white-space: nowrap !important;
+}
+
+/* Give the description two lines and then clip. */
+.block#\35 dddf2ebacf030303355d494 .rss-description {
+	font-size: var(--news-description-font-size) !important;
+	line-height: var(--line-height) !important;
+	max-height: var(--news-description-height) !important;
+	overflow: hidden !important;
+	padding: 0 !important;
 }
