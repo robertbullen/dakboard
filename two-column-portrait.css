@@ -191,9 +191,8 @@ body {
 
 /* Grow the font to take up all the vertical content space. */
 .block#\35 dddf1d8f62f5942742ee412 #time-5dddf1d8f62f5942742ee412 {
-	--content-height: calc(var(--first-row-height) - var(--block-padding) * 2);
-	font-size: var(--content-height) !important;
-	line-height: var(--content-height) !important;
+	font-size: var(--first-row-content-height) !important;
+	line-height: var(--first-row-content-height) !important;
 }
 
 /*
@@ -231,10 +230,14 @@ body {
 	margin-bottom: var(--content-space-1) !important;
 }
 
+.block#\35 ddded42acf0306d7803f832 .day-container .day {
+	font-size: var(--font-size-body-3) !important;
+}
+
 /* The agenda can get away with the tighter line height and it actually looks better that way. */
 .block#\35 ddded42acf0306d7803f832 .day-container li {
 	line-height: var(--line-height-tight) !important;
-	margin-top: var(--content-space-3);
+	margin-top: var(--content-space-3) !important;
 }
 
 /* Indent the agenda items. */
@@ -281,41 +284,88 @@ body {
 	display: inline !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-current-icon {
-	float: right;
+	float: right !important;
 }
 
 /* Adjust the line-height so that the large temperature aligns to the top of its container. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
-	line-height: 1;
+	font-size: var(--font-size-display-1) !important;
+	line-height: 1 !important;
 }
 
-/* Add the missing degrees symbols to temperatures. */
+/* Adjust the font-size and separation of "feels like" and summary. */
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2),
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
+	font-size: var(--font-size-body-2) !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
+	margin-top: var(--content-space-4) !important;
+}
+
+/* Add some vertical separation between "now" and the forecast. */
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current {
+	margin-bottom: var(--content-space-1) !important;
+}
+
+/* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast-group {
+	display: flex !important;
+	justify-content: space-between !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast {
+	flex-grow: 1 !important;
+	margin: 0 var(--content-space-2) 0 0 !important;
+	padding: 0 !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast-4 {
+	margin-right: 0 !important;
+}
+
+/* Add degrees symbols after all temperatures lacking them. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2)::after,
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-high::after,
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast-group .weather-forecast-item-low::after {
 	content: '°' !important;
 }
 
-/* Add some vertical separation between "now" and the forecast. */
-.block#\35 ddde3570f6c13261a03da45 > div > div.weather-item.weather-current {
-	margin-bottom: var(--content-space-1) !important;
-	--content-space-2: calc(15 / 1920 * 100vh);
-}
-
-/* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
-.block#\35 ddde3570f6c13261a03da45 > div > div.weather-forecast-group {
+/* Layout the forecast items. */
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast {
 	display: flex !important;
-	justify-content: space-between !important;
+	flex-direction: row !important;
+	flex-wrap: wrap !important;
 }
-.block#\35 ddde3570f6c13261a03da45 .weather-condensed .weather-forecast {
-	display: inline-block !important;
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast > * {
+	display: block !important;
+	margin: var(--content-space-2) 0 !important;
+	line-height: 1 !important;
+	padding: 0 !important;
+	width: 100% !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .day {
+	border-radius: var(--border-radius) !important;
+	font-size: var(--font-size-body-3) !important;
+	margin-top: 0 !important;
+	padding: var(--content-space-4) !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast span.fas {
+	font-size: var(--font-size-display-2) !important;
+}
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .weather-pop {
+	font-size: var(--font-size-body-3) !important;
+}
+/* .block#\35 ddde3570f6c13261a03da45 .weather-forecast .weather-pop small {
+	font-size: var(--font-size-body-3) !important;
+} */
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .weather-pop small span.fas {
+	font-size: var(--font-size-body-4) !important;
+	margin: 0 !important;
 	padding: 0 !important;
 }
-
-/* Make the forecast subitems' margins relative units. (This was the only margin that wasn't.)
-   TODO: There are some paddings that should also be addressed,  */
-.block#\35 ddde3570f6c13261a03da45 .weather-forecast .day {
-	margin-bottom: 1rem;
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .weather-forecast-item-high,
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast .weather-forecast-item-low {
+	font-size: var(--font-size-body-2) !important;
+	margin-bottom: 0 !important;
+	width: 50% !important;
 }
 
 /*
@@ -361,7 +411,7 @@ body {
 	border-radius: var(--border-radius) !important;
 	flex-grow: 1 !important;
 	float: none !important;
-	line-height: 1;
+	line-height: 1 !important;
 	margin: 0 0 0 var(--content-space-2) !important;
 	padding: var(--countdown-item-padding) !important;
 	width: 1% !important;
@@ -379,11 +429,11 @@ body {
 }
 
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-time {
-	font-size: var(--countdown-item-number-font-size);
+	font-size: var(--countdown-item-number-font-size) !important;
 }
 
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-item-description {
-	font-size: var(--countdown-item-description-font-size);
+	font-size: var(--countdown-item-description-font-size) !important;
 }
 
 /*
@@ -405,7 +455,7 @@ body {
 	overflow: hidden !important;
 	padding: 0 !important;
 	text-overflow: ellipsis !important;
-	text-transform: capitalize;
+	text-transform: capitalize !important;
 	white-space: nowrap !important;
 }
 
