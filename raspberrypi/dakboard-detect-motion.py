@@ -1,7 +1,7 @@
 import argparse
+import os
 import signal
 import subprocess
-import sys
 import threading
 import time
 import typing
@@ -18,7 +18,7 @@ def qualified_method_name(method) -> str:
 # Declare and instantiate a class responsible for turning on/off the display.
 class Display:
     __is_on: bool = False
-    __lock: threading.Lock = threading.Lock()
+    __lock: threading.RLock = threading.RLock()
     __off_command: str
     __on_command: str
 
@@ -47,6 +47,17 @@ class Display:
         finally:
             self.__lock.release()
 
+    def toggle(self) -> bool:
+        self.__lock.acquire()
+        try:
+            if self.__is_on:
+                self.off()
+            else:
+                self.on()
+            return self.__is_on
+        finally:
+            self.__lock.release()
+
     @staticmethod
     def cec() -> 'Display':
         return Display('echo \'standby 0\' | cec-client -s -d 1', 'echo \'on 0\' | cec-client -s -d 1')
@@ -57,6 +68,7 @@ class Display:
 
 
 class Config(argparse.Namespace):
+    control_button: typing.Union[gpiozero.Button, None]
     display: Display
     motion_led: typing.Union[gpiozero.LED, None]
     motion_sensor: gpiozero.MotionSensor
@@ -69,6 +81,9 @@ class Config(argparse.Namespace):
     def create() -> 'Config':
         parser = argparse.ArgumentParser(
             epilog='gpiozero pin numbering format is described here: https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering')
+
+        def parse_control_button(arg: str) -> gpiozero.Button:
+            return gpiozero.Button(arg, hold_time=5)
 
         def parse_display_type(arg: str) -> Display:
             if arg == 'cec':
@@ -95,12 +110,20 @@ class Config(argparse.Namespace):
             '--motion-sensor-pin',
             default=None,
             dest='motion_sensor',
-            help='The GPIO pin to which a motion sensor is attached',
+            help='The GPIO pin (in gpiozero format) to which the motion sensor is attached.',
             required=True,
             type=gpiozero.MotionSensor,
         )
 
         # Optional arguments.
+        parser.add_argument(
+            '--control-button-pin',
+            default=None,
+            dest='control_button',
+            help='The GPIO pin (in gpiozero format) to which an optional control button is attached. Pressing the button will forcefully turn on the display, even outside of waking times. Holding the button for 5 seconds will shutdown the system.',
+            type=parse_control_button,
+        )
+
         parser.add_argument(
             '--display-type',
             choices=['video-core', 'cec'],
@@ -113,35 +136,35 @@ class Config(argparse.Namespace):
         parser.add_argument(
             '--motion-led-pin',
             dest='motion_led',
-            help='The GPIO pin (in gpiozero format) to which a motion indicator LED is attached',
+            help='The GPIO pin (in gpiozero format) to which an optional motion indicator LED is attached.',
             type=gpiozero.LED,
         )
 
         parser.add_argument(
             '--running-led-pin',
             dest='running_led',
-            help='The GPIO pin (in gpiozero format) to which a running indicator LED is attached',
+            help='The GPIO pin (in gpiozero format) to which an optional running indicator LED is attached.',
             type=gpiozero.LED,
         )
 
         parser.add_argument(
             '--sleep-delay-seconds',
             default=120,
-            help='The length of time (in seconds) to keep the display awake after no motion is detected',
+            help='The length of time (in seconds) to keep the display awake after no motion is detected.',
             type=int,
         )
 
         parser.add_argument(
             '--waking-time-begin',
             default='00:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 06:00) where waking the display is allowed',
+            help='The beginning of the daily period (in 24-hour clock format; e.g. 06:00) where waking the display is allowed.',
             type=parse_time,
         )
 
         parser.add_argument(
             '--waking-time-end',
             default='24:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 22:00) where waking the display is allowed',
+            help='The beginning of the daily period (in 24-hour clock format; e.g. 22:00) where waking the display is allowed.',
             type=parse_time,
         )
 
@@ -163,19 +186,27 @@ class Config(argparse.Namespace):
 def main() -> None:
     # Load up the configuration (from the command line arguments).
     config: Config = Config.create()
+    print(vars(config))
 
     # Turn on the running LED for as long as this script is executing.
     if config.running_led:
         config.running_led.on()
 
     # Turn on the display and schedule turning it off.
-    config.display.on()
-
     sleep_timer: threading.Timer = threading.Timer(config.sleep_delay_seconds, config.display.off)
-    sleep_timer.start()
+
+    def schedule_display_off() -> None:
+        nonlocal sleep_timer
+
+        sleep_timer.cancel()
+        sleep_timer = threading.Timer(config.sleep_delay_seconds, config.display.off)
+        sleep_timer.start()
+
+    config.display.on()
+    schedule_display_off()
 
     # Wire up some motion sensor event handlers to turn on and off the display.
-    def when_motion():
+    def when_motion() -> None:
         nonlocal config
         nonlocal sleep_timer
 
@@ -187,23 +218,37 @@ def main() -> None:
         if config.is_waking_time(time.localtime()):
             config.display.on()
 
-    def when_no_motion():
+    def when_no_motion() -> None:
         nonlocal config
-        nonlocal sleep_timer
 
         if config.motion_led:
             config.motion_led.off()
 
-        sleep_timer = threading.Timer(config.sleep_delay_seconds, config.display.off)
-        sleep_timer.start()
+        schedule_display_off()
 
     config.motion_sensor.when_motion = when_motion
     config.motion_sensor.when_no_motion = when_no_motion
 
+    # Handle control button events if necessary.
+    if config.control_button:
+        def when_released() -> None:
+            nonlocal config
+            nonlocal sleep_timer
+
+            config.display.on()
+            schedule_display_off()
+
+        def when_held() -> None:
+            subprocess.run('shutdown now', shell=True)
+            os._exit(0)
+
+        config.control_button.when_released = when_released
+        config.control_button.when_held = when_held
+
     # Wire up a signal handler to clean up.
     def signal_handler(signal, frame) -> None:
         config.display.off()
-        sys.exit()
+        os._exit(0)
 
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
