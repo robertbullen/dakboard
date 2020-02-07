@@ -32,7 +32,7 @@ class Display:
         try:
             print(qualified_method_name(self.off))
             if self.__is_on:
-                # subprocess.run(self.__off_command, shell=True)
+                subprocess.run(self.__off_command, shell=True)
                 self.__is_on = False
         finally:
             self.__lock.release()
@@ -42,7 +42,7 @@ class Display:
         try:
             print(qualified_method_name(self.on))
             if not self.__is_on:
-                # subprocess.run(self.__on_command, shell=True)
+                subprocess.run(self.__on_command, shell=True)
                 self.__is_on = True
         finally:
             self.__lock.release()
@@ -94,8 +94,8 @@ class Config(argparse.Namespace):
 
         def parse_time(arg: str) -> time.struct_time:
             try:
-                # 24:00 is not allowed by strptime, but it is allowed by this script. So create a
-                # struct_time by hand in that case.
+                # 24:00 is not allowed by strptime, but it is allowed by this script. It's the one
+                # and only illegal time value, so just create a struct_time by hand in that case.
                 result: time.struct_time
                 if arg == '24:00':
                     result = time.struct_time((1900, 1, 1, 24, 0, 0, 0, 1, -1))

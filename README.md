@@ -81,7 +81,9 @@ TODO: Describe the Python script.
     sudo python3 /home/pi/dakboard-detect-motion.py \
         --control-button-pin=BOARD36 \
         --motion-sensor-pin=BOARD7 \
-        --motion-led-pin=BOARD2 \
+        --motion-led-pin=BOARD22 \
         --running-led-pin=BOARD18 \
-        --sleep-delay-seconds=120
+        --sleep-delay-seconds=10 \
+        --waking-time-begin=06:00 \
+        --waking-time-end=22:00
     ```
