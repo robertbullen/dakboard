@@ -1,0 +1,20 @@
+{
+	"configurations": [
+		{
+			"args": [
+				"--display-type=mock",
+				"--motion-sensor-pin=BOARD22",
+				"--sleep-delay-seconds=3"
+			],
+			"env": {
+				"GPIOZERO_PIN_FACTORY": "mock"
+			},
+			"justMyCode": false,
+			"module": "interdaktive",
+			"name": "Python: Module",
+			"request": "launch",
+			"type": "python"
+		}
+	],
+	"version": "0.2.0"
+}
