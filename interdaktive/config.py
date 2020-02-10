@@ -21,7 +21,9 @@ class Config(argparse.Namespace):
     @staticmethod
     def from_args() -> 'Config':
         parser = argparse.ArgumentParser(
-            epilog='gpiozero pin numbering format is described here: https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering')
+            epilog='gpiozero pin numbering format is described here: https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering',
+            prog='python3 -m interdaktive',
+        )
 
         def parse_control_button(arg: str) -> gpiozero.Button:
             return gpiozero.Button(arg, hold_time=5)
@@ -54,6 +56,7 @@ class Config(argparse.Namespace):
             default=None,
             dest='motion_sensor',
             help='The GPIO pin (in gpiozero format) to which the motion sensor is attached.',
+            metavar='MOTION_SENSOR_PIN',
             required=True,
             type=gpiozero.MotionSensor,
         )
@@ -64,6 +67,7 @@ class Config(argparse.Namespace):
             default=None,
             dest='control_button',
             help='The GPIO pin (in gpiozero format) to which an optional control button is attached. Pressing the button will forcefully turn on the display, even outside of waking times. Holding the button for 5 seconds will shutdown the system.',
+            metavar='CONTROL_BUTTON_PIN',
             type=parse_control_button,
         )
 
@@ -73,6 +77,7 @@ class Config(argparse.Namespace):
             default='video-core',
             dest='display',
             help='The type of display that is connected, which determines how it is put to sleep and awakened. A "video-core" display simply responds to the HDMI signal turning off and on; e.g. a computer display. A "cec" display responds to HDMI-CEC commands; e.g. a TV.',
+            metavar='DISPLAY_TYPE',
             type=parse_display_type,  # type: ignore
         )
 
@@ -80,6 +85,7 @@ class Config(argparse.Namespace):
             '--motion-led-pin',
             dest='motion_led',
             help='The GPIO pin (in gpiozero format) to which an optional motion indicator LED is attached.',
+            metavar='MOTION_LED_PIN',
             type=gpiozero.LED,
         )
 
@@ -87,6 +93,7 @@ class Config(argparse.Namespace):
             '--running-led-pin',
             dest='running_led',
             help='The GPIO pin (in gpiozero format) to which an optional running indicator LED is attached.',
+            metavar='RUNNING_LED_PIN',
             type=gpiozero.LED,
         )
 

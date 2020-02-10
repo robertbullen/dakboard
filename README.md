@@ -78,12 +78,13 @@ TODO: Describe the Python script.
 1. Start the Python script on boot by adding this line to /etc/rc.local:
 
     ```bash
-    sudo python3 /home/pi/dakboard-detect-motion.py \
+    sudo python3 -m interdaktive \
         --control-button-pin=BOARD36 \
+        --display-type=mock \
         --motion-sensor-pin=BOARD7 \
         --motion-led-pin=BOARD22 \
         --running-led-pin=BOARD18 \
-        --sleep-delay-seconds=10 \
+        --sleep-delay-seconds=5 \
         --waking-time-begin=06:00 \
-        --waking-time-end=22:00
-    ```
+        --waking-time-end=22:00 &
+```

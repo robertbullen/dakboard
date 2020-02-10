@@ -56,7 +56,6 @@ transitions = Transitions(
 @add_state_features(Timeout)
 class StateMachine(Machine):
     __config: Config
-    # __idle_timer: typing.Union[threading.Timer, None]
 
     def __init__(self, config: Config):
         enhanced_states = []
@@ -74,7 +73,6 @@ class StateMachine(Machine):
             self,
             states=enhanced_states,
             initial=states.starting,
-            # machine_context=threading.RLock(),
             auto_transitions=False,
             show_conditions=True,
             show_state_attributes=True,
@@ -113,31 +111,10 @@ class StateMachine(Machine):
     def __getitem__(self, key: str) -> typing.Callable[[], None]:
         return getattr(self, getattr(transitions, key))
 
-    def save_graph_to_file(self) -> None:
+    def save_diagram_to_file(self, file_path: str) -> None:
         self.machine_attributes['ratio'] = '0.33'
         graph = self.get_graph(force_new=True, title='')
-        graph.draw('doc/state-machine.png', prog='dot')
-
-    # def on_enter_idle(self, *args, **kwargs) -> None:
-    #     if self.__idle_timer is not None:
-    #         self.__idle_timer.cancel()
-    #         self.__idle_timer = None
-
-    #     def handler():
-    #         try:
-    #             self[transitions.idle_timed_out]()
-    #         except:
-    #             print('error')
-    #         finally:
-    #             print('done')
-
-    #     self.__idle_timer = threading.Timer(self.__config.sleep_delay_seconds, handler)
-    #     self.__idle_timer.start()
-
-    # def on_exit_idle(self, *args, **kwargs) -> None:
-    #     if self.__idle_timer is not None:
-    #         self.__idle_timer.cancel()
-    #         self.__idle_timer = None
+        graph.draw(file_path, prog='dot')
 
     def on_idle_timeout(self) -> None:
         print('on_idle_timeout')
