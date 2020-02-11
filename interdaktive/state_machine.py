@@ -12,7 +12,7 @@ from transitions.extensions.states import add_state_features  # type: ignore
 from interdaktive.config import Config
 
 logging.basicConfig(level=logging.DEBUG)
-logging.getLogger('transitions').setLevel(logging.DEBUG)
+logging.getLogger('transitions').setLevel(logging.INFO)
 
 
 States = collections.namedtuple('States', [
