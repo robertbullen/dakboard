@@ -11,6 +11,7 @@ from interdaktive.display import Display
 class Config(argparse.Namespace):
     control_button: typing.Union[gpiozero.Button, None]
     display: Display
+    export_diagram_file_path: typing.Union[str, None]
     motion_led: typing.Union[gpiozero.LED, None]
     motion_sensor: gpiozero.MotionSensor
     running_led: typing.Union[gpiozero.LED, None]
@@ -69,6 +70,12 @@ class Config(argparse.Namespace):
             help='The GPIO pin (in gpiozero format) to which an optional control button is attached. Pressing the button will forcefully turn on the display, even outside of waking times. Holding the button for 5 seconds will shutdown the system.',
             metavar='CONTROL_BUTTON_PIN',
             type=parse_control_button,
+        )
+
+        parser.add_argument(
+            '--export-diagram-file-path',
+            help='If provided, a PNG diagram of the internal state machine will be generated at the given path.',
+            type=str,
         )
 
         parser.add_argument(

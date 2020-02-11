@@ -2,7 +2,7 @@ import signal
 import threading
 
 from interdaktive.config import Config
-from interdaktive.state_machine import StateMachine, transitions
+from interdaktive.state_machine import StateMachine, Transitions
 
 if __name__ == '__main__':
     # Load up the configuration from command line arguments.
@@ -10,20 +10,33 @@ if __name__ == '__main__':
     print(vars(config))
 
     # Create the state machine.
-    state_machine = StateMachine(config)
-    state_machine.save_diagram_to_file('doc/state-machine.png')
+    if config.export_diagram_file_path is not None:
+        from transitions.extensions import GraphMachine  # type: ignore
+        state_machine = StateMachine(
+            config,
+            GraphMachine,
+            show_conditions=True,
+            show_state_attributes=True,
+            title='Interdaktive State Machine'
+        )
+        state_machine.machine.machine_attributes['labelloc'] = 'top'
+        state_machine.machine.machine_attributes['ratio'] = '0.33'
+        state_machine.machine.get_graph(force_new=True).draw(config.export_diagram_file_path, prog='dot')
+    else:
+        from transitions import Machine  # type: ignore
+        state_machine = StateMachine(config, Machine)
 
     # Wire the state machine up to external events.
-    signal.signal(signal.SIGINT, state_machine.signal_received)
-    signal.signal(signal.SIGTERM, state_machine.signal_received)
+    signal.signal(signal.SIGINT, state_machine[Transitions.signal_received])
+    signal.signal(signal.SIGTERM, state_machine[Transitions.signal_received])
 
-    config.motion_sensor.when_motion = state_machine.motion_detected
-    config.motion_sensor.when_no_motion = state_machine.no_motion_detected
+    config.motion_sensor.when_motion = state_machine[Transitions.motion_detected]
+    config.motion_sensor.when_no_motion = state_machine[Transitions.no_motion_detected]
 
     if config.control_button:
-        config.control_button.when_released = state_machine.button_released
-        config.control_button.when_held = state_machine.button_held
+        config.control_button.when_released = state_machine[Transitions.button_released]
+        config.control_button.when_held = state_machine[Transitions.button_held]
 
     # Transition the state machine to operational mode and run until signalled to quit.
-    state_machine[transitions.started]()
+    state_machine[Transitions.started]()
     signal.pause()

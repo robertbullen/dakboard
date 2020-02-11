@@ -4,8 +4,9 @@ import os
 import subprocess
 import time
 import typing
+from dataclasses import astuple, dataclass, fields
 
-from transitions.extensions import GraphMachine as Machine  # type: ignore
+from transitions import Machine  # type: ignore
 from transitions.extensions.states import Timeout  # type: ignore
 from transitions.extensions.states import add_state_features  # type: ignore
 
@@ -15,138 +16,129 @@ logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('transitions').setLevel(logging.INFO)
 
 
-States = collections.namedtuple('States', [
-    'asleep',
-    'awake',
-    'idle',
-    'shutting',
-    'starting',
-    'stopping',
-])
-states = States(
-    asleep='asleep',
-    awake='awake',
-    idle='idle',
-    shutting='shutting',
-    starting='starting',
-    stopping='stopping',
-)
+@dataclass(frozen=True)
+class States:
+    asleep: str = 'asleep'
+    awake: str = 'awake'
+    idle: str = 'idle'
+    shutting: str = 'shutting'
+    starting: str = 'starting'
+    stopping: str = 'stopping'
+
+    def __iter__(self) -> typing.Iterator[str]:
+        return iter(astuple(self))
 
 
-Transitions = collections.namedtuple('Transitions', [
-    'button_held',
-    'button_released',
-    'idle_timed_out',
-    'motion_detected',
-    'no_motion_detected',
-    'signal_received',
-    'started',
-])
-transitions = Transitions(
-    button_held='button_held',
-    button_released='button_released',
-    idle_timed_out='idle_timed_out',
-    motion_detected='motion_detected',
-    no_motion_detected='no_motion_detected',
-    signal_received='signal_received',
-    started='started',
-)
+@dataclass(frozen=True)
+class Transitions:
+    button_held: str = 'button_held'
+    button_released: str = 'button_released'
+    idle_timed_out: str = 'idle_timed_out'
+    motion_detected: str = 'motion_detected'
+    no_motion_detected: str = 'no_motion_detected'
+    signal_received: str = 'signal_received'
+    started: str = 'started'
+
+    def __iter__(self) -> typing.Iterator[str]:
+        return iter(astuple(self))
 
 
-@add_state_features(Timeout)
-class StateMachine(Machine):
-    __config: Config
+class StateMachine(object):
+    config: Config
+    machine: Machine
 
-    def __init__(self, config: Config):
-        enhanced_states = []
-        for state in states:
-            if state == states.idle:
-                enhanced_states.append({
+    def __init__(self, config: Config, machine_class, **kwargs):
+        self.config = config
+
+        # The idle state requires a timeout feature, so add it while converting the `states` tuple
+        # to a list.
+        states_with_features: typing.List[typing.Union[typing.Dict, str]] = []
+        for state in States():
+            if state == States.idle:
+                states_with_features.append({
                     'name': state,
-                    'timeout': config.sleep_delay_seconds,
-                    'on_timeout': 'on_idle_timeout'
+                    'timeout': self.config.sleep_delay_seconds,
+                    'on_timeout': self.on_idle_timeout.__name__  # A string is required here.
                 })
             else:
-                enhanced_states.append(state)
+                states_with_features.append(state)
 
-        super().__init__(
-            self,
-            states=enhanced_states,
-            initial=states.starting,
+        # Call the constructor of one of the multitude of possible transitions' Machine mixins.
+        machine_class_with_features = add_state_features(Timeout)(machine_class)
+        self.machine = machine_class_with_features(
+            model=self,
+            states=states_with_features,
+            initial=States.starting,
             auto_transitions=False,
-            show_conditions=True,
-            show_state_attributes=True,
+            **kwargs,
         )
 
-        self.__config = config
-        self.__idle_timer = None
-
         # Add transitions for starting, stopping, and shutting down.
-        self.add_transition(transitions.started, states.starting, states.asleep,
-                            after=[self.running_led_on, self.display_off])
+        self.machine.add_transition(Transitions.started, States.starting, States.asleep,
+                                    after=[self.running_led_on, self.display_off])
 
-        self.add_transition(transitions.signal_received, '*', states.stopping,
-                            after=lambda *args, **kwargs: os._exit(0))
+        self.machine.add_transition(Transitions.signal_received, '*', States.stopping,
+                                    after=self.quit)
 
-        self.add_transition(transitions.button_held, '*', states.shutting,
-                            after=lambda *args, **kwargs: subprocess.run('shutdown now', shell=True))
+        self.machine.add_transition(Transitions.button_held, '*', States.shutting,
+                                    after=self.shutdown)
 
         # Add transitions between asleep, awake, and idle.
-        self.add_transition(transitions.motion_detected, [states.asleep, states.idle], states.awake,
-                            prepare=self.motion_led_on,
-                            conditions='is_waking_time',  # A string is specified so that it shows up in the diagram
-                            after=self.display_on)
+        self.machine.add_transition(Transitions.motion_detected, [States.asleep, States.idle], States.awake,
+                                    prepare=self.motion_led_on,
+                                    conditions=self.is_waking_time.__name__,  # A string is not required, but it won't show up on the diagram otherwise.
+                                    after=self.display_on)
 
-        self.add_transition(transitions.no_motion_detected, states.awake, states.idle,
-                            prepare=self.motion_led_off)
+        self.machine.add_transition(Transitions.no_motion_detected, States.awake, States.idle,
+                                    prepare=self.motion_led_off)
 
-        self.add_transition(transitions.idle_timed_out, states.idle, states.asleep,
-                            after=self.display_off)
+        self.machine.add_transition(Transitions.idle_timed_out, States.idle, States.asleep,
+                                    after=self.display_off)
 
-        self.add_transition(transitions.button_released, states.asleep, states.idle,
-                            after=self.display_on)
-        self.add_transition(transitions.button_released, [states.awake, states.idle], states.asleep,
-                            after=self.display_off)
+        self.machine.add_transition(Transitions.button_released, States.asleep, States.idle,
+                                    after=self.display_on)
+        self.machine.add_transition(Transitions.button_released, [States.awake, States.idle], States.asleep,
+                                    after=self.display_off)
 
     def __getitem__(self, key: str) -> typing.Callable[[], None]:
-        return getattr(self, getattr(transitions, key))
+        return getattr(self, getattr(Transitions, key))
 
-    def save_diagram_to_file(self, file_path: str) -> None:
-        self.machine_attributes['ratio'] = '0.33'
-        graph = self.get_graph(force_new=True, title='')
-        graph.draw(file_path, prog='dot')
+    def quit(self, *args, **kwargs) -> None:
+        os._exit(0)
 
-    def on_idle_timeout(self) -> None:
-        print('on_idle_timeout')
-        self[transitions.idle_timed_out]()
+    def shutdown(self, *args, **kwargs) -> None:
+        subprocess.run('shutdown now', shell=True)
 
-    def display_off(self) -> None:
-        self.__config.display.off()
+    def on_idle_timeout(self, *args, **kwargs) -> None:
+        self[Transitions.idle_timed_out]()
 
-    def display_on(self) -> None:
-        self.__config.display.on()
+    def display_off(self, *args, **kwargs) -> None:
+        self.config.display.off()
 
-    def motion_led_off(self) -> None:
-        if self.__config.motion_led:
-            self.__config.motion_led.off()
+    def display_on(self, *args, **kwargs) -> None:
+        self.config.display.on()
 
-    def motion_led_on(self) -> None:
-        if self.__config.motion_led:
-            self.__config.motion_led.on()
+    def motion_led_off(self, *args, **kwargs) -> None:
+        if self.config.motion_led:
+            self.config.motion_led.off()
 
-    def running_led_on(self) -> None:
-        if (self.__config.running_led):
-            self.__config.running_led.on()
+    def motion_led_on(self, *args, **kwargs) -> None:
+        if self.config.motion_led:
+            self.config.motion_led.on()
 
-    def is_waking_time(self) -> bool:
+    def running_led_on(self, *args, **kwargs) -> None:
+        if (self.config.running_led):
+            self.config.running_led.on()
+
+    def is_waking_time(self, *args, **kwargs) -> bool:
         now: time.struct_time = time.localtime()
         return (
             (
-                now.tm_hour > self.__config.waking_time_begin.tm_hour or
-                (now.tm_hour == self.__config.waking_time_begin.tm_hour and now.tm_min >= self.__config.waking_time_begin.tm_min)
+                now.tm_hour > self.config.waking_time_begin.tm_hour or
+                (now.tm_hour == self.config.waking_time_begin.tm_hour and now.tm_min >= self.config.waking_time_begin.tm_min)
             ) and
             not (
-                now.tm_hour > self.__config.waking_time_end.tm_hour or
-                (now.tm_min == self.__config.waking_time_end.tm_min and now.tm_min >= self.__config.waking_time_end.tm_min)
+                now.tm_hour > self.config.waking_time_end.tm_hour or
+                (now.tm_min == self.config.waking_time_end.tm_min and now.tm_min >= self.config.waking_time_end.tm_min)
             )
         )
