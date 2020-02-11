@@ -1,1 +1,1 @@
-transitions[diagrams]
+transitions[diagrams]==0.7.2

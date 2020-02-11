@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+git pull || exit $?
+
+pip3 install -r requirements.txt || exit $?
+
 sudo python3 -m interdaktive \
     --control-button-pin=BOARD36 \
     --display-type=video-core \

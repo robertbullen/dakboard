@@ -84,12 +84,14 @@ class StateMachine(object):
                                     after=self.shutdown)
 
         # Add transitions between asleep, awake, and idle.
-        self.machine.add_transition(Transitions.motion_detected, [States.asleep, States.idle], States.awake,
+        self.machine.add_transition(Transitions.motion_detected, [States.idle, States.asleep], States.awake,
                                     prepare=self.motion_led_on,
                                     conditions=self.is_waking_time.__name__,  # A string is not required, but it won't show up on the diagram otherwise.
                                     after=self.display_on)
 
         self.machine.add_transition(Transitions.no_motion_detected, States.awake, States.idle,
+                                    prepare=self.motion_led_off)
+        self.machine.add_transition(Transitions.no_motion_detected, [States.idle, States.asleep], None,
                                     prepare=self.motion_led_off)
 
         self.machine.add_transition(Transitions.idle_timed_out, States.idle, States.asleep,
