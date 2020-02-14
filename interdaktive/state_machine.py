@@ -76,10 +76,18 @@ class StateMachine(object):
 
         # Add transitions for starting, stopping, and shutting down.
         self.machine.add_transition(Transitions.started, States.starting, States.asleep,
-                                    after=[self.running_led_on, self.display_off])
+                                    after=[
+                                        self.running_led_on,
+                                        self.display_off
+                                    ])
 
         self.machine.add_transition(Transitions.signal_received, '*', States.stopping,
-                                    after=self.quit)
+                                    after=[
+                                        self.motion_led_off,
+                                        self.running_led_off,
+                                        self.display_off,
+                                        self.quit
+                                    ])
 
         self.machine.add_transition(Transitions.button_held, '*', States.shutting,
                                     after=self.shutdown)
@@ -131,6 +139,10 @@ class StateMachine(object):
     def motion_led_on(self, *args: Any, **kwargs: Any) -> None:
         if self.config.motion_led:
             self.config.motion_led.on()
+
+    def running_led_off(self, *args: Any, **kwargs: Any) -> None:
+        if (self.config.running_led):
+            self.config.running_led.off()
 
     def running_led_on(self, *args: Any, **kwargs: Any) -> None:
         if (self.config.running_led):
