@@ -35,7 +35,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGTERM, handle_signal)
 
     config.motion_sensor.when_motion = state_machine[Transitions.motion_detected]
-    config.motion_sensor.when_no_motion = state_machine[Transitions.no_motion_detected]
+    config.motion_sensor.when_no_motion = state_machine[Transitions.motion_undetected]
 
     if config.control_button:
         config.control_button.when_released = state_machine[Transitions.button_released]

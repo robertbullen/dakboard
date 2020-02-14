@@ -1,4 +1,5 @@
 import collections
+import functools
 import logging
 import os
 import signal
@@ -7,6 +8,8 @@ import time
 from dataclasses import astuple, dataclass, fields
 from typing import (Any, Callable, Dict, Iterator, List, Optional, Tuple, Type,
                     Union, cast)
+
+import gpiozero
 
 from transitions import Machine
 from transitions.extensions.states import Timeout, add_state_features
@@ -17,14 +20,32 @@ logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('transitions').setLevel(logging.INFO)
 
 
+def optional_led_blink(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
+    if led is not None:
+        led.blink(0.5, 0.5, background=True)
+
+def optional_led_off(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
+    if led is not None:
+        led.off()
+
+def optional_led_on(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
+    if led is not None:
+        led.on()
+
+
 @dataclass(frozen=True)
 class States:
-    asleep: str = 'asleep'
-    awake: str = 'awake'
-    idle: str = 'idle'
-    shutting: str = 'shutting'
     starting: str = 'starting'
+
     stopping: str = 'stopping'
+    shutting_down: str = 'shutting_down'
+
+    awake: str = 'awake'
+    timed_awake: str = 'timed_awake'
+    forced_awake: str = 'forced_awake'
+
+    forced_asleep: str = 'forced_asleep'
+    asleep: str = 'asleep'
 
     def __iter__(self) -> Iterator[str]:
         return iter(astuple(self))
@@ -32,13 +53,17 @@ class States:
 
 @dataclass(frozen=True)
 class Transitions:
+    started: str = 'started'
+
     button_held: str = 'button_held'
     button_released: str = 'button_released'
-    idle_timed_out: str = 'idle_timed_out'
+
     motion_detected: str = 'motion_detected'
-    no_motion_detected: str = 'no_motion_detected'
+    motion_undetected: str = 'motion_undetected'
+
+    timer_expired: str = 'timer_expired'
+
     signal_received: str = 'signal_received'
-    started: str = 'started'
 
     def __iter__(self) -> Iterator[str]:
         return iter(astuple(self))
@@ -51,15 +76,22 @@ class StateMachine(object):
     def __init__(self, config: Config, machine_class: Type[Machine], **kwargs: Any) -> None:
         self.config = config
 
-        # The idle state requires a timeout feature, so add it while converting the `states` tuple
-        # to a list.
+        self.motion_led_blink = functools.partial(optional_led_blink, self.config.motion_led)
+        self.motion_led_off = functools.partial(optional_led_off, self.config.motion_led)
+        self.motion_led_on = functools.partial(optional_led_on, self.config.motion_led)
+
+        self.running_led_off = functools.partial(optional_led_off, self.config.running_led)
+        self.running_led_on = functools.partial(optional_led_on, self.config.running_led)
+
+        # A few states require timeouts, so add the feature to them while converting all the
+        # `States` to a list.
         states_with_features: List[Union[Dict[str, Union[int, str]], str]] = []
         for state in States():
-            if state == States.idle:
+            if state == States.forced_asleep or state == States.forced_awake or state == States.timed_awake:
                 states_with_features.append({
                     'name': state,
-                    'timeout': self.config.idle_timeout_seconds,
-                    'on_timeout': self.on_idle_timeout.__name__  # A string is required here.
+                    'timeout': self.config.timer_seconds,
+                    'on_timeout': Transitions.timer_expired
                 })
             else:
                 states_with_features.append(state)
@@ -74,79 +106,45 @@ class StateMachine(object):
             **kwargs,
         )
 
-        # Add transitions for starting, stopping, and shutting down.
+        # Add transitions for process control: starting, stopping, and shutting_down.
         self.machine.add_transition(Transitions.started, States.starting, States.asleep,
-                                    after=[
-                                        self.running_led_on,
-                                        self.display_off
-                                    ])
+                                    prepare=self.running_led_on)
 
         self.machine.add_transition(Transitions.signal_received, '*', States.stopping,
                                     after=[
                                         self.motion_led_off,
-                                        self.running_led_off,
                                         self.display_off,
-                                        self.quit
+                                        self.running_led_off,
+                                        self.quit,
                                     ])
 
-        self.machine.add_transition(Transitions.button_held, '*', States.shutting,
+        self.machine.add_transition(Transitions.button_held, '*', States.shutting_down,
                                     after=self.shutdown)
 
-        # Add transitions between asleep, awake, and idle.
-        self.machine.add_transition(Transitions.motion_detected, [States.idle, States.asleep], States.awake,
+        # Add transitions for motion (un)detected.
+        self.machine.add_transition(Transitions.motion_detected, [States.asleep, States.timed_awake, States.awake], States.awake,
                                     prepare=self.motion_led_on,
-                                    conditions=self.is_waking_hours.__name__,  # A string is not required here, but it won't show up on a diagram otherwise.
-                                    after=self.display_on)
+                                    # A string is not required here, but it won't show up on a diagram otherwise.
+                                    conditions=self.is_waking_hours.__name__)
+        self.machine.add_transition(Transitions.motion_detected, '*', None)
 
-        self.machine.add_transition(Transitions.no_motion_detected, States.awake, States.idle,
+        self.machine.add_transition(Transitions.motion_undetected, States.awake, States.timed_awake,
                                     prepare=self.motion_led_off)
-        self.machine.add_transition(Transitions.no_motion_detected, [States.idle, States.asleep], None,
-                                    prepare=self.motion_led_off)
+        self.machine.add_transition(Transitions.motion_undetected, '*', None)
 
-        self.machine.add_transition(Transitions.idle_timed_out, States.idle, States.asleep,
-                                    after=self.display_off)
+        self.machine.add_transition(Transitions.timer_expired, States.timed_awake, States.asleep)
 
-        self.machine.add_transition(Transitions.button_released, States.asleep, States.idle,
-                                    after=self.display_on)
-        self.machine.add_transition(Transitions.button_released, [States.awake, States.idle], States.asleep,
-                                    after=self.display_off)
+        # Add transitions into and out of the forced states.
+        self.machine.add_transition(Transitions.button_released, [States.asleep, States.forced_asleep], States.forced_awake)
+        self.machine.add_transition(Transitions.button_released, [States.forced_awake, States.timed_awake, States.awake], States.forced_asleep)
+        self.machine.add_transition(Transitions.button_released, '*', None)
+
+        self.machine.add_transition(Transitions.timer_expired, [States.forced_asleep, States.forced_awake], States.asleep)
 
     def __getitem__(self, key: str) -> Callable[..., None]:
         return cast(Callable[..., None], getattr(self, getattr(Transitions, key)))
 
-    def quit(self, *args: Any, **kwargs: Any) -> None:
-        signal_number = kwargs['signal_number']
-        signal_name = signal.strsignal(signal_number) if hasattr(signal, 'strsignal') else signal_number
-        print('Received signal {0}; quiting'.format(signal_name))
-        os._exit(0)
-
-    def shutdown(self, *args: Any, **kwargs: Any) -> None:
-        subprocess.run('shutdown now', shell=True)
-
-    def on_idle_timeout(self, *args: Any, **kwargs: Any) -> None:
-        self[Transitions.idle_timed_out]()
-
-    def display_off(self, *args: Any, **kwargs: Any) -> None:
-        self.config.display.off()
-
-    def display_on(self, *args: Any, **kwargs: Any) -> None:
-        self.config.display.on()
-
-    def motion_led_off(self, *args: Any, **kwargs: Any) -> None:
-        if self.config.motion_led:
-            self.config.motion_led.off()
-
-    def motion_led_on(self, *args: Any, **kwargs: Any) -> None:
-        if self.config.motion_led:
-            self.config.motion_led.on()
-
-    def running_led_off(self, *args: Any, **kwargs: Any) -> None:
-        if (self.config.running_led):
-            self.config.running_led.off()
-
-    def running_led_on(self, *args: Any, **kwargs: Any) -> None:
-        if (self.config.running_led):
-            self.config.running_led.on()
+    #region Transition Condition Predicates
 
     def is_waking_hours(self, *args: Any, **kwargs: Any) -> bool:
         def gteq(left: time.struct_time, right: time.struct_time) -> bool:
@@ -157,3 +155,56 @@ class StateMachine(object):
 
         now: time.struct_time = time.localtime()
         return gteq(now, self.config.waking_hours_begin) and lt(now, self.config.waking_hours_end)
+    
+    #endregion
+    #region Transition Callbacks
+
+    def quit(self, *args: Any, **kwargs: Any) -> None:
+        signal_number = kwargs['signal_number']
+        signal_name = signal.strsignal(signal_number) if hasattr(signal, 'strsignal') else signal_number
+        print('Received signal {0}; quiting'.format(signal_name))
+        os._exit(0)
+
+    def shutdown(self, *args: Any, **kwargs: Any) -> None:
+        subprocess.run('shutdown now', shell=True)
+
+    #endregion
+    #region State Event Handlers
+
+    def on_enter_asleep(self, *args: Any, **kwargs: Any) -> None:
+        self.display_off()
+
+    def on_enter_awake(self, *args: Any, **kwargs: Any) -> None:
+        self.display_on()
+
+    def on_enter_forced_awake(self, *args: Any, **kwargs: Any) -> None:
+        self.motion_led_blink()
+        self.display_on()
+
+    def on_exit_forced_awake(self, *args: Any, **kwargs: Any) -> None:
+        self.motion_led_off()
+
+    def on_enter_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
+        self.motion_led_blink()
+        self.display_off()
+
+    def on_exit_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
+        self.motion_led_off()
+
+    #endregion
+    #region Device-Controlling Methods
+
+    def display_off(self, *args: Any, **kwargs: Any) -> None:
+        self.config.display.off()
+
+    def display_on(self, *args: Any, **kwargs: Any) -> None:
+        self.config.display.on()
+
+    motion_led_blink: Callable[..., None]
+    motion_led_off: Callable[..., None]
+    motion_led_on: Callable[..., None]
+
+    running_led_off: Callable[..., None]
+    running_led_on: Callable[..., None]
+
+    #endregion

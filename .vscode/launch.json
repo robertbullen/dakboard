@@ -4,8 +4,8 @@
 			"args": [
 				"--display-type=mock",
 				"--export-diagram-file-path='doc/state-machine.png",
-				"--idle-timeout-seconds=3",
-				"--motion-sensor-pin=BOARD22"
+				"--motion-sensor-pin=BOARD22",
+				"--timer-seconds=5"
 			],
 			"env": {
 				"GPIOZERO_PIN_FACTORY": "mock"

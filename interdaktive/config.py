@@ -1,4 +1,5 @@
 import argparse
+import functools
 import time
 from typing import Optional, cast
 
@@ -12,10 +13,10 @@ class Config(argparse.Namespace):
     control_button: Optional[gpiozero.Button]
     display: Display
     export_diagram_file_path: Optional[str]
-    idle_timeout_seconds: int
     motion_led: Optional[gpiozero.LED]
     motion_sensor: gpiozero.MotionSensor
     running_led: Optional[gpiozero.LED]
+    timer_seconds: int
     waking_hours_begin: time.struct_time
     waking_hours_end: time.struct_time
 
@@ -25,9 +26,6 @@ class Config(argparse.Namespace):
             epilog='gpiozero pin numbering format is described here: https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering',
             prog='python3 -m interdaktive',
         )
-
-        def parse_control_button(arg: str) -> gpiozero.Button:
-            return gpiozero.Button(arg, hold_time=5)
 
         def parse_display_type(arg: str) -> Display:
             if arg == 'cec':
@@ -69,7 +67,7 @@ class Config(argparse.Namespace):
             dest='control_button',
             help='The GPIO pin (in gpiozero format) to which an optional control button is attached. Pressing the button will forcefully turn on the display, even outside of waking times. Holding the button for 5 seconds will shutdown the system.',
             metavar='CONTROL_BUTTON_PIN',
-            type=parse_control_button,
+            type=functools.partial(gpiozero.Button, hold_time=5),
         )
 
         parser.add_argument(
@@ -89,13 +87,6 @@ class Config(argparse.Namespace):
         )
 
         parser.add_argument(
-            '--idle-timeout-seconds',
-            default=150,
-            help='The length of time (in seconds) to: keep the display awake after detecting motion, or asleep after pressing the control button.',
-            type=int,
-        )
-
-        parser.add_argument(
             '--motion-led-pin',
             dest='motion_led',
             help='The GPIO pin (in gpiozero format) to which an optional motion indicator LED is attached.',
@@ -109,6 +100,13 @@ class Config(argparse.Namespace):
             help='The GPIO pin (in gpiozero format) to which an optional running indicator LED is attached.',
             metavar='RUNNING_LED_PIN',
             type=gpiozero.LED,
+        )
+
+        parser.add_argument(
+            '--timer-seconds',
+            default=120,
+            help='The length of time (in seconds) for the display to stay awake/asleep after detecting motion or the control button is pressed.',
+            type=int,
         )
 
         parser.add_argument(
