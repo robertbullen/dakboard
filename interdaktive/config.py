@@ -1,23 +1,23 @@
 import argparse
 import time
-import typing
+from typing import Optional, cast
 
-import gpiozero  # type: ignore
+import gpiozero
 
 import interdaktive.display as display
 from interdaktive.display import Display
 
 
 class Config(argparse.Namespace):
-    control_button: typing.Union[gpiozero.Button, None]
+    control_button: Optional[gpiozero.Button]
     display: Display
-    export_diagram_file_path: typing.Union[str, None]
-    motion_led: typing.Union[gpiozero.LED, None]
+    export_diagram_file_path: Optional[str]
+    idle_timeout_seconds: int
+    motion_led: Optional[gpiozero.LED]
     motion_sensor: gpiozero.MotionSensor
-    running_led: typing.Union[gpiozero.LED, None]
-    sleep_delay_seconds: int
-    waking_time_begin: time.struct_time
-    waking_time_end: time.struct_time
+    running_led: Optional[gpiozero.LED]
+    waking_hours_begin: time.struct_time
+    waking_hours_end: time.struct_time
 
     @staticmethod
     def from_args() -> 'Config':
@@ -73,19 +73,26 @@ class Config(argparse.Namespace):
         )
 
         parser.add_argument(
-            '--export-diagram-file-path',
-            help='If provided, a PNG diagram of the internal state machine will be generated at the given path.',
-            type=str,
-        )
-
-        parser.add_argument(
             '--display-type',
             choices=[display.cec, display.mock, display.video_core],
             default='video-core',
             dest='display',
             help='The type of display that is connected, which determines how it is put to sleep and awakened. A "video-core" display simply responds to the HDMI signal turning off and on; e.g. a computer display. A "cec" display responds to HDMI-CEC commands; e.g. a TV.',
             metavar='DISPLAY_TYPE',
-            type=parse_display_type,  # type: ignore
+            type=parse_display_type,
+        )
+
+        parser.add_argument(
+            '--export-diagram-file-path',
+            help='If provided, a PNG diagram of the internal state machine will be generated at the given path.',
+            type=str,
+        )
+
+        parser.add_argument(
+            '--idle-timeout-seconds',
+            default=150,
+            help='The length of time (in seconds) to: keep the display awake after detecting motion, or asleep after pressing the control button.',
+            type=int,
         )
 
         parser.add_argument(
@@ -105,24 +112,17 @@ class Config(argparse.Namespace):
         )
 
         parser.add_argument(
-            '--sleep-delay-seconds',
-            default=120,
-            help='The length of time (in seconds) to keep the display awake after no motion is detected.',
-            type=int,
-        )
-
-        parser.add_argument(
-            '--waking-time-begin',
+            '--waking-hours-begin',
             default='00:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 06:00) where waking the display is allowed.',
+            help='The beginning of the daily period (in 24-hour clock format; e.g. 06:00) when waking the display is allowed.',
             type=parse_time,
         )
 
         parser.add_argument(
-            '--waking-time-end',
+            '--waking-hours-end',
             default='24:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 22:00) where waking the display is allowed.',
+            help='The beginning of the daily period (in 24-hour clock format; e.g. 22:00) when waking the display is allowed.',
             type=parse_time,
         )
 
-        return typing.cast(Config, parser.parse_args(namespace=Config()))
+        return parser.parse_args(namespace=Config())
