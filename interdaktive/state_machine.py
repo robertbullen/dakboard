@@ -10,7 +10,6 @@ from typing import (Any, Callable, Dict, Iterator, List, Optional, Tuple, Type,
                     Union, cast)
 
 import gpiozero
-
 from transitions import Machine
 from transitions.extensions.states import Timeout, add_state_features
 
@@ -24,9 +23,11 @@ def optional_led_blink(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -
     if led is not None:
         led.blink(0.5, 0.5, background=True)
 
+
 def optional_led_off(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
     if led is not None:
         led.off()
+
 
 def optional_led_on(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
     if led is not None:
@@ -76,12 +77,12 @@ class StateMachine(object):
     def __init__(self, config: Config, machine_class: Type[Machine], **kwargs: Any) -> None:
         self.config = config
 
-        self.motion_led_blink = functools.partial(optional_led_blink, self.config.motion_led)
-        self.motion_led_off = functools.partial(optional_led_off, self.config.motion_led)
-        self.motion_led_on = functools.partial(optional_led_on, self.config.motion_led)
+        setattr(self, 'motion_led_blink', functools.partial(optional_led_blink, self.config.motion_led))
+        setattr(self, 'motion_led_off', functools.partial(optional_led_off, self.config.motion_led))
+        setattr(self, 'motion_led_on', functools.partial(optional_led_on, self.config.motion_led))
 
-        self.running_led_off = functools.partial(optional_led_off, self.config.running_led)
-        self.running_led_on = functools.partial(optional_led_on, self.config.running_led)
+        setattr(self, 'running_led_off', functools.partial(optional_led_off, self.config.running_led))
+        setattr(self, 'running_led_on', functools.partial(optional_led_on, self.config.running_led))
 
         # A few states require timeouts, so add the feature to them while converting all the
         # `States` to a list.
@@ -144,7 +145,7 @@ class StateMachine(object):
     def __getitem__(self, key: str) -> Callable[..., None]:
         return cast(Callable[..., None], getattr(self, getattr(Transitions, key)))
 
-    #region Transition Condition Predicates
+    # Transition Condition Predicates
 
     def is_waking_hours(self, *args: Any, **kwargs: Any) -> bool:
         def gteq(left: time.struct_time, right: time.struct_time) -> bool:
@@ -155,21 +156,19 @@ class StateMachine(object):
 
         now: time.struct_time = time.localtime()
         return gteq(now, self.config.waking_hours_begin) and lt(now, self.config.waking_hours_end)
-    
-    #endregion
-    #region Transition Callbacks
+
+    # Transition Callbacks
 
     def quit(self, *args: Any, **kwargs: Any) -> None:
         signal_number = kwargs['signal_number']
-        signal_name = signal.strsignal(signal_number) if hasattr(signal, 'strsignal') else signal_number
+        signal_name = signal.strsignal(signal_number) if hasattr(signal, 'strsignal') else signal_number  # type: ignore
         print('Received signal {0}; quiting'.format(signal_name))
         os._exit(0)
 
     def shutdown(self, *args: Any, **kwargs: Any) -> None:
         subprocess.run('shutdown now', shell=True)
 
-    #endregion
-    #region State Event Handlers
+    # State Event Handlers
 
     def on_enter_asleep(self, *args: Any, **kwargs: Any) -> None:
         self.display_off()
@@ -191,8 +190,7 @@ class StateMachine(object):
     def on_exit_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
         self.motion_led_off()
 
-    #endregion
-    #region Device-Controlling Methods
+    # Device-Controlling Methods
 
     def display_off(self, *args: Any, **kwargs: Any) -> None:
         self.config.display.off()
@@ -206,5 +204,3 @@ class StateMachine(object):
 
     running_led_off: Callable[..., None]
     running_led_on: Callable[..., None]
-
-    #endregion
