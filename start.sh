@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-git pull || exit $?
+if [ "$1" != '--skip-updates' ]; then
+    git pull || exit $?
 
-pip3 install -r requirements.txt || exit $?
+    pip3 install -r requirements.txt || exit $?
+fi
 
 sudo python3 -m interdaktive \
     --control-button-pin=BOARD36 \
