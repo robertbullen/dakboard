@@ -1,14 +1,15 @@
 import collections
 import logging
 import os
+import signal
 import subprocess
 import time
-import typing
 from dataclasses import astuple, dataclass, fields
+from typing import (Any, Callable, Dict, Iterator, List, Optional, Tuple, Type,
+                    Union, cast)
 
-from transitions import Machine  # type: ignore
-from transitions.extensions.states import Timeout  # type: ignore
-from transitions.extensions.states import add_state_features  # type: ignore
+from transitions import Machine
+from transitions.extensions.states import Timeout, add_state_features
 
 from interdaktive.config import Config
 
@@ -25,7 +26,7 @@ class States:
     starting: str = 'starting'
     stopping: str = 'stopping'
 
-    def __iter__(self) -> typing.Iterator[str]:
+    def __iter__(self) -> Iterator[str]:
         return iter(astuple(self))
 
 
@@ -39,7 +40,7 @@ class Transitions:
     signal_received: str = 'signal_received'
     started: str = 'started'
 
-    def __iter__(self) -> typing.Iterator[str]:
+    def __iter__(self) -> Iterator[str]:
         return iter(astuple(self))
 
 
@@ -47,17 +48,17 @@ class StateMachine(object):
     config: Config
     machine: Machine
 
-    def __init__(self, config: Config, machine_class, **kwargs):
+    def __init__(self, config: Config, machine_class: Type[Machine], **kwargs: Any) -> None:
         self.config = config
 
         # The idle state requires a timeout feature, so add it while converting the `states` tuple
         # to a list.
-        states_with_features: typing.List[typing.Union[typing.Dict, str]] = []
+        states_with_features: List[Union[Dict[str, Union[int, str]], str]] = []
         for state in States():
             if state == States.idle:
                 states_with_features.append({
                     'name': state,
-                    'timeout': self.config.sleep_delay_seconds,
+                    'timeout': self.config.idle_timeout_seconds,
                     'on_timeout': self.on_idle_timeout.__name__  # A string is required here.
                 })
             else:
@@ -86,7 +87,7 @@ class StateMachine(object):
         # Add transitions between asleep, awake, and idle.
         self.machine.add_transition(Transitions.motion_detected, [States.idle, States.asleep], States.awake,
                                     prepare=self.motion_led_on,
-                                    conditions=self.is_waking_time.__name__,  # A string is not required, but it won't show up on the diagram otherwise.
+                                    conditions=self.is_waking_hours.__name__,  # A string is not required here, but it won't show up on a diagram otherwise.
                                     after=self.display_on)
 
         self.machine.add_transition(Transitions.no_motion_detected, States.awake, States.idle,
@@ -102,45 +103,45 @@ class StateMachine(object):
         self.machine.add_transition(Transitions.button_released, [States.awake, States.idle], States.asleep,
                                     after=self.display_off)
 
-    def __getitem__(self, key: str) -> typing.Callable[[], None]:
-        return getattr(self, getattr(Transitions, key))
+    def __getitem__(self, key: str) -> Callable[..., None]:
+        return cast(Callable[..., None], getattr(self, getattr(Transitions, key)))
 
-    def quit(self, *args, **kwargs) -> None:
+    def quit(self, *args: Any, **kwargs: Any) -> None:
+        signal_number = kwargs['signal_number']
+        signal_name = signal.strsignal(signal_number) if hasattr(signal, 'strsignal') else signal_number
+        print('Received signal {0}; quiting'.format(signal_name))
         os._exit(0)
 
-    def shutdown(self, *args, **kwargs) -> None:
+    def shutdown(self, *args: Any, **kwargs: Any) -> None:
         subprocess.run('shutdown now', shell=True)
 
-    def on_idle_timeout(self, *args, **kwargs) -> None:
+    def on_idle_timeout(self, *args: Any, **kwargs: Any) -> None:
         self[Transitions.idle_timed_out]()
 
-    def display_off(self, *args, **kwargs) -> None:
+    def display_off(self, *args: Any, **kwargs: Any) -> None:
         self.config.display.off()
 
-    def display_on(self, *args, **kwargs) -> None:
+    def display_on(self, *args: Any, **kwargs: Any) -> None:
         self.config.display.on()
 
-    def motion_led_off(self, *args, **kwargs) -> None:
+    def motion_led_off(self, *args: Any, **kwargs: Any) -> None:
         if self.config.motion_led:
             self.config.motion_led.off()
 
-    def motion_led_on(self, *args, **kwargs) -> None:
+    def motion_led_on(self, *args: Any, **kwargs: Any) -> None:
         if self.config.motion_led:
             self.config.motion_led.on()
 
-    def running_led_on(self, *args, **kwargs) -> None:
+    def running_led_on(self, *args: Any, **kwargs: Any) -> None:
         if (self.config.running_led):
             self.config.running_led.on()
 
-    def is_waking_time(self, *args, **kwargs) -> bool:
+    def is_waking_hours(self, *args: Any, **kwargs: Any) -> bool:
+        def gteq(left: time.struct_time, right: time.struct_time) -> bool:
+            return left.tm_hour > right.tm_hour or (left.tm_hour == right.tm_hour and left.tm_min >= right.tm_min)
+
+        def lt(left: time.struct_time, right: time.struct_time) -> bool:
+            return not gteq(left, right)
+
         now: time.struct_time = time.localtime()
-        return (
-            (
-                now.tm_hour > self.config.waking_time_begin.tm_hour or
-                (now.tm_hour == self.config.waking_time_begin.tm_hour and now.tm_min >= self.config.waking_time_begin.tm_min)
-            ) and
-            not (
-                now.tm_hour > self.config.waking_time_end.tm_hour or
-                (now.tm_min == self.config.waking_time_end.tm_min and now.tm_min >= self.config.waking_time_end.tm_min)
-            )
-        )
+        return gteq(now, self.config.waking_hours_begin) and lt(now, self.config.waking_hours_end)

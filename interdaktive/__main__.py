@@ -1,5 +1,6 @@
 import signal
 import threading
+import types
 
 from interdaktive.config import Config
 from interdaktive.state_machine import StateMachine, Transitions
@@ -11,7 +12,7 @@ if __name__ == '__main__':
 
     # Create the state machine.
     if config.export_diagram_file_path is not None:
-        from transitions.extensions import GraphMachine  # type: ignore
+        from transitions.extensions import GraphMachine
         state_machine = StateMachine(
             config,
             GraphMachine,
@@ -23,12 +24,15 @@ if __name__ == '__main__':
         state_machine.machine.machine_attributes['ratio'] = '0.33'
         state_machine.machine.get_graph(force_new=True).draw(config.export_diagram_file_path, prog='dot')
     else:
-        from transitions import Machine  # type: ignore
+        from transitions import Machine
         state_machine = StateMachine(config, Machine)
 
     # Wire the state machine up to external events.
-    signal.signal(signal.SIGINT, state_machine[Transitions.signal_received])
-    signal.signal(signal.SIGTERM, state_machine[Transitions.signal_received])
+    def handle_signal(signal_number: signal.Signals, frame: types.FrameType) -> None:
+        state_machine[Transitions.signal_received](signal_number=signal_number, frame=frame)
+
+    signal.signal(signal.SIGINT, handle_signal)
+    signal.signal(signal.SIGTERM, handle_signal)
 
     config.motion_sensor.when_motion = state_machine[Transitions.motion_detected]
     config.motion_sensor.when_no_motion = state_machine[Transitions.no_motion_detected]
