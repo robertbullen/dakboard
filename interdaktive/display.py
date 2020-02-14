@@ -1,15 +1,15 @@
 import subprocess
-import typing
+from typing import Optional
 
 
 # Declare and instantiate a class responsible for turning on/off the display.
 class Display:
-    __is_on: typing.Union[bool, None]
+    __is_on: Optional[bool]
     __off_command: str
     __on_command: str
     __type: str
 
-    def __init__(self, type: str, off_command: str, on_command: str):
+    def __init__(self, type: str, off_command: str, on_command: str) -> None:
         self.__is_on = None
         self.__off_command = off_command
         self.__on_command = on_command
@@ -26,7 +26,7 @@ class Display:
         return self.__type
 
     @property
-    def is_on(self) -> typing.Union[bool, None]:
+    def is_on(self) -> Optional[bool]:
         return self.__is_on
 
     def off(self) -> None:
