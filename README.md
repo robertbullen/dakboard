@@ -71,20 +71,17 @@ Development was conducted on hardware that I already owned before I invested in 
 
         My system devotes 128MB of its 1GB of RAM to the GPU, leaving 872MB of general purpose memory. Note that `dphys-swapfile` limits the swap file to 50% of the disk size, and half of a 2GB thumb drive (after subtracting partitioning and formatting overhead) equates to about 862MB. So the swap file is about 10MB shy of the `CONF_SWAPFACTOR=1` setting. Observations reveal that this is more than sufficient.
 
-### The Python Script
-
-TODO: Describe the Python script.
-
-1. Start the Python script on boot by adding this line to /etc/rc.local:
+4. Clone the repository to your Raspberry Pi.
 
     ```bash
-    sudo python3 -m interdaktive \
-        --control-button-pin=BOARD36 \
-        --display-type=mock \
-        --motion-sensor-pin=BOARD7 \
-        --motion-led-pin=BOARD22 \
-        --running-led-pin=BOARD18 \
-        --sleep-delay-seconds=5 \
-        --waking-hours-begin=06:00 \
-        --waking-hours-end=22:00 &
-```
+    # Substitute your forked repository URL if necessary.
+    git clone https://github.com/robertbullen/dakboard.git
+    ```
+
+5. Start the Python script on boot by adding this line to /etc/rc.local:
+
+    ```bash
+    # This assumes the user is the default (pi) and that the repository has
+    # been cloned to that user's home directory.
+    cd /home/pi/dakboard && ./update.sh && ./start.sh
+    ```
