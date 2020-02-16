@@ -1,2 +1,3 @@
 .mypy_cache/
-interdaktive/__pycache__
+interdaktive/__pycache__/
+docs/node_modules/
