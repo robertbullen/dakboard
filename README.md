@@ -1,37 +1,21 @@
 # dakboard
 
-This project takes a DIY [DAKboard](https://dakboard.com) and customizes it with two features:
+This project takes a [DIY DAKboard](https://blog.dakboard.com/diy-wall-display/) and customizes it with two features:
 
--   A [Python script](raspberrypi/dakboard-detect-motion.py) and PIR motion detector to turn the display on and off for power savings.
+-   A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
 -   [Handwritten CSS](css/purply-derply.css) for a two-column portrait layout that looks like this:
 
-    ![Screenshot](doc/screenshot.jpg)
+    ![Screenshot](docs/dakboard/img/screenshot.jpg)
 
     _[Background photo](https://unsplash.com/photos/gE1phX0Lbos) by [Hybrid](https://unsplash.com/@artbyhybrid?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge) on [Unsplash](https://unsplash.com)._
 
-## Hardware
+## Presentation
 
-### Final Design
+A slide deck about this project is available at <https://robertbullen.github.io/dakboard/>.
 
-| Part                                                                                                                                                         |  Cost | Notes                                                                                                                                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories) | \$125 | I bought this used from a coworker. I found it attractive because of its size, its IPS panel with descent viewing angles, and its QHD resolution.                                                                                                                                      |
-| [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) and accessories                                          |  \$45 | After I bought the QHD (2560×1440) monitor, I wanted to drive it at its native resolution and the Pi 4 is the only model capable of going above Full HD (1920×1080). I bought one from Micro Center, along with a power supply and an inexpensive 16GB microSD card.                   |
-| [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                                  |  \$11 | I purchased this part from Amazon because Adafruit was out of stock! A nicely detailed [guide](https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf) is available (provided here because it's found a few clicks away from the product page). |
-| [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                             |  \$10 | The Pi 4 runs hot, and so I bought this case because it comes with a cooling fan and heat sinks.                                                                                                                                                                                       |
-| 2GB USB Thumb Drive                                                                                                                                          |   \$0 | I used this old thumb drive I had lying around for swap space instead of using the SD card. Had I known that I would have to solve this problem, I would've payed the extra $10–$20 for a 2GB or 4GB version of the Pi 4.                                                              |
-|                                                                                                                                                              | \$191 | Total cost.                                                                                                                                                                                                                                                                            |
+## Credits
 
-### Prototype
-
-Development was conducted on hardware that I already owned before I invested in the equipment above. This hardware would've been sufficient at a viewing distance farther away from the screen than I was planning. Close up the 32" Full HD (1080×1920) display becomes a little too pixelated for my taste.
-
-| Part                                                                                                                                                 | Cost | Notes                                                                                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/) |  \$0 | After moving homes we no longer had an obvious spot for this TV, so it was an available display with which to experiment.                                                                                                                                |
-| [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)                                                               |  \$0 | I received this as a prize at a work function years ago. It was just sitting in my home office collecting dust until my wife inspired me to try making a DAKboard with it.                                                                               |
-| [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)            | \$13 | I needed a breadboard, power supply, LEDs, resistors, push buttons, and patch wires to familiarize myself with the PIR sensor and programming the Pi's GPIO pins. This kit has all that and more. I feel like owning this kit gives me some hacker cred! |
-|                                                                                                                                                      | \$13 | Total cost.                                                                                                                                                                                                                                              |
+This project was sponsored in part by my employer, [Constellation](https://constellationmutual.com/), who allocates its IT employees 12 Personal Hack Days per year to pursue technology-related personal interests as part of its growth and development strategy.
 
 ## Software
 

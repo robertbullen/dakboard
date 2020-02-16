@@ -1,0 +1,11 @@
+.reveal ul {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+}
+
+img.product-image {
+	max-width: 600px;
+	max-height: 400px;
+}

@@ -26,12 +26,23 @@
 				: 'css/print/paper.css';
 			document.getElementsByTagName('head')[0].appendChild(link);
 		</script>
+
+		<!-- Custom overrides. -->
+		<link rel="stylesheet" href="/dakboard/css/style.css" />
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<section
-					data-markdown="dakboard/md/section-01.md"
+					data-markdown="dakboard/md/01-introduction.md"
+					data-separator-vertical="^\r?\n===\r?\n$"
+				></section>
+				<section
+					data-markdown="dakboard/md/02-hardware.md"
+					data-separator-vertical="^\r?\n===\r?\n$"
+				></section>
+				<section
+					data-markdown="dakboard/md/10-conclusion.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
 			</div>
@@ -44,13 +55,18 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-				hash: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 				],
+				hash: true,
+				width: 1920,
+				height: 1080,
+				margin: 0,
+				// minScale: 1,
+				// maxScale: 1,
 			});
 		</script>
 	</body>
