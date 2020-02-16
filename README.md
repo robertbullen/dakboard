@@ -3,7 +3,7 @@
 This project takes a DIY [DAKboard](https://dakboard.com) and customizes it with two features:
 
 -   A [Python script](raspberrypi/dakboard-detect-motion.py) and PIR motion detector to turn the display on and off for power savings.
--   [Handwritten CSS](two-column-portrait.css) for a two-column portrait layout that looks like this:
+-   [Handwritten CSS](css/purply-derply.css) for a two-column portrait layout that looks like this:
 
     ![Screenshot](doc/screenshot.jpg)
 
