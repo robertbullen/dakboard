@@ -131,6 +131,8 @@ class StateMachine(object):
 
         self.machine.add_transition(Transitions.motion_undetected, States.awake, States.timed_awake,
                                     prepare=self.motion_led_off)
+        self.machine.add_transition(Transitions.motion_undetected, States.asleep, None,
+                                    prepare=self.motion_led_off)
         self.machine.add_transition(Transitions.motion_undetected, '*', None)
 
         self.machine.add_transition(Transitions.timer_expired, States.timed_awake, States.asleep)
