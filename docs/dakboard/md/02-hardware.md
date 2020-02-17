@@ -12,7 +12,7 @@ TODO: The hardware used in this final design.
 
 ### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories)
 
-![Dell UltraSharp 25" QHD Monitor (U2518D)](dakboard/img/dell-u2518d.webp) <!-- .element class="product-image" -->
+![Dell UltraSharp 25" QHD Monitor (U2518D)](dakboard/img/dell-u2518d.jpg) <!-- .element class="product-image" -->
 
 - Has a 25" screen, which is about the right size for this application
 - Employs an IPS panel with good viewing angles, even in portrait mode
@@ -25,7 +25,7 @@ TODO: The hardware used in this final design.
 
 ### [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
-![Raspberry Pi 4 Model B with 1GB RAM](dakboard/img/raspberry-pi-4.webp)
+![Raspberry Pi 4 Model B with 1GB RAM](dakboard/img/raspberry-pi-4.jpg)
 
 - Pi 4 is the only model capable of going above Full HD (1920×1080)
 - \$45 included a power supply and inexpensive 16GB microSD
@@ -49,7 +49,7 @@ TODO: The hardware used in this final design.
 
 ### [Adafruit PIR Sensor](https://www.adafruit.com/product/189)
 
-![Adafruit PIR Sensor](dakboard/img/adafruit-pir2.png) <!-- .element: class="product-image" -->
+![Adafruit PIR Sensor](dakboard/img/adafruit-pir.png)
 
 - Passive Infrared sensor detects motion
 - A nicely detailed [guide](https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf) is available
@@ -68,9 +68,11 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ### [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/)
 
-![Adafruit PIR Sensor](dakboard/img/adafruit-pir2.png)
+![Samsung 32" Class M5300 Full HD TV](dakboard/img/samsung-un32m5300.jpg)
 
-- After moving homes we no longer had an obvious spot for this TV, so it was an available display with which to experiment.
+- After moving homes we no longer had an obvious spot for this TV, so it was available for experimentation
+- Being a TV, it is more effective to suspend and awake it using the HDMI-CEC protocol
+- Only 70ppi
 - \$0
 
 ===
@@ -79,7 +81,7 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
-![Adafruit PIR Sensor](dakboard/img/adafruit-pir2.png)
+![Adafruit PIR Sensor](dakboard/img/adafruit-pir.png)
 
 - I received this as a prize at a work function years ago. It was just sitting in my home office collecting dust until my wife inspired me to try making a DAKboard with it.
 - \$0
