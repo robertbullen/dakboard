@@ -4,6 +4,7 @@
 
 ## Outline
 
+- Goals
 - Hardware
   - Final Design
   - Prototype

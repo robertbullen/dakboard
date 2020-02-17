@@ -1,16 +1,16 @@
 /* Make the unordered list act like the paragraph next to it. */
 
-.hardware-product > p {
+.layout-image-left > p {
 	display: block;
 	float: left;
 	width: 40%;
 }
 
-.hardware-product > p > img {
+.layout-image-left > p > img {
 	width: 100%;
 }
 
-.hardware-product > ul {
+.layout-image-left > ul {
 	display: block;
 	float: right;
 	margin-top: 20px;

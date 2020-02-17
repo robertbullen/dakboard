@@ -8,7 +8,7 @@ TODO: The hardware used in this final design.
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories)
 
@@ -21,7 +21,7 @@ TODO: The hardware used in this final design.
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
@@ -33,7 +33,7 @@ TODO: The hardware used in this final design.
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### 2GB USB Thumb Drive
 
@@ -45,7 +45,7 @@ TODO: The hardware used in this final design.
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Adafruit PIR Sensor](https://www.adafruit.com/product/189)
 
@@ -64,7 +64,7 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/)
 
@@ -77,7 +77,7 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
@@ -89,7 +89,7 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ===
 
-<!-- .slide: class="hardware-product" -->
+<!-- .slide: class="layout-image-left" -->
 
 ### [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)
 
@@ -105,7 +105,7 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ===
 
-### Prototype Design Costs
+### Prototype Costs
 
 | Part                                                                                                                                                 | Cost |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---: |

@@ -1,13 +1,5 @@
 # Presentation
 
-## Goals
-
-- Be the successor to our classroom monthly calendar
-- Prevent photos from going into a black hole
-- Display the weather so kids can dress appropriately when walking to school
-- Always on, but only displayed while being viewed
-- Pass the wife acceptance factor
-
 ## Hardware
 
 - Pi models and capabilities
