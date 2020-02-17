@@ -9,4 +9,5 @@
   - Final Design
   - Prototype
 - Software
+- Design
 - Conclusion
