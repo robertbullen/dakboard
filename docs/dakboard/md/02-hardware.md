@@ -81,9 +81,10 @@ Development was conducted on hardware that I already owned before I invested in 
 
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
-![Adafruit PIR Sensor](dakboard/img/adafruit-pir.png)
+![Raspberry Pi 3 Model B](dakboard/img/raspberry-pi-3.jpg)
 
-- I received this as a prize at a work function years ago. It was just sitting in my home office collecting dust until my wife inspired me to try making a DAKboard with it.
+- I received this as a prize at a work function years ago
+- Can drive resolutions up to Full HD (1920×1080)
 - \$0
 
 ===
