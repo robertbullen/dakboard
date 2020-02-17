@@ -1,11 +1,31 @@
-.reveal ul {
+/* Make the unordered list act like the paragraph next to it. */
+
+.hardware-product > p {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 75%;
+	float: left;
+	width: 40%;
 }
 
-img.product-image {
-	max-width: 600px;
-	max-height: 400px;
+.hardware-product > p > img {
+	width: 100%;
+}
+
+.hardware-product > ul {
+	display: block;
+	float: right;
+	margin-top: 20px;
+	width: 55%;
+}
+
+.conclusion > div {
+	display: inline-flex;
+}
+
+.conclusion > div > div {
+	margin: 0 2rem;
+	width: 50%;
+}
+
+.conclusion > div > div img {
+	width: 67%;
 }

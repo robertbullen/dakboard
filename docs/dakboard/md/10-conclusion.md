@@ -2,9 +2,11 @@
 
 ===
 
+<!-- .slide: class="conclusion" -->
+
 <h2>Links</h2>
 
-<div class="two-column">
+<div>
     <div>
         <p>GitHub Repo</p>
         <p><img alt="GitHub Repository" src="/dakboard/img/repo-url-qr-code.svg" title="GitHub Repository" /></p>
@@ -16,18 +18,3 @@
         <p><a href="https://robertbullen.github.io/dakboard">https://robertbullen.github.io/dakboard</a></p>
     </div>
 </div>
-
-<style type="text/css">
-    div.two-column {
-        display: inline-flex;
-    }
-
-    div.two-column div {
-        margin: 0 2rem;
-        width: 50%;
-    }
-
-    div.two-column img {
-        width: 67%;
-    }
-</style>
