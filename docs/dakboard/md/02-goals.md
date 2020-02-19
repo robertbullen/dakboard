@@ -28,3 +28,4 @@
 ## Personal Goals
 
 - Learn about programming Raspberry Pis and electronics as step towards IoTs
+- Add an interesting, complete project to my personal GitHub account
