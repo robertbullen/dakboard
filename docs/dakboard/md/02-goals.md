@@ -20,7 +20,7 @@
 
 ## Aesthetic Goals
 
-- Be sleek and attractive while still into home decor
+- Be sleek and attractive while still fitting into home decor
 - Achieve a high [wife acceptance factor](https://en.wikipedia.org/wiki/Wife_acceptance_factor)
 
 ===
