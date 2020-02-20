@@ -2,7 +2,7 @@
 
 ===
 
-<!-- .slide: class="conclusion" -->
+<!-- .slide: id="conclusion-links" -->
 
 <h2>Links</h2>
 

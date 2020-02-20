@@ -1,0 +1,103 @@
+/* Global style overrides. */
+
+img {
+	box-shadow: none !important;
+}
+
+blockquote p {
+	display: block !important;
+	margin: 40px !important;
+}
+
+/* Reusable slide layouts. */
+
+.layout.image.left > p:first-of-type {
+	display: block;
+	float: left;
+	width: 40%;
+	margin-right: 20px;
+	max-height: 720px;
+}
+
+.layout.image.left > p:first-of-type > img {
+	margin: 0;
+}
+
+.layout.image.left > p:first-of-type ~ * {
+	display: block;
+	float: left;
+	margin-top: 20px;
+	width: 55%;
+}
+
+.layout.columns {
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.layout.columns > h1,
+.layout.columns > h2,
+.layout.columns > h3,
+.layout.columns > h4,
+.layout.columns > h5,
+.layout.columns > h6 {
+	width: 100%;
+}
+
+.layout.columns > hr {
+	display: none;
+}
+
+.layout.columns.two > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+	width: 33%;
+}
+
+.layout.columns.three > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+	width: 22%;
+}
+
+/* Specific slide layouts. */
+
+#introduction-inspiration blockquote {
+	padding: 40px;
+	width: 50%;
+}
+
+#introduction-inspiration blockquote p.quote.wife {
+	color: pink;
+	text-align: left;
+	font-family: cursive;
+	font-size: larger;
+}
+#introduction-inspiration blockquote p.quote.wife::before {
+	content: 'Wife:';
+	display: inline-block;
+	margin-right: 0.5em;
+}
+
+#introduction-inspiration blockquote p.quote.me {
+	color: lightblue;
+	font-family: monospace;
+	text-align: right;
+}
+#introduction-inspiration blockquote p.quote.me::before {
+	content: 'Me:';
+	display: inline-block;
+	margin-right: 0.5em;
+}
+
+#conclusion-links > div {
+	display: inline-flex;
+}
+
+#conclusion-links > div > div {
+	margin: 0 2rem;
+	width: 50%;
+}
+
+#conclusion-links > div > div img {
+	width: 67%;
+}
