@@ -1,3 +1,5 @@
+<!-- .slide: id="introduction-introduction" -->
+
 # Introduction
 
 ===
@@ -6,7 +8,7 @@
 
 ## Inspiration
 
-> "We need a DAKboard." <!-- .element: class="quote wife" -->
+> "My friend has a DAKboard and I think we need one." <!-- .element: class="quote wife" -->
 >
 > "A what?" <!-- .element: class="quote me" -->
 >
@@ -16,35 +18,43 @@
 
 ===
 
+<!-- .slide: id="introduction-goals" -->
+
+## Goals
+
+===
+
 <!-- .slide: class="image left layout" -->
 
-## Functional Goals
+### Functional Goals
 
 ![Classroom Monthly Calendar](dakboard/img/classroom-monthly-calendar.jpg)
 
 - Provide a calendar that functions for everyone
-    - We had outgrown the kids' classroom monthly calendar
+    - Become the successor to the kids' classroom monthly calendar
     - Consolidate our four family member's calendars but still identify to whom events pertain
 - Publish some of the hundreds of photos that are otherwise rarely viewed after capture
-    - Make it easy for wife to contribute
+    - Make it easy for my spouse to contribute
 - Show the weather so we can all dress appropriately and determine whether the kids can walk to school
 - Intelligently control the screen
     - Keep the screen off during nighttime hours
-    - Automatically turn on the screen only while being viewed to save energy
+    - Turn on the screen only while viewing
 
 ===
 
 <!-- .slide: class="image left layout" -->
 
-## Aesthetic Goals
+### Aesthetic Goals
 
 - Be sleek and attractive while still fitting into home decor
+- Design for data density without feeling busy or cluttered
 - Achieve a high [wife acceptance factor](https://en.wikipedia.org/wiki/Wife_acceptance_factor)
 
 ===
 
-## Personal/Professional Goals
+### Personal/Professional Goals
 
-- Learn about programming Raspberry Pis and electronics as a step towards IoTs
-- Add an interesting, complete project to my personal GitHub account
+- Learn about programming Raspberry Pis and electronics
+- Add an interesting project to my personal GitHub account
 - Excite and inspire others at Constellation
+- Reinforce management's decision to bestow this privilege

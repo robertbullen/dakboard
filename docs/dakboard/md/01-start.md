@@ -6,13 +6,13 @@
 
 ## Table of Contents
 
-- Introduction
-    - Inspiration
-    - Goals
-- Hardware
-    - Prototype
-    - Final Design
-    - Costs
+- [Introduction](#/introduction-introduction)
+    - [Inspiration](#/introduction-inspiration)
+    - [Goals](#/introduction-goals)
+- [Hardware](#/hardware-hardware)
+    - [Prototype](#/hardware-prototype)
+    - [Final Design](#/hardware-final-design)
+    - [Costs](#/hardware-costs)
 
 ***
 
@@ -22,3 +22,5 @@
 - Software
     - Python Packages
     - CSS
+- [Conclusion](#/conclusion-conclusion)
+  - [Links](#/conclusion-links)

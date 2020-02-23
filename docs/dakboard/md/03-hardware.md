@@ -1,10 +1,14 @@
+<!-- .slide: id="hardware-hardware" -->
+
 # Hardware
 
 ===
 
+<!-- .slide: id="hardware-prototype" -->
+
 ## Prototype
 
-![Fritzing Diagram](dakboard/img/fritzing-diagram.png) <!-- .element: style="max-height: 720px" -->
+- Experimentation started with hardware I mostly already owned
 
 ===
 
@@ -58,9 +62,20 @@
 
 ===
 
+### Wiring
+
+![Fritzing Diagram](dakboard/img/fritzing-diagram.png)
+
+===
+
+<!-- .slide: id="hardware-final-design" -->
+
 ## Final Design
 
-The prototype hardware would've been sufficient at longer viewing distances, but close up the 32" Full HD (1080×1920) display is too large and pixelated. The following hardware was used for the final design.
+- The prototype hardware would've been sufficient at longer viewing distances
+- The 32" is too large for the intended location
+- Closer up Full HD (1080×1920) display is too pixelated
+- The following hardware was used for the final design
 
 ===
 
@@ -68,7 +83,7 @@ The prototype hardware would've been sufficient at longer viewing distances, but
 
 ### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories)
 
-![Dell UltraSharp 25" QHD Monitor (U2518D)](dakboard/img/dell-u2518d.jpg) <!-- .element class="product-image" -->
+![Dell UltraSharp 25" QHD Monitor (U2518D)](dakboard/img/dell-u2518d.jpg)
 
 - Has a 25" screen, which is about the right size for this application
 - Employs an IPS panel with good viewing angles, even in portrait mode
@@ -101,6 +116,8 @@ The prototype hardware would've been sufficient at longer viewing distances, but
 
 ===
 
+<!-- .slide: id="hardware-costs" -->
+
 ## Costs
 
 ===
@@ -131,6 +148,6 @@ The prototype hardware would've been sufficient at longer viewing distances, but
 
 ===
 
-### Costs Compared to Offical DAKboard
+### Costs Compared to Off-the-Shelf DAKboard
 
 TODO: Cost comparison

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Code|Shadows+Into+Light+Two&display=swap');
+
 /* Global style overrides. */
 
 img {
@@ -27,7 +29,7 @@ blockquote p {
 	display: block;
 	float: left;
 	margin-top: 20px;
-	width: 55%;
+	width: 50%;
 }
 
 .layout.columns {
@@ -62,6 +64,8 @@ blockquote p {
 /* Specific slide layouts. */
 
 #introduction-inspiration blockquote {
+	font-size: larger;
+	font-style: normal;
 	padding: 40px;
 	width: 50%;
 }
@@ -69,8 +73,7 @@ blockquote p {
 #introduction-inspiration blockquote p.quote.wife {
 	color: pink;
 	text-align: left;
-	font-family: cursive;
-	font-size: larger;
+	font-family: 'Shadows Into Light Two', cursive;
 }
 #introduction-inspiration blockquote p.quote.wife::before {
 	content: 'Wife:';
@@ -80,24 +83,11 @@ blockquote p {
 
 #introduction-inspiration blockquote p.quote.me {
 	color: lightblue;
-	font-family: monospace;
+	font-family: 'Fira Code', monospace;
 	text-align: right;
 }
 #introduction-inspiration blockquote p.quote.me::before {
 	content: 'Me:';
 	display: inline-block;
 	margin-right: 0.5em;
-}
-
-#conclusion-links > div {
-	display: inline-flex;
-}
-
-#conclusion-links > div > div {
-	margin: 0 2rem;
-	width: 50%;
-}
-
-#conclusion-links > div > div img {
-	width: 67%;
 }

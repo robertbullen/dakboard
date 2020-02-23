@@ -1,20 +1,19 @@
+<!-- .slide: id="conclusion-conclusion" -->
+
 # Conclusion
 
 ===
 
-<!-- .slide: id="conclusion-links" -->
+<!-- .slide: class="image left layout" id="conclusion-links" -->
 
 <h2>Links</h2>
 
-<div>
-    <div>
-        <p>GitHub Repo</p>
-        <p><img alt="GitHub Repository" src="dakboard/img/repo-url-qr-code.svg" title="GitHub Repository" /></p>
-        <p><a href="https://github.com/robertbullen/dakboard">https://github.com/robertbullen/dakboard</a></p>
-    </div>
-    <div>
-        <p>This Presentation</p>
-        <p><img alt="This Presentation" src="dakboard/img/presentation-url-qr-code.svg" title="This Presentation" /></p>
-        <p><a href="https://robertbullen.github.io/dakboard">https://robertbullen.github.io/dakboard</a></p>
-    </div>
-</div>
+![This Presentation](dakboard/img/presentation-url-qr-code.svg) [This Presentation](https://robertbullen.github.io/dakboard)
+
+- [GitHub Repo](https://github.com/robertbullen/dakboard)
+- [DAKboard](https://dakboard.com/site)
+- [DIY DAKboard Blog Post](https://blog.dakboard.com/diy-wall-display/)
+- [gpizero](https://gpiozero.readthedocs.io/en/stable/index.html)
+- [Unsplash](https://unsplash.com/)
+- [Canva Color Palette Generator](https://www.canva.com/colors/color-palette-generator/)
+- [Paletton.com](https://paletton.com/)
