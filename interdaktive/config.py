@@ -16,6 +16,7 @@ class Config(argparse.Namespace):
     motion_led: Optional[gpiozero.LED]
     motion_sensor: gpiozero.MotionSensor
     running_led: Optional[gpiozero.LED]
+    server_port: int
     timer_seconds: int
     waking_hours_begin: time.struct_time
     waking_hours_end: time.struct_time
@@ -100,6 +101,13 @@ class Config(argparse.Namespace):
             help='The GPIO pin (in gpiozero format) to which an optional running indicator LED is attached.',
             metavar='RUNNING_LED_PIN',
             type=gpiozero.LED,
+        )
+
+        parser.add_argument(
+            '--server-port',
+            default=8088,
+            help='The port on which to serve the status web site.',
+            type=int,
         )
 
         parser.add_argument(

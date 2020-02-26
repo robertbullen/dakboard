@@ -3,6 +3,7 @@ import threading
 import types
 
 from interdaktive.config import Config
+from interdaktive.server import Server
 from interdaktive.state_machine import StateMachine, Transitions
 
 if __name__ == '__main__':
@@ -21,8 +22,8 @@ if __name__ == '__main__':
             title='Interdaktive State Machine'
         )
         state_machine.machine.machine_attributes['labelloc'] = 'top'
-        state_machine.machine.machine_attributes['ratio'] = '0.33'
-        state_machine.machine.get_graph(force_new=True).draw(config.export_diagram_file_path, prog='dot')
+        state_machine.machine.machine_attributes['ratio'] = '0.75'
+        state_machine.machine.get_graph(force_new=True).draw(config.export_diagram_file_path, prog='circo')
     else:
         from transitions import Machine
         state_machine = StateMachine(config, Machine)
@@ -40,6 +41,10 @@ if __name__ == '__main__':
     if config.control_button:
         config.control_button.when_released = state_machine[Transitions.button_released]
         config.control_button.when_held = state_machine[Transitions.button_held]
+
+    # Start the web server.
+    server = Server(config, state_machine)
+    server.serve_forever()
 
     # Transition the state machine to operational mode and run until signalled to quit.
     state_machine[Transitions.started]()
