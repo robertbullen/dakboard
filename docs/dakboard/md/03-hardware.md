@@ -8,7 +8,7 @@
 
 ## Prototype
 
-- Experimentation started with hardware I mostly already owned
+Experimentation started with the following hardware that I mostly already owned
 
 ===
 

@@ -1,10 +1,12 @@
+<!-- .slide: id="design-design" -->
+
 # Design
 
 ===
 
-## Color Palette Selection
+<!-- .slide: class="image left layout" id="design-color-selection" -->
 
-<!-- .slide: class="image left layout" -->
+## Color Palette Selection
 
 ![Background Image](dakboard/img/purply-derply-background.jpg)
 
@@ -16,4 +18,12 @@
 
 ===
 
+<!-- .slide: id="design-font-selection" -->
+
 ## Font Selection
+
+===
+
+<!-- .slide: id="design-css-tactics" -->
+
+## CSS Tactics

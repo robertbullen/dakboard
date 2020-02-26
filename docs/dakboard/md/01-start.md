@@ -8,6 +8,7 @@
 
 - [Introduction](#/introduction-introduction)
     - [Inspiration](#/introduction-inspiration)
+    - [DAKboard](#/introduction-dakboard)
     - [Goals](#/introduction-goals)
 - [Hardware](#/hardware-hardware)
     - [Prototype](#/hardware-prototype)
@@ -16,11 +17,11 @@
 
 ***
 
-- Design
-    - Color Palette Selection
-    - Font Selection
-- Software
-    - Python Packages
-    - CSS
+- [Design](#/design-design)
+    - [Color Palette Selection](#/design-color-selection)
+    - [Font Selection](#/design-font-selection)
+    - [CSS Tactics](#/css-tactics)
+- [Software](#/software-software)
+    - [Noteworthy Python Packages](#/software-python-packages)
 - [Conclusion](#/conclusion-conclusion)
-  - [Links](#/conclusion-links)
+    - [Links](#/conclusion-links)
