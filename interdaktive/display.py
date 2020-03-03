@@ -16,10 +16,11 @@ class Display:
         self.__type = type
 
     def __repr__(self) -> str:
-        return "Display(type='{0}', off_command='{1}', on_command='{2}')".format(
+        return "Display(type='{0}', is_on={3}, off_command=\"{1}\", on_command=\"{2}\")".format(
             self.__type,
+            self.__is_on,
             self.__off_command,
-            self.__on_command
+            self.__on_command,
         )
 
     def __str__(self) -> str:
@@ -45,21 +46,36 @@ class Display:
         else:
             self.on()
 
+    @staticmethod
+    def create(arg: str) -> 'Display':
+        if arg == 'cec':
+            return Display.cec()
+        if arg == 'mock':
+            return Display.mock()
+        if arg == 'video-core':
+            return Display.video_core()
+        raise ValueError(arg)
 
-cec = Display(
-    type='cec',
-    off_command="echo 'standby 0' | cec-client -s -d 1",
-    on_command="echo 'on 0' | cec-client -s -d 1"
-)
+    @staticmethod
+    def cec() -> 'Display':
+        return Display(
+            type='cec',
+            off_command="echo 'standby 0' | cec-client -s -d 1",
+            on_command="echo 'on 0' | cec-client -s -d 1",
+        )
 
-mock = Display(
-    type='mock',
-    off_command="echo 'display off'",
-    on_command="echo 'display on'"
-)
+    @staticmethod
+    def mock() -> 'Display':
+        return Display(
+            type='mock',
+            off_command="echo 'display off'",
+            on_command="echo 'display on'",
+        )
 
-video_core = Display(
-    type='video-core',
-    off_command='vcgencmd display_power 0',
-    on_command='vcgencmd display_power 1'
-)
+    @staticmethod
+    def video_core() -> 'Display':
+        return Display(
+            type='video-core',
+            off_command='vcgencmd display_power 0',
+            on_command='vcgencmd display_power 1',
+        )

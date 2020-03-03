@@ -14,24 +14,10 @@ from transitions import Machine
 from transitions.extensions.states import Timeout, add_state_features
 
 from interdaktive.config import Config
+from interdaktive.hardware import Hardware
 
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('transitions').setLevel(logging.INFO)
-
-
-def optional_led_blink(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
-    if led is not None:
-        led.blink(0.5, 0.5, background=True)
-
-
-def optional_led_off(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
-    if led is not None:
-        led.off()
-
-
-def optional_led_on(led: Optional[gpiozero.LED], *args: Any, **kwargs: Any) -> None:
-    if led is not None:
-        led.on()
 
 
 @dataclass(frozen=True)
@@ -72,17 +58,12 @@ class Transitions:
 
 class StateMachine(object):
     config: Config
+    hardware: Hardware
     machine: Machine
 
-    def __init__(self, config: Config, machine_class: Type[Machine], **kwargs: Any) -> None:
+    def __init__(self, config: Config, hardware: Hardware, machine_class: Type[Machine], **kwargs: Any) -> None:
         self.config = config
-
-        setattr(self, 'motion_led_blink', functools.partial(optional_led_blink, self.config.motion_led))
-        setattr(self, 'motion_led_off', functools.partial(optional_led_off, self.config.motion_led))
-        setattr(self, 'motion_led_on', functools.partial(optional_led_on, self.config.motion_led))
-
-        setattr(self, 'running_led_off', functools.partial(optional_led_off, self.config.running_led))
-        setattr(self, 'running_led_on', functools.partial(optional_led_on, self.config.running_led))
+        self.hardware = hardware
 
         # A few states require timeouts, so add the feature to them while converting all the
         # `States` to a list.
@@ -109,13 +90,13 @@ class StateMachine(object):
 
         # Add transitions for process control: starting, stopping, and shutting_down.
         self.machine.add_transition(Transitions.started, States.starting, States.asleep,
-                                    prepare=self.running_led_on)
+                                    prepare=self.hardware.running_led_on)
 
         self.machine.add_transition(Transitions.signal_received, '*', States.stopping,
                                     after=[
-                                        self.motion_led_off,
-                                        self.display_off,
-                                        self.running_led_off,
+                                        self.hardware.motion_led_off,
+                                        self.hardware.display_off,
+                                        self.hardware.running_led_off,
                                         self.quit,
                                     ])
 
@@ -124,15 +105,15 @@ class StateMachine(object):
 
         # Add transitions for motion (un)detected.
         self.machine.add_transition(Transitions.motion_detected, [States.asleep, States.timed_awake, States.awake], States.awake,
-                                    prepare=self.motion_led_on,
+                                    prepare=self.hardware.motion_led_on,
                                     # A string is not required here, but it won't show up on a diagram otherwise.
                                     conditions=self.is_waking_hours.__name__)
         self.machine.add_transition(Transitions.motion_detected, '*', None)
 
         self.machine.add_transition(Transitions.motion_undetected, States.awake, States.timed_awake,
-                                    prepare=self.motion_led_off)
+                                    prepare=self.hardware.motion_led_off)
         self.machine.add_transition(Transitions.motion_undetected, States.asleep, None,
-                                    prepare=self.motion_led_off)
+                                    prepare=self.hardware.motion_led_off)
         self.machine.add_transition(Transitions.motion_undetected, '*', None)
 
         self.machine.add_transition(Transitions.timer_expired, States.timed_awake, States.asleep)
@@ -173,36 +154,21 @@ class StateMachine(object):
     # State Event Handlers
 
     def on_enter_asleep(self, *args: Any, **kwargs: Any) -> None:
-        self.display_off()
+        self.hardware.display_off()
 
     def on_enter_awake(self, *args: Any, **kwargs: Any) -> None:
-        self.display_on()
+        self.hardware.display_on()
 
     def on_enter_forced_awake(self, *args: Any, **kwargs: Any) -> None:
-        self.motion_led_blink()
-        self.display_on()
+        self.hardware.motion_led_blink()
+        self.hardware.display_on()
 
     def on_exit_forced_awake(self, *args: Any, **kwargs: Any) -> None:
-        self.motion_led_off()
+        self.hardware.motion_led_off()
 
     def on_enter_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
-        self.motion_led_blink()
-        self.display_off()
+        self.hardware.motion_led_blink()
+        self.hardware.display_off()
 
     def on_exit_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
-        self.motion_led_off()
-
-    # Device-Controlling Methods
-
-    def display_off(self, *args: Any, **kwargs: Any) -> None:
-        self.config.display.off()
-
-    def display_on(self, *args: Any, **kwargs: Any) -> None:
-        self.config.display.on()
-
-    motion_led_blink: Callable[..., None]
-    motion_led_off: Callable[..., None]
-    motion_led_on: Callable[..., None]
-
-    running_led_off: Callable[..., None]
-    running_led_on: Callable[..., None]
+        self.hardware.motion_led_off()
