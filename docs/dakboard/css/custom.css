@@ -2,13 +2,19 @@
 
 /* Global style overrides. */
 
-img {
-	box-shadow: none !important;
-}
-
-blockquote p {
+.reveal blockquote p {
 	display: block !important;
 	margin: 40px !important;
+}
+
+.reveal iframe {
+	display: block;
+	height: 900px;
+	width: 100%;
+}
+
+.reveal img {
+	box-shadow: none !important;
 }
 
 /* Reusable slide layouts. */

@@ -18,6 +18,20 @@
 
 ===
 
+<!-- .slide: id="introduction-dakboard" -->
+
+### DAKboard
+
+<iframe data-src="https://dakboard.com/site"></iframe>
+
+===
+
+### DAKboard Blog: DIY Wall Display
+
+<iframe data-src="https://blog.dakboard.com/diy-wall-display/"></iframe>
+
+===
+
 <!-- .slide: id="introduction-goals" -->
 
 ## Goals
