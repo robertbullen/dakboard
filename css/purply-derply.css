@@ -1,11 +1,7 @@
-/* Use Open Sans because its glyphs are just a little bit more, well, open, which is more readable
-   on a large wall sign compared to DAKboard's default of Roboto. */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
-
 /* The base DAKboard styles specify pixels for the majority of their content. Originally, this
    design built upon the DAKboard styles while optimizing for a 1080×1920 display, and therefore
    also specified pixels as the primary unit. Later, it was desirable to render this design at both
-   1080x1920 and 1440×2560 with nearly no distinguishable difference. So to scale the design
+   1080x1920 and 1440×2560 with no distinguishable difference. So to scale the design
    proportionally, all units are now specified in viewport height units, but calculated from their
    original proportion on the 1080×1920 design. */
 
@@ -293,12 +289,12 @@ body {
 	line-height: 1 !important;
 }
 
-/* Adjust the font-size and separation of "feels like" and summary. */
-.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2),
-.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
-	font-size: var(--font-size-body-2) !important;
+/* Adjust the font-sizes and separation of "feels like" and summary. */
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2) {
+	font-size: var(--font-size-body-1) !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
+	font-size: var(--font-size-body-2) !important;
 	margin-top: var(--content-space-4) !important;
 }
 
@@ -445,6 +441,13 @@ body {
 	left: var(--block-margin) !important;
 	top: var(--news-top) !important;
 	width: var(--two-columns-width) !important;
+}
+
+/* Hide the marquee. Even though the block has been configured as Rotating instead of Scrolling,
+   the marquee element is present. It is empty but takes up vertical space, which throws off the
+   other content. */
+.block#\35 dddf2ebacf030303355d494 .rss-scroll {
+	display: none;
 }
 
 /* Give the title just one line, truncating with an ellipsis if necessary. It is capitalized to
