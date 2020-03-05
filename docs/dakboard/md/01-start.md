@@ -23,5 +23,6 @@
     - [CSS Tactics](#/css-tactics)
 - [Software](#/software-software)
     - [Noteworthy Python Packages](#/software-python-packages)
+    - [Controlling Displays](#/software-controlling-displays)
 - [Conclusion](#/conclusion-conclusion)
     - [Links](#/conclusion-links)

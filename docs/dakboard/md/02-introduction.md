@@ -6,15 +6,49 @@
 
 <!-- .slide: id="introduction-inspiration" -->
 
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+    #introduction-inspiration blockquote {
+        font-size: larger;
+        font-style: normal;
+        padding: 40px;
+        width: 50%;
+    }
+
+    #introduction-inspiration blockquote .wife {
+        color: pink;
+        text-align: left;
+        font-family: 'Indie Flower', cursive;
+        font-size: 110%;
+    }
+    #introduction-inspiration blockquote .wife::before {
+        content: 'Wife:';
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+
+    #introduction-inspiration blockquote .me {
+        color: lightblue;
+        font-family: monospace;
+        text-align: right;
+    }
+    #introduction-inspiration blockquote .me::before {
+        content: 'Me:';
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+</style>
+
 ## Inspiration
 
-> "My friend has a DAKboard and I think we need one." <!-- .element: class="quote wife" -->
+> "My friend has a DAKboard and I think we need one." <!-- .element: class="wife" -->
 >
-> "A what?" <!-- .element: class="quote me" -->
+> "A what?" <!-- .element: class="me" -->
 >
-> "..." <!-- .element: class="quote wife" -->
+> "..." <!-- .element: class="wife" -->
 >
-> "I'll look into it." <!-- .element: class="quote me" -->
+> "I'll look into it." <!-- .element: class="me" -->
 
 ===
 
