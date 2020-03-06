@@ -12,28 +12,36 @@ Experimentation started with the following hardware that I mostly already owned
 
 ===
 
-<!-- .slide: class="image left layout" -->
+<!-- .slide: class="columns layout" -->
 
 ### [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/)
 
-![Samsung 32" Class M5300 Full HD TV](dakboard/img/samsung-un32m5300.jpg)
+- Column
 
-- After moving homes we no longer had an obvious spot for this TV, so it was available for experimentation
-- Being a TV, it is more effective to suspend and awake it using the HDMI-CEC protocol
-- Only 70ppi
-- \$0
+    ![Samsung 32" Class M5300 Full HD TV](dakboard/img/samsung-un32m5300.jpg)
+
+- Column
+
+    - After moving homes we no longer had an obvious spot for this TV, so it was available for experimentation
+    - Being a TV, it is more effective to suspend and awake it using the HDMI-CEC protocol
+    - Only 70ppi
+    - \$0
 
 ===
 
-<!-- .slide: class="image left layout" -->
+<!-- .slide: class="columns layout" -->
 
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
-![Raspberry Pi 3 Model B](dakboard/img/raspberry-pi-3.jpg)
+- Column
 
-- I received this as a prize at a work function years ago
-- Can drive resolutions up to Full HD (1920×1080)
-- \$0
+    ![Raspberry Pi 3 Model B](dakboard/img/raspberry-pi-3.jpg)
+
+- Column
+
+    - I received this as a prize at a work function years ago
+    - Can drive resolutions up to Full HD (1920×1080)
+    - \$0
 
 ===
 

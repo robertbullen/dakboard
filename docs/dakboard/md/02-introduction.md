@@ -54,15 +54,11 @@
 
 <!-- .slide: id="introduction-dakboard" -->
 
-### DAKboard
-
-<iframe data-src="https://dakboard.com/site"></iframe>
+<iframe class="stretch" data-src="https://dakboard.com/site"></iframe>
 
 ===
 
-### DAKboard Blog: DIY Wall Display
-
-<iframe data-src="https://blog.dakboard.com/diy-wall-display/"></iframe>
+<iframe class="stretch" data-src="https://blog.dakboard.com/diy-wall-display/"></iframe>
 
 ===
 
@@ -72,21 +68,25 @@
 
 ===
 
-<!-- .slide: class="image left layout" -->
+<!-- .slide: class="columns layout" -->
 
 ### Functional Goals
 
-![Classroom Monthly Calendar](dakboard/img/classroom-monthly-calendar.jpg)
+- Column
 
-- Provide a calendar that functions for everyone
-    - Become the successor to the kids' classroom monthly calendar
-    - Consolidate our four family member's calendars but still identify to whom events pertain
-- Publish some of the hundreds of photos that are otherwise rarely viewed after capture
-    - Make it easy for my spouse to contribute
-- Show the weather so we can all dress appropriately and determine whether the kids can walk to school
-- Intelligently control the screen
-    - Keep the screen off during nighttime hours
-    - Turn on the screen only while viewing
+    ![Classroom Monthly Calendar](dakboard/img/classroom-monthly-calendar.jpg)
+
+- Column
+
+    - Provide a calendar that functions for everyone
+        - Become the successor to the kids' classroom monthly calendar
+        - Consolidate our four family member's calendars but still identify to whom events pertain
+    - Publish some of the hundreds of photos that are otherwise rarely viewed after capture
+        - Make it easy for my spouse to contribute
+    - Show the weather so we can all dress appropriately and determine whether the kids can walk to school
+    - Intelligently control the screen
+        - Keep the screen off during nighttime hours
+        - Turn on the screen only while viewing
 
 ===
 
