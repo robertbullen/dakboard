@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/*
+ * Global style overrides.
+ */
+
+.reveal .slides section {
+	font-family: 'Ubuntu', 'Source Sans Pro', sans-serif;
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6 {
+	font-family: inherit;
+	font-weight: 300;
+	margin-bottom: 80px;
+}
+
+.reveal .slides section ul ul {
+	margin-left: 1em;
+	margin-top: 0.5em;
+}
+.reveal .slides section li {
+	margin-bottom: 0.5em;
+}
+
+.reveal .slides section blockquote p {
+	display: block;
+	margin: 40px;
+}
+
+.reveal .slides section img {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+	margin: 0;
+}
+
+.todo {
+	background-color: lightcoral;
+	color: red;
+}
+
+/*
+ * Reusable slide layouts.
+ */
+
+/* Multi-column (up to three) Layout. */
+
+.layout.columns > ul {
+	/* border: solid 1px green; */
+	align-items: stretch;
+	display: flex;
+	flex-flow: row nowrap;
+	list-style-type: none;
+	margin: 0 -20px;
+}
+
+.layout.columns > ul > li {
+	/* border: solid 1px red; */
+	display: block;
+	flex: 1 0 0;
+	padding: 0 20px;
+	text-align: center;
+	width: 100%;
+}
+
+/* Hide the column "headers". */
+.layout.columns > ul > li > p:first-of-type {
+	display: none;
+}
+
+/* Remove the top and bottom margins on the first and last visible elements in each column. */
+.layout.columns > ul > li > :nth-child(2) {
+	margin-top: 0;
+}
+.layout.columns > ul > li > :last-child {
+	margin-bottom: 0;
+}
+
+/* Reestablish the display of top-level (relative to each column) <ul>s. */
+.layout.columns > ul > li > ul {
+	display: inline-block;
+}
+
+/* Reestablish the list style hierarchy. */
+.layout.columns > ul > li > ul {
+	list-style-type: disc;
+}
+.layout.columns > ul > li > ul ul {
+	list-style-type: square;
+}
+.layout.columns > ul > li > ul ul ul {
+	list-style-type: circle;
+}
+
+/* Position images within their columns. */
+.layout.columns > ul > li img {
+	margin: 0 auto;
+	width: 80%;
+}
+
+/* A set of figures. */
+
+.figures {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+.figures > figure {
+	background-color: rgba(255, 255, 255, 0.05);
+	margin: 1rem;
+	padding: 1rem;
+}
+
+.figures.equisized > figure {
+	flex: 1 0 0;
+	width: 100%;
+}
+
+/* .figures > figure > img {
+	display: block;
+	margin: 1em auto;
+} */
+
+.figures > figure > * {
+	margin: 1rem 0;
+}
+
+.figures > figure > :first-child {
+	margin-top: 0;
+}
+.figures > figure > :last-child {
+	margin-bottom: 0;
+}

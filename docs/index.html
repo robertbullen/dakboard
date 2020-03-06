@@ -27,37 +27,36 @@
 			document.getElementsByTagName('head')[0].appendChild(link);
 		</script>
 
-		<!-- Custom overrides. -->
-		<link rel="stylesheet" href="dakboard/css/custom.css" />
+		<!-- Custom styles for this presentation -->
+		<link rel="stylesheet" href="slides/custom.css" />
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<section
-					data-markdown="dakboard/md/01-start.md"
+					data-markdown="slides/start/start.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
 				<section
-					data-markdown="dakboard/md/02-introduction.md"
+					data-markdown="slides/introduction/introduction.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
 				<section
-					data-markdown="dakboard/md/03-hardware.md"
+					data-markdown="slides/hardware/hardware.md"
+					data-separator-vertical="^\r?\n===\r?\n$"
+				></section>
+				<!--
+				<section
+					data-markdown="slides/design/design.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
 				<section
-					data-markdown="dakboard/md/04-design.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
-				></section>
-				<section
-					data-markdown="dakboard/md/05-software.md"
+					data-markdown="slides/software/software.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
 				<section>
 					<section>
-						<div
-							style="display: flex; flex-direction: column; height: 100%;"
-						>
+						<div style="display: flex; flex-direction: column; height: 100%;">
 							<form id="server-url-form">
 								<div style="display: flex;">
 									<input
@@ -78,20 +77,16 @@
 								.addEventListener('submit', event => {
 									event.preventDefault();
 
-									const serverUrl =
-										event.target.elements['server-url']
-											.value;
-									document.getElementById(
-										'status-iframe',
-									).src = serverUrl;
+									const serverUrl = event.target.elements['server-url'].value;
+									document.getElementById('status-iframe').src = serverUrl;
 								});
 						</script>
 					</section>
 				</section>
 				<section
-					data-markdown="dakboard/md/10-conclusion.md"
+					data-markdown="slides/conclusion/conclusion.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
-				></section>
+				></section> -->
 			</div>
 		</div>
 
