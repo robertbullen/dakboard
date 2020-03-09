@@ -10,7 +10,7 @@
 
 - Column
 
-    ![Background Image](dakboard/img/purply-derply-background.jpg)
+    ![Background Image](slides/design/purply-derply-background.jpg)
 
 - Column
 
@@ -18,7 +18,7 @@
     - I was looking for a natural yet daring background
     - Ran it through [Canva's color palette generator](https://www.canva.com/colors/color-palette-generator/), which analyzed the image and came up with the following five colors
 
-    ![Canva Palette Results](dakboard/img/purply-derply-canva-palette.png)
+    ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
 
 ===
 
@@ -28,38 +28,42 @@
     #design-font-selection img {
         height: 250px;
     }
+
+    #design-font-selection figcaption {
+        font-size: smaller;
+    }
 </style>
 
 ## Font Selection Criteria
 
 <div class="figures">
     <figure class="fragment">
-        <img alt="Sans-Serif" src="dakboard/img/font-anatomy/sans-serif.png" />
+        <img alt="Sans-Serif" src="slides/design/font-anatomy/sans-serif.png" />
         <figcaption>Sans serif</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="Weight" src="dakboard/img/font-anatomy/weights.png" />
+        <img alt="Weight" src="slides/design/font-anatomy/weights.png" />
         <figcaption>Normal & light weights</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="Arm" src="dakboard/img/font-anatomy/arm.png" />
-        <img alt="Ear" src="dakboard/img/font-anatomy/ear.png" />
-        <img alt="Foot" src="dakboard/img/font-anatomy/foot.png" />
+        <img alt="Arm" src="slides/design/font-anatomy/arm.png" />
+        <img alt="Ear" src="slides/design/font-anatomy/ear.png" />
+        <img alt="Foot" src="slides/design/font-anatomy/foot.png" />
         <figcaption>Number <em>1</em> with an arm/ear but no foot</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="Counter" src="dakboard/img/font-anatomy/counter.png" />
-        <img alt="Aperture" src="dakboard/img/font-anatomy/aperture.png" />
+        <img alt="Counter" src="slides/design/font-anatomy/counter.png" />
+        <img alt="Aperture" src="slides/design/font-anatomy/aperture.png" />
         <figcaption>Large, open counters & apertures</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="X-height" src="dakboard/img/font-anatomy/x-height.png" />
-        <img alt="Tiers" src="dakboard/img/font-anatomy/tiers.png" />
+        <img alt="X-height" src="slides/design/font-anatomy/x-height.png" />
+        <img alt="Tiers" src="slides/design/font-anatomy/tiers.png" />
         <figcaption>Tall x-height & two-tiered <em>a</em></figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="Tracking" src="dakboard/img/font-anatomy/tracking.png" />
-        <img alt="Leading" src="dakboard/img/font-anatomy/leading.png" />
+        <img alt="Tracking" src="slides/design/font-anatomy/tracking.png" />
+        <img alt="Leading" src="slides/design/font-anatomy/leading.png" />
         <figcaption>Appropriate tracking & leading</figcaption>
     </figure>
 </div>

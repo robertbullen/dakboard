@@ -4,6 +4,13 @@
  * Global style overrides.
  */
 
+button,
+input {
+	font-family: 'Ubuntu', 'Source Sans Pro', sans-serif;
+	font-size: x-large;
+	padding: 10px;
+}
+
 .reveal .slides section {
 	font-family: 'Ubuntu', 'Source Sans Pro', sans-serif;
 }

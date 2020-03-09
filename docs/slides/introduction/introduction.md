@@ -54,7 +54,9 @@
 
 <!-- .slide: id="introduction-dakboard" -->
 
+<!-- markdownlint-disable no-trailing-punctuation -->
 ### DAKboard Is A...
+<!-- markdownlint-enable no-trailing-punctuation -->
 
 <div class="figures equisized">
     <figure class="fragment">
@@ -145,7 +147,9 @@
 
     ![Mario Power-ups](slides/introduction/power-ups.png)
 
+    <!-- markdownlint-disable heading-start-left no-trailing-punctuation -->
     #### Power Up!
+    <!-- markdownlint-enable heading-start-left no-trailing-punctuation -->
 
 - Column
 

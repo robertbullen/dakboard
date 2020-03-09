@@ -10,7 +10,7 @@
 
 - Column
 
-    ![This Presentation](dakboard/img/presentation-url-qr-code.svg)
+    ![This Presentation](slides/conclusion/presentation-url-qr-code.svg)
 
     [This Presentation](https://robertbullen.github.io/dakboard)
 

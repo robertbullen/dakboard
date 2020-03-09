@@ -45,7 +45,6 @@
 					data-markdown="slides/hardware/hardware.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
-				<!--
 				<section
 					data-markdown="slides/design/design.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
@@ -54,39 +53,16 @@
 					data-markdown="slides/software/software.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
 				></section>
-				<section>
-					<section>
-						<div style="display: flex; flex-direction: column; height: 100%;">
-							<form id="server-url-form">
-								<div style="display: flex;">
-									<input
-										id="server-url"
-										name="server-url"
-										style="flex-grow: 1"
-										type="url"
-									/>
-									<button type="submit">Load Status</button>
-								</div>
-							</form>
-							<iframe id="status-iframe"></iframe>
-						</div>
+				<section
+					data-markdown="slides/demo/demo.md"
+					data-separator-vertical="^\r?\n===\r?\n$"
+				></section>
+				<script src="slides/demo/demo.js"></script>
 
-						<script>
-							const form = document
-								.getElementById('server-url-form')
-								.addEventListener('submit', event => {
-									event.preventDefault();
-
-									const serverUrl = event.target.elements['server-url'].value;
-									document.getElementById('status-iframe').src = serverUrl;
-								});
-						</script>
-					</section>
-				</section>
 				<section
 					data-markdown="slides/conclusion/conclusion.md"
 					data-separator-vertical="^\r?\n===\r?\n$"
-				></section> -->
+				></section>
 			</div>
 		</div>
 
