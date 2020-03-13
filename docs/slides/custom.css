@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /*
  * Global style overrides.
@@ -6,13 +6,17 @@
 
 button,
 input {
-	font-family: 'Ubuntu', 'Source Sans Pro', sans-serif;
+	font-family: 'Open Sans', 'Source Sans Pro', sans-serif;
 	font-size: x-large;
 	padding: 10px;
 }
 
+cite {
+	font-style: italic;
+}
+
 .reveal .slides section {
-	font-family: 'Ubuntu', 'Source Sans Pro', sans-serif;
+	font-family: 'Open Sans', 'Source Sans Pro', sans-serif;
 }
 
 .reveal .slides section h1,
@@ -23,7 +27,7 @@ input {
 .reveal .slides section h6 {
 	font-family: inherit;
 	font-weight: 300;
-	margin-bottom: 80px;
+	margin-bottom: 40px;
 }
 
 .reveal .slides section ul ul {
@@ -121,7 +125,6 @@ input {
 .figures > figure {
 	background-color: rgba(255, 255, 255, 0.05);
 	margin: 1rem;
-	padding: 1rem;
 }
 
 .figures.equisized > figure {
@@ -135,12 +138,11 @@ input {
 } */
 
 .figures > figure > * {
-	margin: 1rem 0;
+	margin: 1rem 2rem;
 }
 
-.figures > figure > :first-child {
-	margin-top: 0;
-}
-.figures > figure > :last-child {
-	margin-bottom: 0;
+.figures > figure > h4:first-child {
+	font-size: inherit;
+	margin-top: 0.5rem;
+	margin-bottom: inherit;
 }

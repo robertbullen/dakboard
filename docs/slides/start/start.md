@@ -44,9 +44,9 @@
 - Column
 
     - [Design](#/design-design)
-        - [Color Palette Selection](#/design-color-selection)
-        - [Font Selection](#/design-font-selection)
-        - [CSS Tactics](#/css-tactics)
+        - [Colors](#/design-colors)
+        - [Font](#/design-font)
+        - [CSS](#/design-css)
     - [Software](#/software-software)
         - [Noteworthy Python Packages](#/software-python-packages)
         - [Controlling Displays](#/software-controlling-displays)

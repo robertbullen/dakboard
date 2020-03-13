@@ -64,7 +64,7 @@
         <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="DAKboard Console" src="slides/introduction/dakboard-console.jpg" />
+        <img alt="DAKboard Console" src="slides/introduction/dakboard-console.png" />
         <figcaption>Web console for configuring your dashboard content</figcaption>
     </figure>
     <figure class="fragment">
