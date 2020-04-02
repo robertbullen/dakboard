@@ -10,14 +10,13 @@ from typing import (Any, Callable, Dict, Iterator, List, Optional, Tuple, Type,
                     Union, cast)
 
 import gpiozero
-from transitions import Machine
+from transitions.extensions import GraphMachine
 from transitions.extensions.states import Timeout, add_state_features
 
 from interdaktive.config import Config
 from interdaktive.hardware import Hardware
 
-logging.basicConfig(level=logging.DEBUG)
-logging.getLogger('transitions').setLevel(logging.INFO)
+logging.getLogger('transitions').setLevel(logging.DEBUG)
 
 
 @dataclass(frozen=True)
@@ -42,8 +41,8 @@ class States:
 class Transitions:
     started: str = 'started'
 
-    button_held: str = 'button_held'
-    button_released: str = 'button_released'
+    control_button_held: str = 'control_button_held'
+    control_button_released: str = 'control_button_released'
 
     motion_detected: str = 'motion_detected'
     motion_undetected: str = 'motion_undetected'
@@ -59,9 +58,9 @@ class Transitions:
 class StateMachine(object):
     config: Config
     hardware: Hardware
-    machine: Machine
+    machine: GraphMachine
 
-    def __init__(self, config: Config, hardware: Hardware, machine_class: Type[Machine], **kwargs: Any) -> None:
+    def __init__(self, config: Config, hardware: Hardware) -> None:
         self.config = config
         self.hardware = hardware
 
@@ -78,15 +77,29 @@ class StateMachine(object):
             else:
                 states_with_features.append(state)
 
-        # Call the constructor of one of the multitude of possible transitions' Machine mixins.
-        machine_class_with_features = add_state_features(Timeout)(machine_class)
+        # Define an event handler that saves the state diagram whenever a change to the state
+        # machine occurs.
+        def save_state_diagram(*args: Any, **kwargs: Any) -> None:
+            if config.state_diagram_file_path is not None:
+                self.machine.get_graph().draw(config.state_diagram_file_path, prog='dot')
+
+        # Instantiate a GraphMachine.
+        machine_class_with_features = add_state_features(Timeout)(GraphMachine)
         self.machine = machine_class_with_features(
             model=self,
             states=states_with_features,
             initial=States.starting,
             auto_transitions=False,
-            **kwargs,
+            show_conditions=True,
+            show_state_attributes=True,
+            title='Interdaktive State Machine',
+            finalize_event=save_state_diagram,
         )
+
+        # Tweak the state diagram layout to yield a more readable result, mainly by drawing states
+        # top-to-bottom.
+        self.machine.machine_attributes['labelloc'] = 'top'
+        self.machine.machine_attributes['rankdir'] = 'TB'
 
         # Add transitions for process control: starting, stopping, and shutting_down.
         self.machine.add_transition(Transitions.started, States.starting, States.asleep,
@@ -100,7 +113,7 @@ class StateMachine(object):
                                         self.quit,
                                     ])
 
-        self.machine.add_transition(Transitions.button_held, '*', States.shutting_down,
+        self.machine.add_transition(Transitions.control_button_held, '*', States.shutting_down,
                                     after=self.shutdown)
 
         # Add transitions for motion (un)detected.
@@ -119,11 +132,14 @@ class StateMachine(object):
         self.machine.add_transition(Transitions.timer_expired, States.timed_awake, States.asleep)
 
         # Add transitions into and out of the forced states.
-        self.machine.add_transition(Transitions.button_released, [States.asleep, States.forced_asleep], States.forced_awake)
-        self.machine.add_transition(Transitions.button_released, [States.forced_awake, States.timed_awake, States.awake], States.forced_asleep)
-        self.machine.add_transition(Transitions.button_released, '*', None)
+        self.machine.add_transition(Transitions.control_button_released, [States.asleep, States.forced_asleep], States.forced_awake)
+        self.machine.add_transition(Transitions.control_button_released, [States.forced_awake, States.timed_awake, States.awake], States.forced_asleep)
+        self.machine.add_transition(Transitions.control_button_released, '*', None)
 
         self.machine.add_transition(Transitions.timer_expired, [States.forced_asleep, States.forced_awake], States.asleep)
+
+        # Save an initial diagram.
+        save_state_diagram()
 
     def __getitem__(self, key: str) -> Callable[..., None]:
         return cast(Callable[..., None], getattr(self, getattr(Transitions, key)))

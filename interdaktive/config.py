@@ -1,5 +1,6 @@
 import argparse
 import time
+from typing import Optional
 
 
 def parse_time(value: str) -> time.struct_time:
@@ -29,81 +30,120 @@ def format_time(value: time.struct_time) -> str:
 
 
 class Config(argparse.Namespace):
-    control_button_pin: str
+    # Hardware.
+    control_button_pin: Optional[str]
     display_type: str
-    motion_led_pin: str
+    motion_led_pin: Optional[str]
     motion_sensor_pin: str
-    running_led_pin: str
+    running_led_pin: Optional[str]
+
+    # Timing.
     timer_seconds: int
     waking_hours_begin: time.struct_time
     waking_hours_end: time.struct_time
-    web_server_port: int
+
+    # Output.
+    log_file_path: Optional[str]
+    state_diagram_file_path: Optional[str]
 
     @staticmethod
     def from_args() -> 'Config':
-        parser = argparse.ArgumentParser(
-            epilog='gpiozero pin numbering format is described here: https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering',
-            prog='python3 -m interdaktive',
+        parser = argparse.ArgumentParser(prog='python3 -m interdaktive')
+
+        hardware_group = parser.add_argument_group(
+            'hardware arguments',
+            (
+                "GPIO pins must be specified in gpiozero pin numbering format, which is described "
+                "at https://gpiozero.readthedocs.io/en/stable/recipes.html#pin-numbering."
+            )
         )
 
-        # Required arguments.
-        parser.add_argument(
+        hardware_group.add_argument(
             '--motion-sensor-pin',
-            default=None,
-            help='The GPIO pin (in gpiozero format) to which the motion sensor is attached.',
+            help=(
+                "The GPIO pin to which the motion sensor is attached. Detecting motion is this "
+                "package's raison d'être, and no reasonable default can be assumed, so this is the "
+                "one and only required argument."
+            ),
             required=True,
         )
 
-        # Optional arguments.
-        parser.add_argument(
+        hardware_group.add_argument(
             '--control-button-pin',
-            default=None,
-            help='The GPIO pin (in gpiozero format) to which an optional control button is attached. Pressing the button will forcefully turn on the display, even outside of waking times. Holding the button for 5 seconds will shutdown the system.',
+            help=(
+                "The GPIO pin to which an optional control button is attached. Pressing the button "
+                "will forcibly toggle the display, even outside of waking hours. Holding the "
+                "button for 5 seconds will shutdown the system."
+            ),
         )
 
-        parser.add_argument(
+        hardware_group.add_argument(
             '--display-type',
             choices=['cec', 'mock', 'video-core'],
             default='video-core',
-            help='The type of display that is connected, which determines how it is put to sleep and awakened. A "video-core" display simply responds to the HDMI signal turning off and on; e.g. a computer display. A "cec" display responds to HDMI-CEC commands; e.g. a TV.',
+            help=(
+                "The type of display that is connected, which determines how it is put to sleep and "
+                "awakened. A 'video-core' display simply responds to the HDMI signal turning off "
+                "and on; e.g. a computer monitor. A 'cec' display responds to HDMI-CEC commands; "
+                "e.g. a TV. A 'mock' display is useful for testing and simply outputs its state "
+                "changes to the console."
+            ),
         )
 
-        parser.add_argument(
+        hardware_group.add_argument(
             '--motion-led-pin',
-            help='The GPIO pin (in gpiozero format) to which an optional motion indicator LED is attached.',
+            help='The GPIO pin to which an optional motion indicator LED is attached.',
         )
 
-        parser.add_argument(
+        hardware_group.add_argument(
             '--running-led-pin',
-            help='The GPIO pin (in gpiozero format) to which an optional running indicator LED is attached.',
+            help='The GPIO pin to which an optional running indicator LED is attached.',
         )
 
-        parser.add_argument(
+        timing_group = parser.add_argument_group('timing arguments')
+
+        timing_group.add_argument(
             '--timer-seconds',
             default=120,
-            help='The length of time (in seconds) for the display to stay awake/asleep after detecting motion or the control button is pressed.',
+            help=(
+                "The length of time (in seconds) for the display to stay awake/asleep after "
+                "detecting motion or the control button is pressed. Also the length of time that "
+                "the display will remain in its forcibly toggled state after pressing the control "
+                "button."
+            ),
             type=int,
         )
 
-        parser.add_argument(
+        timing_group.add_argument(
             '--waking-hours-begin',
             default='00:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 06:00) when waking the display is allowed.',
+            help=(
+                "The beginning of the daily period (in 24-hour clock format; e.g. 06:00) when "
+                "detecting motion will wake the display."
+            ),
             type=parse_time,
         )
 
-        parser.add_argument(
+        timing_group.add_argument(
             '--waking-hours-end',
             default='24:00',
-            help='The beginning of the daily period (in 24-hour clock format; e.g. 22:00) when waking the display is allowed.',
+            help=(
+                "The end of the daily period (in 24-hour clock format; e.g. 22:00) when "
+                "detecting motion will wake the display."
+            ),
             type=parse_time,
         )
 
-        parser.add_argument(
-            '--web-server-port',
-            default=8088,
-            help='The port on which to serve the status web site.',
-            type=int,
+        output_group = parser.add_argument_group('output arguments')
+
+        output_group.add_argument(
+            '--log-file-path',
+            help='The file path to which logging output will be written.',
+        )
+
+        output_group.add_argument(
+            '--state-diagram-file-path',
+            help='The file path to which state diagram images will be written.',
         )
 
         return parser.parse_args(namespace=Config())
