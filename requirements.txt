@@ -1,4 +1,10 @@
 gpiozero==1.5.1
 transitions==0.7.2
-transitions[diagrams]==0.7.2
 flask==1.1.1
+
+# These are required dependencies of transitions when creating state machine diagrams. Listing
+# `transitions[diagrams]` as a requirement proved to be less reliable, so they are listed explicitly
+# here. (Installing a binary graphviz package)[https://graphviz.org/download/] is a prerequisite for
+# these packages to function.
+graphviz==0.13.2
+pygraphviz==1.5.0

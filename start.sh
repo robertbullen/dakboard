@@ -30,7 +30,7 @@ function start_detector() {
         --state-diagram-file-path="${STATE_DIAGRAM_FILE}" \
         &
     DETECTOR_PID=$!
-    log_message "Started detector ($(ps -o pid= -o command= -p ${DETECTOR_PID}))"
+    log_message "Started detector ($(ps -o pid= -o command= -p ${DETECTOR_PID} | xargs))"
 }
 
 # Declare a function that starts the webserver as a child process, assigns the child process ID to
@@ -44,12 +44,12 @@ function start_webserver() {
         --state-diagram-file-path="${STATE_DIAGRAM_FILE}" \
         &
     WEBSERVER_PID=$!
-    log_message "Started webserver ($(ps -o pid= -o command= -p ${WEBSERVER_PID}))"
+    log_message "Started webserver ($(ps -o pid= -o command= -p ${WEBSERVER_PID} | xargs))"
 }
 
 # Run an infinite watchdog loop.
 while true; do
-    ps -p "${DETECTOR_PID}" > /dev/null || start_detector
-    ps -p "${WEBSERVER_PID}" > /dev/null || start_webserver
+    ps -p "${DETECTOR_PID}" &> /dev/null || start_detector
+    ps -p "${WEBSERVER_PID}" &> /dev/null || start_webserver
     sleep 10
 done
