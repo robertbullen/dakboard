@@ -16,8 +16,6 @@ from transitions.extensions.states import Timeout, add_state_features
 from interdaktive.config import Config
 from interdaktive.hardware import Hardware
 
-logging.getLogger('transitions').setLevel(logging.DEBUG)
-
 
 @dataclass(frozen=True)
 class States:
@@ -92,7 +90,7 @@ class StateMachine(object):
             auto_transitions=False,
             show_conditions=True,
             show_state_attributes=True,
-            title='Interdaktive State Machine',
+            title='InterDAKtive State Machine',
             finalize_event=save_state_diagram,
         )
 

@@ -8,7 +8,6 @@ from typing import List, Optional
 from interdaktive.config import Config
 from interdaktive.hardware import Hardware
 from interdaktive.state_machine import StateMachine, Transitions
-from interdaktive.web_server import WebServer
 
 if __name__ == '__main__':
     # Load up the configuration from command line arguments.
@@ -28,7 +27,8 @@ if __name__ == '__main__':
         level=logging.DEBUG,
     )
 
-    logging.debug(vars(config))
+    logger = logging.getLogger(__package__)
+    logger.debug(vars(config))
 
     # Instantiate hardware objects.
     hardware = Hardware(config)

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			crossorigin="anonymous"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			rel="stylesheet"
+		/>
+
+		<title>InterDAKtive Status</title>
+
+		<style>
+			/* This replicates the styling that a Bootstrap `<pre><code></code></pre>` block would
+			   have, except that it allows word wrapping and has a slightly smaller font. */
+			.pre-code {
+				color: #212529;
+				font-family: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+					'Courier New', monospace;
+				font-size: 75%;
+				white-space: pre-wrap;
+				word-break: normal;
+			}
+
+			.hanging-indent {
+				padding-left: 2rem;
+				text-indent: -2rem;
+			}
+
+			.fade-in {
+				animation-name: fade-in-keyframes;
+				animation-duration: {{ refreshSeconds }}s;
+			}
+
+			@keyframes fade-in-keyframes {
+				from {
+					background-color: #28a745;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main class="container-fluid">
+			<h1>InterDAKtive Status</h1>
+
+			<p>
+				<img class="img-fluid" data-src="content/state-diagram" id="state-diagram" />
+			</p>
+
+			<ol
+				class="d-flex flex-column-reverse list-unstyled"
+				data-src="content/log"
+				id="log"
+			></ol>
+		</main>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			crossorigin="anonymous"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		></script>
+		<!-- <script
+			crossorigin="anonymous"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		></script> -->
+		<!-- <script
+			crossorigin="anonymous"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		></script> -->
+
+		<script>
+			$(() => {
+				const $stateDiagram = $('#state-diagram');
+				const $log = $('#log');
+
+				function updateStateDiagram() {
+					const url = `${$stateDiagram.data('src')}?ts=${Date.now()}`;
+					$stateDiagram.attr('src', url);
+				}
+
+				function updateLog() {
+					const url = `${$log.data('src')}?ts=${Date.now()}`;
+					fetch(url)
+						.then(response => response.text())
+						.then(text => {
+							const previousLines = $log.data('lines') || [];
+							const currentLines = text.trim().split('\n');
+
+							// Remove all previous lines from the UI that are no longer present in the log.
+							const overlapFirstIndex = currentLines.length > 0
+								? previousLines.indexOf(currentLines[0])
+								: -1;
+							const removeLtIndex = overlapFirstIndex >= 0
+								? overlapFirstIndex
+								: previousLines.length;
+							$log.children().slice(0, removeLtIndex).remove();
+
+							// Append all current lines to the UI that are new to the log.
+							const overlapLastIndex = previousLines.length > 0
+								? currentLines.lastIndexOf(previousLines[previousLines.length - 1])
+								: -1;
+							const appendGteIndex = overlapLastIndex >= 0
+								? overlapLastIndex + 1
+								: 0;
+
+							const newChildren = currentLines
+								.slice(appendGteIndex)
+								.map((line) => $('<li class="fade-in hanging-indent pre-code"></li>').text(line));
+							$log.append(newChildren);
+
+							$log.data('lines', currentLines);
+						});
+				}
+
+				function updateContent() {
+					updateStateDiagram();
+					updateLog();
+				}
+				updateContent();
+				setInterval(updateContent, {{ refreshSeconds }} * 1000);
+			});
+		</script>
+	</body>
+</html>

@@ -1,27 +1,23 @@
+import logging
 import subprocess
-from typing import Optional
+from typing import Any, Callable, Optional
 
 
 # Declare and instantiate a class responsible for turning on/off the display.
 class Display:
     __is_on: Optional[bool]
-    __off_command: str
-    __on_command: str
+    __off: Callable[[], Any]
+    __on: Callable[[], Any]
     __type: str
 
-    def __init__(self, type: str, off_command: str, on_command: str) -> None:
+    def __init__(self, type: str, off: Callable[[], Any], on: Callable[[], Any]) -> None:
         self.__is_on = None
-        self.__off_command = off_command
-        self.__on_command = on_command
+        self.__off = off  # type: ignore
+        self.__on = on  # type: ignore
         self.__type = type
 
     def __repr__(self) -> str:
-        return "Display(type='{0}', is_on={3}, off_command=\"{1}\", on_command=\"{2}\")".format(
-            self.__type,
-            self.__is_on,
-            self.__off_command,
-            self.__on_command,
-        )
+        return "Display(type='{0}', is_on={1})".format(self.__type, self.__is_on)
 
     def __str__(self) -> str:
         return self.__type
@@ -32,12 +28,12 @@ class Display:
 
     def off(self) -> None:
         if self.__is_on != False:
-            subprocess.run(self.__off_command, shell=True)
+            self.__off()  # type: ignore
             self.__is_on = False
 
     def on(self) -> None:
         if self.__is_on != True:
-            subprocess.run(self.__on_command, shell=True)
+            self.__on()  # type: ignore
             self.__is_on = True
 
     def toggle(self) -> None:
@@ -60,22 +56,23 @@ class Display:
     def cec() -> 'Display':
         return Display(
             type='cec',
-            off_command="echo 'standby 0' | cec-client -s -d 1",
-            on_command="echo 'on 0' | cec-client -s -d 1",
+            off=lambda: subprocess.run("echo 'standby 0' | cec-client -s -d 1", shell=True),
+            on=lambda: subprocess.run("echo 'on 0' | cec-client -s -d 1", shell=True),
         )
 
     @staticmethod
     def mock() -> 'Display':
+        logger = logging.getLogger(__package__)
         return Display(
             type='mock',
-            off_command="echo 'display off'",
-            on_command="echo 'display on'",
+            off=lambda: logger.info('Turning off mock display'),
+            on=lambda: logger.info('Turning on mock display'),
         )
 
     @staticmethod
     def video_core() -> 'Display':
         return Display(
             type='video-core',
-            off_command='vcgencmd display_power 0',
-            on_command='vcgencmd display_power 1',
+            off=lambda: subprocess.run('vcgencmd display_power 0', shell=True),
+            on=lambda: subprocess.run('vcgencmd display_power 1', shell=True),
         )

@@ -1,2 +1,4 @@
 gpiozero==1.5.1
 transitions==0.7.2
+transitions[diagrams]==0.7.2
+flask==1.1.1
