@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 OUTPUT_DIR=$(realpath local)
-LOG_FILE_PATH="${OUTPUT_DIR}/log.txt"
-STATE_DIAGRAM_FILE_PATH="${OUTPUT_DIR}/state-diagram.png"
+LOG_FILE="${OUTPUT_DIR}/log.txt"
+STATE_DIAGRAM_FILE="${OUTPUT_DIR}/state-diagram.png"
 
 mkdir -p "${OUTPUT_DIR}"
 
@@ -16,14 +16,14 @@ if [ "$1" == 'detector' ]; then
         --timer-seconds=3 \
         --waking-hours-begin=06:00 \
         --waking-hours-end=24:00 \
-        --log-file-path="${LOG_FILE_PATH}" \
-        --state-diagram-file-path="${STATE_DIAGRAM_FILE_PATH}"
+        --log-file-path="${LOG_FILE}" \
+        --state-diagram-file-path="${STATE_DIAGRAM_FILE}"
 fi
 
 if [ "$1" == 'webserver' ]; then
     python3 -m interdaktive.webserver \
         --port=5000 \
         --refresh-seconds=3 \
-        --log-file-path="${LOG_FILE_PATH}" \
-        --state-diagram-file-path="${STATE_DIAGRAM_FILE_PATH}"
+        --log-file-path="${LOG_FILE}" \
+        --state-diagram-file-path="${STATE_DIAGRAM_FILE}"
 fi
