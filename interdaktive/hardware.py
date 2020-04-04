@@ -42,12 +42,12 @@ class Hardware(object):
         if config.running_led_pin is not None:
             self.running_led = LED(config.running_led_pin)
 
-        setattr(self, 'motion_led_blink', partial(optional_led_blink, self.motion_led))
-        setattr(self, 'motion_led_off', partial(optional_led_off, self.motion_led))
-        setattr(self, 'motion_led_on', partial(optional_led_on, self.motion_led))
+        self.motion_led_blink = partial(optional_led_blink, self.motion_led)  # type: ignore
+        self.motion_led_off = partial(optional_led_off, self.motion_led)  # type: ignore
+        self.motion_led_on = partial(optional_led_on, self.motion_led)  # type: ignore
 
-        setattr(self, 'running_led_off', partial(optional_led_off, self.running_led))
-        setattr(self, 'running_led_on', partial(optional_led_on, self.running_led))
+        self.running_led_off = partial(optional_led_off, self.running_led)  # type: ignore
+        self.running_led_on = partial(optional_led_on, self.running_led)  # type: ignore
 
     def display_off(self, *args: Any, **kwargs: Any) -> None:
         self.display.off()
