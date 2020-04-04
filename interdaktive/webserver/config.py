@@ -3,6 +3,7 @@ from typing import Optional
 
 
 class Config(argparse.Namespace):
+    debug: bool
     log_file_path: Optional[str]
     port: int
     refresh_seconds: int
@@ -11,6 +12,13 @@ class Config(argparse.Namespace):
     @staticmethod
     def from_args() -> 'Config':
         parser = argparse.ArgumentParser(prog='python3 -m interdaktive.webserver')
+
+        parser.add_argument(
+            '--debug',
+            action='store_true',
+            default=False,
+            help='Run the webserver in debug mode, where it reloads when it detects changes to source files.',
+        )
 
         parser.add_argument(
             '--log-file-path',

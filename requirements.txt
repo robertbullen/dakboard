@@ -1,6 +1,8 @@
+flask==1.1.1
+flask-socketio==4.2.1
 gpiozero==1.5.1
 transitions==0.7.2
-flask==1.1.1
+watchdog==0.10.2
 
 # These are required dependencies of transitions when creating state machine diagrams. Listing
 # `transitions[diagrams]` as a requirement proved to be less reliable, so they are listed explicitly
