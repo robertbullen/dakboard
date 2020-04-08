@@ -18,7 +18,7 @@ if __name__ == '__main__':
     if config.log_file_path is not None:
         handlers = [logging.handlers.RotatingFileHandler(
             filename=config.log_file_path,
-            maxBytes=int(16 * 2e10),
+            maxBytes=int(16 * 2**10),
             backupCount=3,
         )]
     logging.basicConfig(
