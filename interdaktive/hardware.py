@@ -8,15 +8,13 @@ from interdaktive.display import Display
 
 
 class BlinkRate(Enum):
-    SLOW = 1
-    FAST = 2
+    SLOW = 1.5
+    FAST = 0.33
 
 
 def optional_led_blink(led: Optional[LED], rate: BlinkRate) -> None:
     if led is not None:
-        # Interpret the rate enum's value as blinks per second.
-        time = 1.0 / rate.value / 2.0
-        led.blink(time, time, background=True)
+        led.blink(rate.value, rate.value, background=True)
 
 
 def optional_led_off(led: Optional[LED]) -> None:
