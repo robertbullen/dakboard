@@ -62,7 +62,7 @@ class Display:
 
     @staticmethod
     def mock() -> 'Display':
-        logger = logging.getLogger(__package__)
+        logger = logging.getLogger(__name__)
         return Display(
             type='mock',
             off=lambda: logger.info('Turning off mock display'),

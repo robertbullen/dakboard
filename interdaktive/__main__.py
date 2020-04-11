@@ -1,9 +1,10 @@
 import logging
 import logging.handlers
+import re
 import signal
 import threading
 import types
-from typing import List, Optional
+from typing import List, Optional, Pattern
 
 from interdaktive.config import Config
 from interdaktive.hardware import Hardware
@@ -27,7 +28,26 @@ if __name__ == '__main__':
         level=logging.DEBUG,
     )
 
-    logger = logging.getLogger(__package__)
+    executed_save_state_diagram: Pattern[str] = re.compile(
+        r'Executed machine finalize callback \'<function StateMachine\.__init__\.<locals>\.save_state_diagram at 0x[0-9a-fA-F]+>\'.$'
+    )
+    returning_graph_model: Pattern[str] = re.compile(
+        r'^Returning graph of the first model. In future releases, this method will return a combined graph of all models.$'
+    )
+
+    def filter(record: logging.LogRecord) -> bool:
+        global executed_save_state_diagram
+        global returning_graph_model
+
+        return (
+            executed_save_state_diagram.match(record.getMessage()) is None
+            and returning_graph_model.match(record.getMessage()) is None
+        )
+
+    logging.getLogger('transitions.core').addFilter(filter)
+    logging.getLogger('transitions.extensions.diagrams').addFilter(filter)
+
+    logger = logging.getLogger(__name__)
     logger.debug(vars(config))
 
     # Instantiate hardware objects.
