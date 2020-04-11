@@ -1,5 +1,5 @@
-from functools import partial
-from typing import Any, Callable, Optional
+from enum import Enum
+from typing import Any, Callable, Optional, Tuple
 
 from gpiozero import LED, Button, MotionSensor
 
@@ -7,17 +7,24 @@ from interdaktive.config import Config
 from interdaktive.display import Display
 
 
-def optional_led_blink(led: Optional[LED], *args: Any, **kwargs: Any) -> None:
+class BlinkRate(Enum):
+    SLOW = 1
+    FAST = 2
+
+
+def optional_led_blink(led: Optional[LED], rate: BlinkRate) -> None:
     if led is not None:
-        led.blink(0.5, 0.5, background=True)
+        # Interpret the rate enum's value as blinks per second.
+        time = 1.0 / rate.value / 2.0
+        led.blink(time, time, background=True)
 
 
-def optional_led_off(led: Optional[LED], *args: Any, **kwargs: Any) -> None:
+def optional_led_off(led: Optional[LED]) -> None:
     if led is not None:
         led.off()
 
 
-def optional_led_on(led: Optional[LED], *args: Any, **kwargs: Any) -> None:
+def optional_led_on(led: Optional[LED]) -> None:
     if led is not None:
         led.on()
 
@@ -42,22 +49,30 @@ class Hardware(object):
         if config.running_led_pin is not None:
             self.running_led = LED(config.running_led_pin)
 
-        self.motion_led_blink = partial(optional_led_blink, self.motion_led)  # type: ignore
-        self.motion_led_off = partial(optional_led_off, self.motion_led)  # type: ignore
-        self.motion_led_on = partial(optional_led_on, self.motion_led)  # type: ignore
-
-        self.running_led_off = partial(optional_led_off, self.running_led)  # type: ignore
-        self.running_led_on = partial(optional_led_on, self.running_led)  # type: ignore
-
-    def display_off(self, *args: Any, **kwargs: Any) -> None:
+    def display_off(self, *args: Any, **kwargs: Any) -> 'Hardware':
         self.display.off()
+        return self
 
-    def display_on(self, *args: Any, **kwargs: Any) -> None:
+    def display_on(self, *args: Any, **kwargs: Any) -> 'Hardware':
         self.display.on()
+        return self
 
-    motion_led_blink: Callable[..., None]
-    motion_led_off: Callable[..., None]
-    motion_led_on: Callable[..., None]
+    def motion_led_blink(self, rate: BlinkRate, *args: Any, **kwargs: Any) -> 'Hardware':
+        optional_led_blink(self.motion_led, rate)
+        return self
 
-    running_led_off: Callable[..., None]
-    running_led_on: Callable[..., None]
+    def motion_led_off(self, *args: Any, **kwargs: Any) -> 'Hardware':
+        optional_led_off(self.motion_led)
+        return self
+
+    def motion_led_on(self, *args: Any, **kwargs: Any) -> 'Hardware':
+        optional_led_on(self.motion_led)
+        return self
+
+    def running_led_off(self, *args: Any, **kwargs: Any) -> 'Hardware':
+        optional_led_off(self.running_led)
+        return self
+
+    def running_led_on(self, *args: Any, **kwargs: Any) -> 'Hardware':
+        optional_led_on(self.running_led)
+        return self

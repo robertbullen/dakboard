@@ -14,7 +14,7 @@ from transitions.extensions import GraphMachine
 from transitions.extensions.states import Timeout, add_state_features
 
 from interdaktive.config import Config
-from interdaktive.hardware import Hardware
+from interdaktive.hardware import BlinkRate, Hardware
 
 
 @dataclass(frozen=True)
@@ -174,15 +174,17 @@ class StateMachine(object):
         self.hardware.display_on()
 
     def on_enter_forced_awake(self, *args: Any, **kwargs: Any) -> None:
-        self.hardware.motion_led_blink()
-        self.hardware.display_on()
+        (self.hardware
+            .motion_led_blink(BlinkRate.FAST)
+            .display_on())
 
     def on_exit_forced_awake(self, *args: Any, **kwargs: Any) -> None:
         self.hardware.motion_led_off()
 
     def on_enter_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
-        self.hardware.motion_led_blink()
-        self.hardware.display_off()
+        (self.hardware
+            .motion_led_blink(BlinkRate.SLOW)
+            .display_off())
 
     def on_exit_forced_asleep(self, *args: Any, **kwargs: Any) -> None:
         self.hardware.motion_led_off()
