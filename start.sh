@@ -39,7 +39,6 @@ WEBSERVER_PID=0
 function start_webserver() {
     python3 -m interdaktive.webserver \
         --port=5000 \
-        --refresh-seconds=3 \
         --log-file-path="${LOG_FILE}" \
         --state-diagram-file-path="${STATE_DIAGRAM_FILE}" \
         &

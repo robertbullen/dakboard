@@ -24,7 +24,6 @@ if [ "$1" == 'webserver' ]; then
     python3 -m interdaktive.webserver \
         --debug \
         --port=5000 \
-        --refresh-seconds=3 \
         --log-file-path="${LOG_FILE}" \
         --state-diagram-file-path="${STATE_DIAGRAM_FILE}"
 fi

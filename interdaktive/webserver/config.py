@@ -6,7 +6,6 @@ class Config(argparse.Namespace):
     debug: bool
     log_file_path: Optional[str]
     port: int
-    refresh_seconds: int
     state_diagram_file_path: Optional[str]
 
     @staticmethod
@@ -29,12 +28,6 @@ class Config(argparse.Namespace):
             '--port',
             default=5000,
             help='The port to which the webserver will bind.'
-        )
-
-        parser.add_argument(
-            '--refresh-seconds',
-            default=3,
-            help='The interval in seconds that the browser will request updated content.'
         )
 
         parser.add_argument(
