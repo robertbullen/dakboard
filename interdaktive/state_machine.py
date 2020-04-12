@@ -94,10 +94,26 @@ class StateMachine(object):
             finalize_event=save_state_diagram,
         )
 
-        # Tweak the state diagram layout to yield a more readable result, mainly by drawing states
-        # top-to-bottom.
+        #
+        # Tweak the state diagram layout to yield a more readable result.
+        #
+
+        # Change the font for all elements.
+        self.machine.machine_attributes['fontname'] = 'DejaVu Sans Condensed'
+        self.machine.machine_attributes['fontsize'] = '24.0'
+
+        self.machine.style_attributes['edge']['default']['fontname'] = 'DejaVu Sans Condensed'
+        self.machine.style_attributes['edge']['default']['fontsize'] = '16.0'
+
+        self.machine.style_attributes['node']['default']['fontname'] = 'DejaVu Sans Condensed'
+        self.machine.style_attributes['node']['default']['fontsize'] = '16.0'
+
+        # Place the title at the top.
         self.machine.machine_attributes['labelloc'] = 'top'
+
+        # Draw states top-to-bottom with a little more separation than the default.
         self.machine.machine_attributes['rankdir'] = 'TB'
+        self.machine.machine_attributes['ranksep'] = '0.75'
 
         # Add transitions for process control: starting, stopping, and shutting_down.
         self.machine.add_transition(Transitions.started, States.starting, States.asleep,
