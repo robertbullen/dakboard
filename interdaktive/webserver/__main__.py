@@ -11,14 +11,30 @@ if __name__ == '__main__':
 
     app = Flask(__name__)
 
-    # SocketIO prefers an `async_mode` of 'eventlet', but that causes a problem in this app so
-    # 'threading' is specified instead.
+    # This app must specify `async_mode='threading'` when constructing the _SocketIO_ instance for
+    # it to play nicely with _watchdog_. Here's why:
     #
-    # More info: The *watchdog* package is used for watching files, and it does so on a separate
-    # 'threading' thread. If that thread attempts to send/emit a websocket message using SocketIO
-    # utilizing 'eventlet', that message is never transmitted. So even though 'eventlet' may scale
-    # better than 'threading', this is a very low-scale app and setting `async_mode='threading'`
-    # was the quickest and easiest solution.
+    # _SocketIO_ prefers `async_mode='eventlet'` over `async_mode='threading'` for good reasons:
+    #   - Using _eventlet_ scales better than _threading_.
+    #   - Using _eventlet_ enables true websocket support whereas using _threading_ falls back to
+    #     client-side long-polling.
+    #
+    # Meanwhile _watchdog_ supports only _threading_ for its async operations. If attempts are made
+    # to invoke _SocketIO_ send/emit functions from a _threading_ thread, _SocketIO_ will silently
+    # fail to deliver those messages due to the mixed async metaphors.
+    #
+    # A few workarounds are possible:
+    #   - Separate the _SocketIO_ and _watchdog_ responsibilities into individual processes that
+    #     leverage their prefered async mechanism and then build an IPC bridge between them. This
+    #     is discussed briefly at https://flask-socketio.readthedocs.io/en/latest/#using-multiple-workers.
+    #   - Use _SocketIO_'s `start_background_task()` utility function to transition from _watchdog_
+    #     threads to _SocketIO_'s current async model before sending messages.
+    #   - Force _SocketIO_ to use _threading_. This results in a loss of the _eventlet_ advantages
+    #     listed above, but has the advantage of being the simplest solution and also makes this
+    #     app lighter weight in that _eventlet_ is one less dependency that must be installed.
+    #
+    # Ultimately, this is a very low-scale, low-tech app, so the last workaround was chosen as the
+    # quickest and easiest way to get things working reliably.
     socketio = SocketIO(app, async_mode='threading')
 
     @app.route('/')
