@@ -52,4 +52,4 @@ if __name__ == '__main__':
             lambda abs_file_path: update_clients(log_route)
         )
 
-    socketio.run(app, debug=config.debug, host='0.0.0.0', port=config.port)
+    socketio.run(app, debug=config.debug, host='0.0.0.0', port=config.port, ssl_context='adhoc')
