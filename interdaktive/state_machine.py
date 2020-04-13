@@ -57,6 +57,7 @@ class StateMachine(object):
     config: Config
     hardware: Hardware
     machine: GraphMachine
+    are_edge_labels_shortened: bool = False
 
     def __init__(self, config: Config, hardware: Hardware) -> None:
         self.config = config
@@ -79,7 +80,27 @@ class StateMachine(object):
         # machine occurs.
         def save_state_diagram(*args: Any, **kwargs: Any) -> None:
             if config.state_diagram_file_path is not None:
-                self.machine.get_graph().draw(config.state_diagram_file_path, prog='dot')
+                graph = self.machine.get_graph()
+
+                # Shorten edge labels by grouping all internal transitions into a single
+                # 'n [internal]'. This makes the diagram much more readable.
+                if not self.are_edge_labels_shortened:
+                    self.are_edge_labels_shortened = True
+
+                    for edge in graph.edges():
+                        transitions = edge.attr['label'].split(' | ')
+                        internal_transitions_count = 0
+                        new_labels = []
+                        for transition in transitions:
+                            if transition.endswith('[internal]'):
+                                internal_transitions_count += 1
+                            else:
+                                new_labels.append(transition)
+                        if internal_transitions_count > 0:
+                            new_labels.append('{0} [internal]'.format(internal_transitions_count))
+                        edge.attr['label'] = ' | '.join(new_labels)
+
+                graph.draw(config.state_diagram_file_path, prog='dot')
 
         # Instantiate a GraphMachine.
         machine_class_with_features = add_state_features(Timeout)(GraphMachine)
