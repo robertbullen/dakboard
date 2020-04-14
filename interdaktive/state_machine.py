@@ -57,7 +57,7 @@ class StateMachine(object):
     config: Config
     hardware: Hardware
     machine: GraphMachine
-    are_edge_labels_shortened: bool = False
+    __are_edge_labels_shortened: bool = False
 
     def __init__(self, config: Config, hardware: Hardware) -> None:
         self.config = config
@@ -76,34 +76,13 @@ class StateMachine(object):
             else:
                 states_with_features.append(state)
 
-        # Define an event handler that saves the state diagram whenever a change to the state
-        # machine occurs.
-        def save_state_diagram(*args: Any, **kwargs: Any) -> None:
-            if config.state_diagram_file_path is not None:
-                graph = self.machine.get_graph()
-
-                # Shorten edge labels by grouping all internal transitions into a single
-                # 'n [internal]'. This makes the diagram much more readable.
-                if not self.are_edge_labels_shortened:
-                    self.are_edge_labels_shortened = True
-
-                    for edge in graph.edges():
-                        transitions = edge.attr['label'].split(' | ')
-                        internal_transitions_count = 0
-                        new_labels = []
-                        for transition in transitions:
-                            if transition.endswith('[internal]'):
-                                internal_transitions_count += 1
-                            else:
-                                new_labels.append(transition)
-                        if internal_transitions_count > 0:
-                            new_labels.append('{0} [internal]'.format(internal_transitions_count))
-                        edge.attr['label'] = ' | '.join(new_labels)
-
-                graph.draw(config.state_diagram_file_path, prog='dot')
-
         # Instantiate a GraphMachine.
         machine_class_with_features = add_state_features(Timeout)(GraphMachine)
+
+        def handle_finalize_event(*args: Any, **kwargs: Any) -> None:
+            logger = logging.getLogger(__name__).debug('----------')
+            self.save_state_diagram()
+
         self.machine = machine_class_with_features(
             model=self,
             states=states_with_features,
@@ -112,7 +91,7 @@ class StateMachine(object):
             show_conditions=True,
             show_state_attributes=True,
             title='InterDAKtive State Machine',
-            finalize_event=save_state_diagram,
+            finalize_event=handle_finalize_event,
         )
 
         # Tweak the state diagram layout to yield a more readable result. Start with changing the
@@ -170,10 +149,36 @@ class StateMachine(object):
         self.machine.add_transition(Transitions.timer_expired, [States.forced_asleep, States.forced_awake], States.asleep)
 
         # Save an initial diagram.
-        save_state_diagram()
+        self.save_state_diagram()
 
     def __getitem__(self, key: str) -> Callable[..., None]:
         return cast(Callable[..., None], getattr(self, getattr(Transitions, key)))
+
+    # Methods
+
+    def save_state_diagram(self) -> None:
+        if self.config.state_diagram_file_path is not None:
+            graph = self.machine.get_graph()
+
+            # Shorten edge labels by grouping all internal transitions into a single
+            # 'n [internal]'. This makes the diagram much more readable.
+            if not self.__are_edge_labels_shortened:
+                self.__are_edge_labels_shortened = True
+
+                for edge in graph.edges():
+                    transitions = edge.attr['label'].split(' | ')
+                    internal_transitions_count = 0
+                    new_labels = []
+                    for transition in transitions:
+                        if transition.endswith('[internal]'):
+                            internal_transitions_count += 1
+                        else:
+                            new_labels.append(transition)
+                    if internal_transitions_count > 0:
+                        new_labels.append('{0} [internal]'.format(internal_transitions_count))
+                    edge.attr['label'] = ' | '.join(new_labels)
+
+            graph.draw(self.config.state_diagram_file_path, prog='dot')
 
     # Transition Condition Predicates
 

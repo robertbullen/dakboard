@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     # Filter out a couple unwanted log messages from _transitions_.
     executed_save_state_diagram: Pattern[str] = re.compile(
-        r'Executed machine finalize callback \'<function StateMachine\.__init__\.<locals>\.save_state_diagram at 0x[0-9a-fA-F]+>\'.$'
+        r'Executed machine finalize callback \'<function StateMachine\.__init__\.<locals>\.handle_finalize_event at 0x[0-9a-fA-F]+>\'.$'
     )
     returning_graph_model: Pattern[str] = re.compile(
         r'^Returning graph of the first model. In future releases, this method will return a combined graph of all models.$'
