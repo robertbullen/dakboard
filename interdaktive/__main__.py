@@ -2,9 +2,10 @@ import logging
 import logging.handlers
 import re
 import signal
+import sys
 import threading
 import types
-from typing import List, Optional, Pattern
+from typing import List, Optional, Pattern, Type
 
 from interdaktive.config import Config
 from interdaktive.hardware import Hardware
@@ -14,7 +15,7 @@ if __name__ == '__main__':
     # Load up the configuration from command line arguments.
     config: Config = Config.from_args()
 
-    # Configure logging.
+    # Configure logging to write to rotating files.
     handlers: Optional[List[logging.Handler]] = None
     if config.log_file_path is not None:
         handlers = [logging.handlers.RotatingFileHandler(
@@ -28,6 +29,7 @@ if __name__ == '__main__':
         level=logging.DEBUG,
     )
 
+    # Filter out a couple unwanted log messages from _transitions_.
     executed_save_state_diagram: Pattern[str] = re.compile(
         r'Executed machine finalize callback \'<function StateMachine\.__init__\.<locals>\.save_state_diagram at 0x[0-9a-fA-F]+>\'.$'
     )
@@ -47,8 +49,24 @@ if __name__ == '__main__':
     logging.getLogger('transitions.core').addFilter(filter)
     logging.getLogger('transitions.extensions.diagrams').addFilter(filter)
 
+    # Log any unhandled exceptions.
     logger = logging.getLogger(__name__)
-    logger.debug(vars(config))
+
+    def handle_unhandled_exception(
+        exc_type: Type[BaseException],
+        exc_value: BaseException,
+        exc_traceback: types.TracebackType,
+    ) -> None:
+        global logger
+
+        if issubclass(exc_type, KeyboardInterrupt):
+            # Call the default hook.
+            sys.__excepthook__(exc_type, exc_value, exc_traceback)
+            return
+
+        logger.exception("Unhandled exception", exc_info=(exc_type, exc_value, exc_traceback))
+
+    sys.excepthook = handle_unhandled_exception
 
     # Instantiate hardware objects.
     hardware = Hardware(config)
