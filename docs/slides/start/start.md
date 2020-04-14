@@ -26,7 +26,13 @@
 
 ===
 
-<!-- .slide: class="columns layout" -->
+<!-- .slide: class="auto-width columns layout" id="toc" -->
+
+<style>
+    #toc > ul > li > ul {
+        display: block;
+    }
+</style>
 
 ## Table of Contents
 

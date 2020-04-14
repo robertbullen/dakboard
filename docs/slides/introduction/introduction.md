@@ -60,15 +60,21 @@
 
 <div class="figures equisized">
     <figure class="fragment">
-        <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
+        <p>
+            <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
+        </p>
         <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="DAKboard Console" src="slides/introduction/dakboard-console.png" />
+        <p>
+            <img alt="DAKboard Console" src="slides/introduction/dakboard-console.png" />
+        </p>
         <figcaption>Web console for configuring your dashboard content</figcaption>
     </figure>
     <figure class="fragment">
-        <img alt="DAKboard Dashboard" src="slides/introduction/dakboard-dashboard.jpg" />
+        <p>
+            <img alt="DAKboard Dashboard" src="slides/introduction/dakboard-dashboard.jpg" />
+        </p>
         <figcaption>Service that composes and delivers your dashboard as HTML</figcaption>
     </figure>
 </div>
