@@ -88,10 +88,6 @@ if __name__ == '__main__':
         hardware.control_button.when_released = state_machine[Transitions.control_button_released]
         hardware.control_button.when_held = state_machine[Transitions.control_button_held]
 
-    # Start the web server.
-    # web_server = WebServer(config, state_machine)
-    # web_server.serve_forever()
-
     # Transition the state machine to operational mode and run until signalled to quit.
     state_machine[Transitions.started]()
     signal.pause()
