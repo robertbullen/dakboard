@@ -17,7 +17,7 @@
 
 		<style>
 			/* This replicates the styling that a Bootstrap `<pre><code></code></pre>` block would
-				   have, except that it allows word wrapping and has a slightly smaller font. */
+			   have, except that it allows word wrapping and has a slightly smaller font. */
 			.pre-code {
 				color: #212529;
 				font-family: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
@@ -33,13 +33,14 @@
 			}
 
 			.highlight-change-background {
-				animation-name: fade-background-from-green;
+				animation-name: fade-background-from-primary;
 				animation-duration: 3s;
 			}
 
-			@keyframes fade-background-from-green {
+			@keyframes fade-background-from-primary {
 				from {
-					background-color: #28a745;
+					/* This background color is defined by Bootstrap's default `bg-primary` class. */
+					background-color: #007bff;
 				}
 			}
 		</style>

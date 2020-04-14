@@ -127,9 +127,10 @@
     #design-font-candidates > table > tbody > tr > td:nth-child(2) {
         font-size: larger;
     }
-    /* #design-font-candidates > table > tbody > tr > td:nth-child(3) {
+    #design-font-candidates > table > tbody > tr > td:nth-child(1n+3) {
         font-size: smaller;
-    } */
+        vertical-align: middle;
+    }
 
     #design-font-candidates > table > tbody > tr > td abbr {
         text-decoration: none;
@@ -168,15 +169,15 @@
 
 | Name             | Example                                |                  Numbers                  |                       Letter Forms                       |                Lowercase                |                  Mark Shapes                   |
 | ---------------- | -------------------------------------- | :---------------------------------------: | :------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------: |
-| Roboto (default) | 11:59 aoce Sun Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
-| Montserrat       | 11:59 aoce Sun Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Open Sans        | 11:59 aoce Sun Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Oxygen           | 11:59 aoce Sun Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
-| Poppins          | 11:59 aoce Sun Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
-| PT Sans          | 11:59 aoce Sun Illiterate xN Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Short x-height">🔴</abbr>  |            <abbr title="">🟢</abbr>            |
-| Ubuntu           | 11:59 aoce Sun Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Roboto (default) | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
+| Montserrat       | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Open Sans        | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Oxygen           | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
+| Poppins          | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
+| PT Sans          | 11:59 Sun aoce Illiterate xN Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Short x-height">🔴</abbr>  |            <abbr title="">🟢</abbr>            |
+| Ubuntu           | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
 
-<input id="font-scale-range" max="1" min="0.1" step="0.1" type="range" value="100" />
+<input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
 
 ===
 

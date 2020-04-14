@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
 		if (fontScaleRange) {
 			window.clearInterval(intervalHandle);
 
-			fontScaleRange.addEventListener('change', event => {
+			fontScaleRange.addEventListener('input', (event) => {
 				const fontCells = document.querySelectorAll(
 					'#design-font-candidates > table > tbody > tr > td:nth-child(2)',
 				);
