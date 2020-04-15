@@ -53,7 +53,26 @@
 	--news-height: calc(var(--news-content-height) + var(--block-padding) * 2);
 	--news-top: calc(100vh - var(--block-margin) - var(--news-height));
 
-	--weather-content-height: calc(373 / 1920 * 100vh);
+	--weather-temp-font-size: var(--font-size-display-1);
+	--weather-temp-line-height: 1;
+
+	--weather-summary-font-size: var(--font-size-body-2);
+	--weather-summary-margin-top: var(--content-space-4);
+
+	--weather-current-margin-bottom: var(--content-space-1);
+
+	--weather-current-content-height: calc(
+		var(--weather-temp-font-size) * var(--weather-temp-line-height) +
+			var(--weather-summary-margin-top) + var(--weather-summary-font-size) *
+			var(--line-height) * 2 + var(--weather-current-margin-bottom)
+	);
+
+	/* TODO: Make a dynamic calculation of this height. */
+	--weather-forecast-content-height: calc(210 / 1920 * 100vh);
+
+	--weather-content-height: calc(
+		var(--weather-current-content-height) + var(--weather-forecast-content-height)
+	);
 	--weather-top: var(--second-row-top);
 	--weather-height: calc(var(--weather-content-height) + var(--block-padding) * 2);
 
@@ -142,6 +161,14 @@ body {
 	padding: 0 !important;
 }
 
+/* DAKboard decreases tracking in `.large` and `.medium` classes using absolute units, so change
+   them to a relative units. `.medium` tracking is insignificant in this layout so it is zeroed. */
+.block .large {
+	letter-spacing: -0.025em !important;
+}
+.block .medium {
+	letter-spacing: 0 !important;
+}
 /*
  * BACKGROUND
  */
@@ -191,6 +218,11 @@ body {
 	line-height: var(--first-row-content-height) !important;
 }
 
+/* Change padding to relative units. */
+.block#\35 dddf1d8f62f5942742ee412 .time-ampm {
+	padding-left: 0.5em;
+}
+
 /*
  * CALENDAR
  */
@@ -230,8 +262,10 @@ body {
 	font-size: var(--font-size-body-3) !important;
 }
 
-/* The agenda can get away with the tighter line height and it actually looks better that way. */
+/* Increase the font size of the calendar agenda. The agenda can get away with the tighter line
+   height and it actually looks better that way. */
 .block#\35 ddded42acf0306d7803f832 .day-container li {
+	font-size: var(--font-size-body-1) !important;
 	line-height: var(--line-height-tight) !important;
 	margin-top: var(--content-space-3) !important;
 }
@@ -243,12 +277,9 @@ body {
 
 .block#\35 ddded42acf0306d7803f832 .day-container .event-summary,
 .block#\35 ddded42acf0306d7803f832 .day-container .no-events {
-	margin-left: calc(80 / 1080 * 100vw) !important;
-}
-
-/* Increase the font size of the calendar agenda. */
-.block#\35 ddded42acf0306d7803f832 .calendar-agenda-font-large {
 	font-size: var(--font-size-body-1) !important;
+	margin-left: calc(80 / 1080 * 100vw) !important;
+	margin-top: var(--content-space-3) !important;
 }
 
 /* For better proximity, the day title and day events are moved closer together. This margin-bottom
@@ -261,6 +292,10 @@ body {
 .block#\35 ddded42acf0306d7803f832 .minute-container {
 	padding-top: 0.5em !important;
 }
+
+/*
+TODO: Switch to relative spacing in hour & minute paddings.
+*/
 
 /*
  * WEATHER
@@ -285,8 +320,8 @@ body {
 
 /* Adjust the line-height so that the large temperature aligns to the top of its container. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
-	font-size: var(--font-size-display-1) !important;
-	line-height: 1 !important;
+	font-size: var(--weather-temp-font-size) !important;
+	line-height: var(--weather-temp-line-height) !important;
 }
 
 /* Adjust the font-sizes and separation of "feels like" and summary. */
@@ -294,13 +329,13 @@ body {
 	font-size: var(--font-size-body-1) !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
-	font-size: var(--font-size-body-2) !important;
-	margin-top: var(--content-space-4) !important;
+	font-size: var(--weather-summary-font-size) !important;
+	margin-top: var(--weather-summary-margin-top) !important;
 }
 
 /* Add some vertical separation between "now" and the forecast. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current {
-	margin-bottom: var(--content-space-1) !important;
+	margin-bottom: var(--weather-current-margin-bottom) !important;
 }
 
 /* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
@@ -327,8 +362,10 @@ body {
 /* Layout the forecast items. */
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast {
 	display: flex !important;
+	flex: 1 0 0 !important;
 	flex-direction: row !important;
 	flex-wrap: wrap !important;
+	width: 100% !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast > * {
 	display: block !important;
@@ -341,6 +378,7 @@ body {
 	border-radius: var(--border-radius) !important;
 	font-size: var(--font-size-body-3) !important;
 	margin-top: 0 !important;
+	min-width: unset !important;
 	padding: var(--content-space-4) !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast span.fas {
@@ -429,6 +467,7 @@ body {
 }
 
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-item-description {
+	display: block !important;
 	font-size: var(--countdown-item-description-font-size) !important;
 }
 
@@ -447,7 +486,7 @@ body {
    the marquee element is present. It is empty but takes up vertical space, which throws off the
    other content. */
 .block#\35 dddf2ebacf030303355d494 .rss-scroll {
-	display: none;
+	display: none !important;
 }
 
 /* Give the title just one line, truncating with an ellipsis if necessary. It is capitalized to
