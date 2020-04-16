@@ -103,6 +103,7 @@ class StateMachine(object):
 
         self.machine.style_attributes['edge']['default']['fontname'] = 'DejaVu Sans Condensed'
         self.machine.style_attributes['edge']['default']['fontsize'] = '12.0'
+        self.machine.style_attributes['edge']['previous']['fontcolor'] = 'blue'
 
         self.machine.style_attributes['node']['default']['fillcolor'] = 'gainsboro'
         self.machine.style_attributes['node']['default']['fontname'] = 'DejaVu Sans Condensed'

@@ -113,7 +113,7 @@
 
 <!-- .slide: class="columns layout" -->
 
-### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories)
+### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/ng/business/p/dell-u2518d-monitor/pd)
 
 - Column
 
