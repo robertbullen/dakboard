@@ -1,21 +1,24 @@
 # dakboard
 
-This project takes a [DIY DAKboard](https://blog.dakboard.com/diy-wall-display/) and customizes it with two features:
+This project starts with a [DIY DAKboard](https://blog.dakboard.com/diy-wall-display/) and customizes it with two features:
 
--   A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
--   [Handwritten CSS](css/purply-derply.css) for a two-column portrait layout that looks like this:
+- A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
+- [Handwritten CSS](css/) for a two-column portrait layout that looks like this:
 
-    ![Screenshot](docs/dakboard/img/screenshot.jpg)
+    ![Screenshot](docs/slides/start/screenshot.jpg)
 
     _[Background photo](https://unsplash.com/photos/gE1phX0Lbos) by [Hybrid](https://unsplash.com/@artbyhybrid?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge) on [Unsplash](https://unsplash.com)._
 
 ## Presentation
 
-A slide deck about this project is available at <https://robertbullen.github.io/dakboard/>.
+I created an online [presentation](https://robertbullen.github.io/dakboard/) about this project for a talk at work:
+
+- It's a [Reveal.js](https://revealjs.com/#/) project and its source code can be found in this repo's [docs/](docs/) subdirectory. My slides, in particular, are found in [docs/slides/](docs/slides/).
+- A viewable instance is hosted by [GitHub Pages](https://pages.github.com/) at <https://robertbullen.github.io/dakboard/>.
 
 ## Credits
 
-This project was sponsored in part by my employer, [Constellation](https://constellationmutual.com/), who allocates its IT employees 12 Personal Hack Days per year to pursue technology-related personal interests as part of its growth and development strategy.
+This project was sponsored in part by my employer, [Constellation](https://constellationmutual.com/). As part of its employee growth and development strategy, Constellation allocates IT staff 12 Personal Hack Days per year to pursue self-guided technology-related interests. I used four of my Personal Hack Days (plus more of my own time) working on this project.
 
 ## Software
 

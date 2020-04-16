@@ -5,10 +5,11 @@
 ===
 
 <form id="status-url-form">
-    <div style="align-items: stretch; display: flex; flex-flow: row nowrap; font-size: x-large; margin-bottom: 10px;">
+    <div style="align-items: stretch; display: flex; flex-flow: row nowrap; font-size: x-large;">
         <input
             id="status-url"
             name="status-url"
+            placeholder="Enter the web address to an InterDAKtive webserver"
             style="flex: 1 1 100%; font-size: inherit;"
             type="url"
         />
