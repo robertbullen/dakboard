@@ -4,6 +4,7 @@
 
 - Pi models and capabilities
 - hardware pin programming
+    - <https://pinout.xyz/>
 - electronic circuits
     - LED brightness variability
 - diagramming using Fritzing
