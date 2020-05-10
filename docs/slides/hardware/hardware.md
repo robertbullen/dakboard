@@ -14,7 +14,7 @@
 
 - Column
 
-    - Experimentation started with the following hardware that I mostly already owned
+    - Experimentation started with hardware that I mostly already owned, listed on the following slides
 
 ===
 
@@ -98,16 +98,22 @@
 
 ===
 
-<!-- .slide: id="hardware-final-design" -->
+<!-- .slide: class="columns layout" id="hardware-final-design" -->
 
 ## Final Design Changes
 
-- The 32" TV prototype display was unsatisfactory for the intended location
-    - Too large for the aesthetic goals
-    - Too pixelated for the viewing distance
-        - Full HD (1920×1080) on a 32" display works out to 70ppi
-        - For comparison, an iPhone 7 Plus display packs 401ppi
-- The following hardware upgrades were used for the final design
+- Column
+
+    - The 32" TV prototype display was unsatisfactory for the intended location
+        - Too large for the aesthetic goals
+        - Too pixelated for the viewing distance
+            - Full HD (1920×1080) on a 32" display works out to 70ppi
+            - For comparison, an iPhone 7 Plus display packs 401ppi
+    - The following hardware upgrades were used for the final design
+
+- Column
+
+    - TODO: Insert photo of final product <!-- .element: class="todo" -->
 
 ===
 
@@ -169,6 +175,24 @@
 
 ===
 
+<!-- .slide: class="columns layout" -->
+
+### [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+
+- Column
+
+    - A monitor stand on was chosen over wall mounting
+    - Allows for independent mounting of the monitor and Pi case
+    - Two other WALI stands were already present in my home office
+        - Affordable, functional, and parts are interchangable
+    - \$38
+
+- Column
+
+    ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
+
+===
+
 <!-- .slide: id="hardware-costs" -->
 
 ## Costs
@@ -193,14 +217,20 @@
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----: |
 | [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories) | \$125 |
 | [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) and accessories                                          |  \$45 |
+| [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                                          |  \$38 |
 | [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                                  |  \$11 |
 | 2GB USB Thumb Drive                                                                                                                                          |   \$0 |
-|                                                                                                                                                              | \$181 |
+|                                                                                                                                                              | \$219 |
 
+<!-- TODO: Include case in costs? -->
 <!-- | [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                     | \$10 | -->
 
 ===
 
-### Costs Compared to Off-the-Shelf DAKboard
+### Comparison to Off-the-Shelf DAKboard
 
-TODO: Cost comparison
+|         | Custom                                    | Wall Display v2 Plus                         |
+| ------- | ----------------------------------------- | -------------------------------------------- |
+| Cost    | \$24 + \$219 = \$243                      | \$375                                        |
+| Display | 25" QHD<br/>2560 × 1440 = 3.69MP @ 117ppi | 24" Full HD<br/>1920 × 1080 = 2.07MP @ 92ppi |
+| Pi      | Pi 4                                      | Pi 3                                         |

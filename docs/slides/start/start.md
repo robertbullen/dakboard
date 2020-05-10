@@ -12,22 +12,23 @@
     }
 </style>
 
-<!-- markdownlint-disable first-line-heading -->
-- Column
-<!-- markdownlint-enable first-line-heading -->
+<!-- markdownlint-disable first-line-heading heading-start-left -->
 
-    <!-- markdownlint-disable heading-start-left -->
+- Column
+
     # Bullen Family Dashboard
-    <!-- markdownlint-enable heading-start-left -->
 
 - Column
 
     ![Screenshot](slides/start/screenshot.jpg)
 
+<!-- markdownlint-enable first-line-heading heading-start-left -->
+
 ===
 
 <!-- .slide: class="auto-width columns layout" id="toc" -->
 
+<!-- Prevent the lists within each column from centering themselves. -->
 <style>
     #toc > ul > li > ul {
         display: block;
@@ -36,29 +37,39 @@
 
 ## Table of Contents
 
+<!-- markdownlint-disable ol-prefix -->
+
 - Column
 
-    - [Introduction](#/introduction-introduction)
+    1. [Intro](#/introduction-introduction)
         - [Inspiration](#/introduction-inspiration)
         - [DAKboard](#/introduction-dakboard)
         - [Goals](#/introduction-goals)
-    - [Hardware](#/hardware-hardware)
+
+- Column
+
+    2. [Hardware](#/hardware-hardware)
         - [Prototype](#/hardware-prototype)
         - [Final Design](#/hardware-final-design)
         - [Costs](#/hardware-costs)
 
 - Column
 
-    - [Design](#/design-design)
+    3. [Design](#/design-design)
         - [Colors](#/design-colors)
         - [Font](#/design-font)
         - [CSS](#/design-css)
-    - [Software](#/software-software)
+
+- Column
+  
+    4. [Software](#/software-software)
         - [Controlling Displays](#/software-controlling-displays)
-        - [Noteworthy Python Packages](#/software-python-packages)
+        - [Python Packages](#/software-python-packages)
 
 - Column
 
-    - [Demo](#/demo-demo)
-    - [Conclusion](#/conclusion-conclusion)
+    5. [Conclusion](#/conclusion-conclusion)
+        - [Demo](#/conclusion-demo)
         - [Links](#/conclusion-links)
+
+<!-- markdownlint-enable ol-prefix -->

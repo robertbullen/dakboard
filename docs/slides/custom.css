@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /*
- * Global style overrides.
+ * Global style overrides
  */
 
 .reveal .slides section {
@@ -57,16 +57,15 @@
 }
 
 .reveal .slides section .todo {
-	background-color: lightcoral;
+	background-color: lightpink;
 	color: red;
 }
 
 /*
- * Reusable slide layouts.
+ * Multi-Column slide layout
  */
 
-/* Multi-column (up to three) Layout. */
-
+/* Treat the root `ul` element much like a Bootstrap ".row". */
 .reveal .slides section .layout.columns > ul {
 	/* border: solid 1px green; */
 	align-items: stretch;
@@ -75,15 +74,19 @@
 	list-style-type: none;
 	margin: 0 -20px;
 }
+
+/* The `auto-width` mod prevents the root `ul` from stretching its width to fill its parent. */
 .reveal .slides section .layout.columns.auto-width > ul {
 	margin: 0 auto;
 	width: fit-content;
 }
 
+/* Treat each top-level `li` element much like a Bootstrap ".column". */
 .reveal .slides section .layout.columns > ul > li {
 	/* border: solid 1px red; */
 	display: block;
 	flex: 1 0 0;
+	margin: 0;
 	padding: 0 20px;
 	text-align: center;
 	width: 100%;
@@ -124,7 +127,9 @@
 	width: 80%;
 }
 
-/* A set of figures. */
+/*
+ * Figures slide layout
+ */
 
 .reveal .slides section .figures {
 	display: flex;

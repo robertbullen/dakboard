@@ -4,6 +4,30 @@
 
 ===
 
+<!-- .slide: id="conclusion-demo" -->
+
+## Demo
+
+TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .element: class="todo" -->
+
+===
+
+<form id="status-url-form">
+    <div style="align-items: stretch; display: flex; flex-flow: row nowrap; font-size: x-large;">
+        <input
+            id="status-url"
+            name="status-url"
+            placeholder="Enter the web address to an InterDAKtive webserver"
+            style="flex: 1 1 100%; font-size: inherit;"
+            type="url"
+        />
+        <button style="flex: 0 0 auto; font-size: inherit;" type="submit">Load</button>
+    </div>
+</form>
+<iframe class="stretch" id="status-iframe" style="display: block; width: 100%"></iframe>
+
+===
+
 <!-- .slide: class="columns layout" id="conclusion-links" -->
 
 ## Links

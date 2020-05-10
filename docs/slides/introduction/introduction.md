@@ -107,10 +107,10 @@
 
 - Column
 
+    - Display the date, time, and weather
     - Provide a consolidated family calendar
         - Become the successor to the kids' classroom monthly calendar
     - Publish *keeper* photos that are otherwise rarely viewed after capture
-    - Show the weather to prepare for the day
     - Control the display intelligently
         - Turn on only while viewing
         - Keep off during nighttime hours
@@ -160,6 +160,7 @@
 - Column
 
     - Learn about programming electronics with Raspberry Pis
+    - Delve into the world of Python
     - Add an interesting project to my personal GitHub account
-    - Excite and inspire others at Constellation
+    - Excite and inspire others at Constellation to embrace Personal Hack Days
     - Reinforce management's decision to bestow this privilege
