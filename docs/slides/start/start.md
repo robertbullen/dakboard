@@ -54,8 +54,8 @@
         - [Font](#/design-font)
         - [CSS](#/design-css)
     - [Software](#/software-software)
-        - [Noteworthy Python Packages](#/software-python-packages)
         - [Controlling Displays](#/software-controlling-displays)
+        - [Noteworthy Python Packages](#/software-python-packages)
 
 - Column
 
