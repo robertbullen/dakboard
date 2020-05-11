@@ -1,8 +1,9 @@
 <!-- .slide: id="software-software" -->
-
 # Software
 
 ===
+<!-- .slide: id="software-controlling-displays" -->
+## Controlling the Display
 
 <style>
     #software-controlling-displays table {
@@ -20,10 +21,6 @@
     }
 </style>
 
-<!-- .slide: id="software-controlling-displays" -->
-
-## Controlling the Display
-
 | Display           | Command      | Results | Notes                                                                                                                               |
 | ----------------- | ------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Dell U2518D       | `cec-client` | 👎       | The Dell doesn't respond to CEC commands, which makes sense because it's a computer monitor and not a home theater component.       |
@@ -32,23 +29,17 @@
 | Samsung UN32M5300 | `vcgencmd`   | 👎       | The Samsung stays on for several minutes after the HDMI signal turns off, presenting a "No Source" message, which is undesirable.   |
 
 ===
-
 <!-- .slide: id="software-python-packages" -->
-
 ## Noteworthy Python Packages
 
 ===
-
 ### argparse
 
 ===
-
 ### gziozero
 
 ===
-
 ### transitions
 
 ===
-
 ### typing + mypy

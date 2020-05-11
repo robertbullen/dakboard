@@ -1,12 +1,31 @@
 <!-- .slide: id="design-design" -->
-
 # Design
 
 ===
+<!-- .slide: id="design-templates" -->
+## Existing Templates
 
-<!-- .slide: class="columns layout" id="design-colors" -->
+- Existing templates were attractive but sparse
+- Challenge: create a custom design that was both attractive and data-dense
 
-## Colors
+<div class="figures equisized">
+    <figure>
+        <img alt="DAKboard Template 1" src="slides/design/dakboard-agenda-tan.jpg" />
+    </figure>
+    <figure>
+        <img alt="DAKboard Template 2" src="slides/design/dakboard-big-calendar.png" />
+    </figure>
+    <figure>
+        <img alt="DAKboard Template 3" src="slides/design/dakboard-photo-frame.jpg" />
+    </figure>
+    <figure>
+        <img alt="DAKboard Template 4" src="slides/design/dakboard-smarthome-dashboard.jpg" />
+    </figure>
+</div>
+
+===
+<!-- .slide: class="columns layout" id="design-background" -->
+## Background Image and Colors
 
 - Column
 
@@ -14,21 +33,39 @@
 
 - Column
 
-    - I started with the background, which was selected from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
+    - I started with this background, which was selected from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
     - I was looking for a natural yet daring background
     - Ran it through [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/), which analyzed the image and came up with the following five colors
 
-    ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
+        ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
+
+    - I chose Medium Violet Red (#8C145C) as my starting point for the color palette
 
 ===
+<!-- .slide: class="columns layout" id="design-colors" -->
+## Foreground Colors
 
+- Column
+
+    - White as default foreground text
+    - Preassigned colors for calendars (no legend or names required!)
+        - Pink for Emily
+        - Orange for Robert
+        - Blue for Brooke
+        - Green for Kerry
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to select the following
+
+- Column
+
+    ![Paletton.com Colors](slides/design/paletton-colors.png)
+
+===
 <!-- .slide: id="design-font" -->
-
 ## Font
 
 ===
-
 <!-- .slide: id="design-font-criteria" -->
+### Font Selection Criteria
 
 <style>
     #design-font-criteria .figures {
@@ -44,8 +81,6 @@
         font-size: smaller;
     }
 </style>
-
-### Font Selection Criteria
 
 <div class="figures">
     <figure class="fragment">
@@ -101,8 +136,8 @@
 <p>Graphics from <a href="https://www.fontsmith.com/blog/2016/06/29/the-a-z-of-typographic-terms">Fontsmith's <cite>The A-Z of Typographic Terms</cite></a>.</p>
 
 ===
-
 <!-- .slide: id="design-font-candidates" -->
+### Font Candidates
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -165,10 +200,8 @@
     }
 </style>
 
-### Font Candidates
-
-| Name             | Example                                |                  Numbers                  |                       Letter Forms                       |                Lowercase                |                  Mark Shapes                   |
-| ---------------- | -------------------------------------- | :---------------------------------------: | :------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------: |
+| Name             | Example                                |                 Numbers                  |                      Letter Forms                       |               Lowercase                |                  Mark Shapes                  |
+| ---------------- | -------------------------------------- | :--------------------------------------: | :-----------------------------------------------------: | :------------------------------------: | :-------------------------------------------: |
 | Roboto (default) | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
 | Montserrat       | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
 | Open Sans        | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
@@ -180,5 +213,4 @@
 <input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
 
 ===
-
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->

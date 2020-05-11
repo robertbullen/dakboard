@@ -1,11 +1,8 @@
 <!-- .slide: id="hardware-hardware" -->
-
 # Hardware
 
 ===
-
 <!-- .slide: class="columns layout" id="hardware-prototype" -->
-
 ## Prototype
 
 - Column
@@ -17,9 +14,7 @@
     - Experimentation started with hardware that I mostly already owned, listed on the following slides
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/)
 
 - Column
@@ -33,9 +28,7 @@
     ![Samsung 32" Class M5300 Full HD TV](slides/hardware/samsung-un32m5300.jpg)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
 - Column
@@ -50,9 +43,7 @@
     - \$0
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Adafruit PIR Sensor](https://www.adafruit.com/product/189)
 
 - Column
@@ -69,9 +60,7 @@
     ![Adafruit PIR Sensor](slides/hardware/adafruit-pir.png)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)
 
 - Column
@@ -91,15 +80,12 @@
     - \$13
 
 ===
-
 ### Wiring Diagram
 
 ![Fritzing Diagram](slides/hardware/fritzing-diagram.png) <!-- .element: style="max-height: 900px;" -->
 
 ===
-
 <!-- .slide: class="columns layout" id="hardware-final-design" -->
-
 ## Final Design Changes
 
 - Column
@@ -116,9 +102,7 @@
     - TODO: Insert photo of final product <!-- .element: class="todo" -->
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/ng/business/p/dell-u2518d-monitor/pd)
 
 - Column
@@ -134,9 +118,7 @@
     - \$125
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
 - Column
@@ -155,9 +137,7 @@
     ![Raspberry Pi 4 Model B with 1GB RAM](slides/hardware/raspberry-pi-4.jpg)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### 2GB USB Thumb Drive
 
 - Column
@@ -174,9 +154,7 @@
     - \$0
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
 
 - Column
@@ -192,13 +170,10 @@
     ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
 
 ===
-
 <!-- .slide: id="hardware-costs" -->
-
 ## Costs
 
 ===
-
 ### Prototype Costs
 
 | Part                                                                                                                                                 | Cost |
@@ -210,7 +185,6 @@
 |                                                                                                                                                      | \$24 |
 
 ===
-
 ### Final Design Costs
 
 | Part                                                                                                                                                         |  Cost |
@@ -226,7 +200,7 @@
 <!-- | [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                     | \$10 | -->
 
 ===
-
+<!-- .slide: id="hardware-comparison" -->
 ### Comparison to Off-the-Shelf DAKboard
 
 |         | Custom                                    | Wall Display v2 Plus                         |

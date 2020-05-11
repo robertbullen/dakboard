@@ -25,8 +25,8 @@
 <!-- markdownlint-enable first-line-heading heading-start-left -->
 
 ===
-
 <!-- .slide: class="auto-width columns layout" id="toc" -->
+## Table of Contents
 
 <!-- Prevent the lists within each column from centering themselves. -->
 <style>
@@ -34,8 +34,6 @@
         display: block;
     }
 </style>
-
-## Table of Contents
 
 <!-- markdownlint-disable ol-prefix -->
 
@@ -52,10 +50,12 @@
         - [Prototype](#/hardware-prototype)
         - [Final Design](#/hardware-final-design)
         - [Costs](#/hardware-costs)
+        - [Comparison to Prefab](#/hardware-comparison)
 
 - Column
 
     3. [Design](#/design-design)
+        - [Background](#/design-background)
         - [Colors](#/design-colors)
         - [Font](#/design-font)
         - [CSS](#/design-css)

@@ -1,11 +1,8 @@
 <!-- .slide: id="conclusion-conclusion" -->
-
 # Conclusion
 
 ===
-
 <!-- .slide: id="conclusion-demo" -->
-
 ## Demo
 
 TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .element: class="todo" -->
@@ -27,9 +24,7 @@ TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .e
 <iframe class="stretch" id="status-iframe" style="display: block; width: 100%"></iframe>
 
 ===
-
 <!-- .slide: class="columns layout" id="conclusion-links" -->
-
 ## Links
 
 - Column

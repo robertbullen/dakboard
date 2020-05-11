@@ -1,10 +1,9 @@
 <!-- .slide: id="introduction-introduction" -->
-
 # Introduction
 
 ===
-
 <!-- .slide: id="introduction-inspiration" -->
+## Inspiration
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
@@ -40,8 +39,6 @@
     }
 </style>
 
-## Inspiration
-
 > "My friend has a DAKboard and I think we need one." <!-- .element: class="wife" -->
 >
 > "A what?" <!-- .element: class="me" -->
@@ -51,9 +48,7 @@
 > "I'll look into it." <!-- .element: class="me" -->
 
 ===
-
 <!-- .slide: id="introduction-dakboard" -->
-
 <!-- markdownlint-disable no-trailing-punctuation -->
 ### DAKboard Is A...
 <!-- markdownlint-enable no-trailing-punctuation -->
@@ -80,15 +75,12 @@
 </div>
 
 ===
-
 ### DAKboard Supports DIY
 
 <iframe class="stretch" data-src="https://blog.dakboard.com/diy-wall-display/"></iframe>
 
 ===
-
 <!-- .slide: id="introduction-goals" -->
-
 ## Goals
 
 - Functional
@@ -96,9 +88,7 @@
 - Personal/Professional
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### Functional Goals
 
 - Column
@@ -116,8 +106,8 @@
         - Keep off during nighttime hours
 
 ===
-
 <!-- .slide: class="columns layout" id="introduction-aesthetic-goals" -->
+### Aesthetic Goals
 
 <style>
  #no-sign {
@@ -127,8 +117,6 @@
     top: -100px;
 }
 </style>
-
-### Aesthetic Goals
 
 - Column
 
@@ -144,9 +132,7 @@
     🚫<!-- .element: class="fragment fade-in" id="no-sign" -->
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### Personal/Professional Goals
 
 - Column
