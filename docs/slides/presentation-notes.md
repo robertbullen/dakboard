@@ -2,14 +2,8 @@
 
 ## Hardware
 
-- Pi models and capabilities
-- hardware pin programming
-    - <https://pinout.xyz/>
 - electronic circuits
     - LED brightness variability
-- diagramming using Fritzing
-
-## Software
 
 ### Python
 
@@ -30,8 +24,5 @@
 - Clean and modern, but natural and organic
 - maximize data density while minimizing clutter
     - compare with provided templates
-- font selection
-    - compare cap heights, x-height, counters, and bowl
-- color palette selection services
 - CSS variables and calculations
 - infinitely scalable design

@@ -34,6 +34,10 @@
 	margin-bottom: 40px;
 }
 
+.reveal .slides iframe {
+	background: white;
+}
+
 .reveal .slides section ul ul {
 	margin-left: 1em;
 	margin-top: 0.5em;
