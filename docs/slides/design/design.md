@@ -5,8 +5,8 @@
 <!-- .slide: id="design-templates" -->
 ## Existing Templates
 
-- Existing templates were attractive but sparse
-- Challenge: create a custom design that was both attractive and data-dense
+- Existing templates were attractive but data-sparse
+- I challenged myself to create a custom design that was both attractive and data-dense
 
 <div class="figures equisized">
     <figure>
@@ -33,13 +33,13 @@
 
 - Column
 
-    - I started with this background, which was selected from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
-    - I was looking for a natural yet daring background
-    - Ran it through [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/), which analyzed the image and came up with the following five colors
+    - Looked for an organic, daring background
+    - Selected this one from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
+    - Analyzed its color palette using [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/)
 
         ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
 
-    - I chose Medium Violet Red (#8C145C) as my starting point for the color palette
+    - Chose Medium Violet Red (#8C115C) as the starting point for foreground colors
 
 ===
 <!-- .slide: class="columns layout" id="design-colors" -->
@@ -47,13 +47,13 @@
 
 - Column
 
-    - White as default foreground text
-    - Preassigned colors for calendars (no legend or names required!)
-        - Pink for Emily
-        - Orange for Robert
-        - Blue for Brooke
-        - Green for Kerry
-    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to select the following
+    - Kept white as the default foreground text, like all DAKboard templates
+    - Adopted family conventions for calendar colors&mdash;no legend or names required!
+        - Pink for Emily <!-- .element style="color: #f755b7;" -->
+        - Orange for Robert <!-- .element style="color: #ffb157;" -->
+        - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
+        - Green for Kerry <!-- .element style="color: #c9fd57;" -->
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette
 
 - Column
 
@@ -198,19 +198,44 @@
     #design-font-candidates > table > tbody > tr:nth-child(7) > td:nth-child(2) {
         font-family: 'Ubuntu';
     }
+
+    #design-font-candidates > p {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    #design-font-candidates > p > * {
+        margin: 0 1rem;
+    }
+
+    #design-font-candidates > p > label {
+        font-size: smaller;
+        font-style: italic;
+    }
+
+    #design-font-candidates > p > input {
+        width: 33%;
+    }
 </style>
 
 | Name             | Example                                |                 Numbers                  |                      Letter Forms                       |               Lowercase                |                  Mark Shapes                  |
 | ---------------- | -------------------------------------- | :--------------------------------------: | :-----------------------------------------------------: | :------------------------------------: | :-------------------------------------------: |
-| Roboto (default) | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
-| Montserrat       | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Open Sans        | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Oxygen           | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
-| Poppins          | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
-| PT Sans          | 11:59 Sun aoce Illiterate xN Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Short x-height">🔴</abbr>  |            <abbr title="">🟢</abbr>            |
-| Ubuntu           | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Roboto (default) | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
+| Montserrat       | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Open Sans        | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Oxygen           | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
+| Poppins          | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
+| PT Sans          | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
+| Ubuntu           | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
 
-<input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
+<p>
+    <label for="font-scale-range">Distance simulator:</label>
+    <img alt="Far" src="slides/design//grover-far.jpg" />
+    <input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
+    <img alt="Near" src="slides/design/grover-near.jpg" />
+</p>
 
 ===
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->

@@ -203,8 +203,8 @@
 <!-- .slide: id="hardware-comparison" -->
 ### Comparison to Off-the-Shelf DAKboard
 
-|         | Custom                                    | Wall Display v2 Plus                         |
-| ------- | ----------------------------------------- | -------------------------------------------- |
-| Cost    | \$24 + \$219 = \$243                      | \$375                                        |
-| Display | 25" QHD<br/>2560 × 1440 = 3.69MP @ 117ppi | 24" Full HD<br/>1920 × 1080 = 2.07MP @ 92ppi |
-| Pi      | Pi 4                                      | Pi 3                                         |
+|         | Wall Display v2 Plus                         | Custom                                    |
+| ------- | -------------------------------------------- | ----------------------------------------- |
+| Cost    | \$375                                        | \$24 + \$219 = \$243                      |
+| Display | 24" Full HD<br/>1920 × 1080 = 2.07MP @ 92ppi | 25" QHD<br/>2560 × 1440 = 3.69MP @ 117ppi |
+| Pi      | Pi 3                                         | Pi 4                                      |
