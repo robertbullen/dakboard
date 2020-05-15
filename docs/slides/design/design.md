@@ -24,42 +24,6 @@
 </div>
 
 ===
-<!-- .slide: class="columns layout" id="design-background" -->
-## Background Image and Colors
-
-- Column
-
-    ![Background Image](slides/design/purply-derply-background.jpg)
-
-- Column
-
-    - Looked for an organic, daring background
-    - Selected this one from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
-    - Analyzed its color palette using [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/)
-
-        ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
-
-    - Chose Medium Violet Red (#8C115C) as the starting point for foreground colors
-
-===
-<!-- .slide: class="columns layout" id="design-colors" -->
-## Foreground Colors
-
-- Column
-
-    - Kept white as the default foreground text, like all DAKboard templates
-    - Adopted family conventions for calendar colors&mdash;no legend or names required!
-        - Pink for Emily <!-- .element style="color: #f755b7;" -->
-        - Orange for Robert <!-- .element style="color: #ffb157;" -->
-        - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
-        - Green for Kerry <!-- .element style="color: #c9fd57;" -->
-    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette
-
-- Column
-
-    ![Paletton.com Colors](slides/design/paletton-colors.png)
-
-===
 <!-- .slide: id="design-font" -->
 ## Font
 
@@ -238,4 +202,51 @@
 </p>
 
 ===
+<!-- .slide: id="design-background-and-colors" -->
+## Background and Colors
+
+===
+<!-- .slide: class="columns layout" id="design-background" -->
+### Background Image and Colors
+
+- Column
+
+    ![Background Image](slides/design/purply-derply-background.jpg)
+
+- Column
+
+    - Looked for an organic, daring background
+    - Selected this one from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
+    - Analyzed its color palette using [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/)
+
+        ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
+
+    - Chose Medium Violet Red (#8C115C) as the starting point for foreground colors
+
+===
+<!-- .slide: class="columns layout" id="design-colors" -->
+### Foreground Colors
+
+- Column
+
+    - Kept white as the default foreground text, like all DAKboard templates
+    - Adopted family conventions for calendar colors&mdash;no legend or names required!
+        - Pink for Emily <!-- .element style="color: #f755b7;" -->
+        - Orange for Robert <!-- .element style="color: #ffb157;" -->
+        - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
+        - Green for Kerry <!-- .element style="color: #c9fd57;" -->
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette
+
+- Column
+
+    ![Paletton.com Colors](slides/design/paletton-colors.png)
+
+===
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->
+## CSS
+
+<style>
+    #design-css h2 {
+        display: none;
+    }
+</style>

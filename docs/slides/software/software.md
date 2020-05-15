@@ -3,7 +3,7 @@
 
 ===
 <!-- .slide: id="software-controlling-displays" -->
-## Controlling the Display
+## Controlling Displays
 
 <style>
     #software-controlling-displays table {
@@ -30,16 +30,22 @@
 
 ===
 <!-- .slide: id="software-python-packages" -->
-## Noteworthy Python Packages
+## Python Packages
 
 ===
 ### argparse
+
+TODO: Show usage output <!-- .element: class="todo" -->
 
 ===
 ### gziozero
 
 ===
-### transitions
+### typing + mypy
 
 ===
-### typing + mypy
+<!-- .slide: id="software-state-machines" -->
+## State Machines
+
+===
+### transitions

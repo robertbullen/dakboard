@@ -30,8 +30,9 @@
 
 <!-- Prevent the lists within each column from centering themselves. -->
 <style>
-    #toc > ul > li > ul {
+    #toc > ul > li > ol {
         display: block;
+        font-size: smaller;
     }
 </style>
 
@@ -41,7 +42,7 @@
 
     1. [Intro](#/introduction-introduction)
         - [Inspiration](#/introduction-inspiration)
-        - [DAKboard](#/introduction-dakboard)
+        - [What is DAKboard?](#/introduction-dakboard)
         - [Goals](#/introduction-goals)
 
 - Column
@@ -49,15 +50,13 @@
     2. [Hardware](#/hardware-hardware)
         - [Prototype](#/hardware-prototype)
         - [Final Design](#/hardware-final-design)
-        - [Costs](#/hardware-costs)
-        - [Comparison to Prefab](#/hardware-comparison)
+        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
 
 - Column
 
     3. [Design](#/design-design)
-        - [Background](#/design-background)
-        - [Colors](#/design-colors)
         - [Font](#/design-font)
+        - [Background & Colors](#/design-background-and-colors)
         - [CSS](#/design-css)
 
 - Column
@@ -65,11 +64,13 @@
     4. [Software](#/software-software)
         - [Controlling Displays](#/software-controlling-displays)
         - [Python Packages](#/software-python-packages)
+        - [State Machines](#/software-state-machines)
 
 - Column
 
     5. [Conclusion](#/conclusion-conclusion)
         - [Demo](#/conclusion-demo)
+        - [Learnings](#/conclusion-learnings)
         - [Links](#/conclusion-links)
 
 <!-- markdownlint-enable ol-prefix -->

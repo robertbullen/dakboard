@@ -50,7 +50,7 @@
 ===
 <!-- .slide: id="introduction-dakboard" -->
 <!-- markdownlint-disable no-trailing-punctuation -->
-### DAKboard Is A...
+### What Is DAKboard?
 <!-- markdownlint-enable no-trailing-punctuation -->
 
 <div class="figures equisized">

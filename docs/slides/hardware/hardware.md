@@ -91,7 +91,7 @@
 
 ===
 <!-- .slide: class="columns layout" id="hardware-final-design" -->
-## Final Design Changes
+## Final Design
 
 - Column
 
@@ -175,8 +175,8 @@
     ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
 
 ===
-<!-- .slide: id="hardware-costs" -->
-## Costs
+<!-- .slide: id="hardware-costs-and-comparisons" -->
+## Costs and Comparisons
 
 ===
 ### Prototype Costs

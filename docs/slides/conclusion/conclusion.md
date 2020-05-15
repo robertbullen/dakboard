@@ -24,6 +24,22 @@ TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .e
 <iframe class="stretch" id="status-iframe" style="display: block; width: 100%"></iframe>
 
 ===
+<!-- .slide: id="conclusion-learnings" -->
+## Learnings
+
+TODO: Flesh out this slide  <!-- .element: class="todo" -->
+
+- Raspberry Pi models, capabilities, and pin features
+- PIR sensors, LEDs
+- Font terminology and features
+- Cohesive color palette selection
+- CSS variables, calculations, and scaling
+- Python language features, static typing, libraries
+- State machines
+- GitHub Pages
+
+
+===
 <!-- .slide: class="columns layout" id="conclusion-links" -->
 ## Links
 
