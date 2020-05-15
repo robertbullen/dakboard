@@ -10,16 +10,16 @@
 
 <div class="figures equisized">
     <figure>
-        <img alt="DAKboard Template 1" src="slides/design/dakboard-agenda-tan.jpg" />
+        <p><img alt="DAKboard Template 1" src="slides/design/dakboard-agenda-tan.jpg" /></p>
     </figure>
     <figure>
-        <img alt="DAKboard Template 2" src="slides/design/dakboard-big-calendar.png" />
+        <p><img alt="DAKboard Template 2" src="slides/design/dakboard-big-calendar.png" /></p>
     </figure>
     <figure>
-        <img alt="DAKboard Template 3" src="slides/design/dakboard-photo-frame.jpg" />
+        <p><img alt="DAKboard Template 3" src="slides/design/dakboard-photo-frame.jpg" /></p>
     </figure>
     <figure>
-        <img alt="DAKboard Template 4" src="slides/design/dakboard-smarthome-dashboard.jpg" />
+        <p><img alt="DAKboard Template 4" src="slides/design/dakboard-smarthome-dashboard.jpg" /></p>
     </figure>
 </div>
 
@@ -248,11 +248,33 @@
     ![Paletton.com Colors](slides/design/paletton-colors.png)
 
 ===
+<!-- .slide: id="design-layout-and-css" -->
+## Layout and CSS
+
+===
+### Initial Layout to Finished Product
+
+<div class="figures equisized">
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-layout.png"></p>
+        <figcaption>Layout Designer</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-raw.png"></p>
+        <figcaption>Raw Result</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-customized.png"></p>
+        <figcaption>Customized with CSS</figcaption>
+    </figure>
+</figures>
+
+===
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->
-## CSS
+### CSS
 
 <style>
-    #design-css h2 {
+    #design-css h3 {
         display: none;
     }
 </style>

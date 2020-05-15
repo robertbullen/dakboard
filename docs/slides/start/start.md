@@ -57,7 +57,7 @@
     3. [Design](#/design-design)
         - [Font](#/design-font)
         - [Background & Colors](#/design-background-and-colors)
-        - [CSS](#/design-css)
+        - [Layout & CSS](#/design-layout-and-css)
 
 - Column
   
