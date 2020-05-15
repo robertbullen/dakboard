@@ -21,7 +21,7 @@ TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .e
         <button style="flex: 0 0 auto; font-size: inherit;" type="submit">Load</button>
     </div>
 </form>
-<iframe class="stretch" id="status-iframe" style="display: block; width: 100%"></iframe>
+<iframe class="stretch" id="status-iframe"></iframe>
 
 ===
 <!-- .slide: id="conclusion-learnings" -->

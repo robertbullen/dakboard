@@ -168,19 +168,19 @@
         display: flex;
         justify-content: center;
         margin-top: 40px;
+        font-size: smaller;
     }
 
     #design-font-candidates > p > * {
         margin: 0 1rem;
     }
 
-    #design-font-candidates > p > label {
-        font-size: smaller;
-        font-style: italic;
+    #design-font-candidates > p > a > * {
+        vertical-align: middle;
     }
 
     #design-font-candidates > p > input {
-        width: 33%;
+        width: 25%;
     }
 </style>
 
@@ -195,10 +195,16 @@
 | Ubuntu           | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
 
 <p>
-    <label for="font-scale-range">Distance simulator:</label>
-    <img alt="Far" src="slides/design//grover-far.jpg" />
-    <input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
-    <img alt="Near" src="slides/design/grover-near.jpg" />
+    <label for="font-scale-range">Grover distance simulator:</label>
+    <a href="#" id="font-scale-farther-link">
+        <span>Far</span>
+        <img alt="Far" src="slides/design/grover-far.jpg" />
+    </a>
+    <input id="font-scale-range" max="1.0" min="0.1" step="0.1" type="range" value="1.0" />
+    <a href="#" id="font-scale-nearer-link">
+        <img alt="Near" src="slides/design/grover-near.jpg" />
+        <span>Near</span>
+    </a>
 </p>
 
 ===

@@ -5,14 +5,15 @@ window.addEventListener('load', () => {
 	// the 'submit' listener is registered, the polling is cancelled. This polling will likely only
 	// occur once or twice.
 	const intervalHandle = window.setInterval(() => {
-		const statusUrlForm = document.getElementById('status-url-form');
-		if (statusUrlForm) {
+		const form = document.getElementById('status-url-form');
+		if (form) {
 			window.clearInterval(intervalHandle);
 
-			statusUrlForm.addEventListener('submit', event => {
+			form.addEventListener('submit', (event) => {
 				event.preventDefault();
-				const statusUrl = event.target.elements['status-url'].value;
-				document.getElementById('status-iframe').src = statusUrl;
+				const input = event.target.elements['status-url'];
+				const iframe = document.getElementById('status-iframe');
+				iframe.src = input.value;
 			});
 		}
 	}, 100);

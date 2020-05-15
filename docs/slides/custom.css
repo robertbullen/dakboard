@@ -8,7 +8,15 @@
 	font-family: 'Open Sans', 'Source Sans Pro', sans-serif;
 }
 
-.reveal .slides section button,
+.reveal .slides section button {
+	background-color: #42affa;
+	border-radius: 0;
+	color: white;
+	font-family: inherit;
+	font-size: x-large;
+	padding: 10px 20px;
+}
+
 .reveal .slides section input {
 	font-family: inherit;
 	font-size: x-large;
