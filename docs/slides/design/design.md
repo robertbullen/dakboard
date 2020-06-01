@@ -5,7 +5,7 @@
 <!-- .slide: id="design-templates" -->
 ## Existing Templates
 
-- Existing templates were attractive but data-sparse
+- Existing templates were attractive but sparse of information
 - I challenged myself to create a custom design that was both attractive and data-dense
 
 <div class="figures equisized">
@@ -278,3 +278,6 @@
         display: none;
     }
 </style>
+
+===
+#### TODO: CSS <!-- .element: class="todo" -->

@@ -33,19 +33,26 @@
 ## Python Packages
 
 ===
-### argparse
+### `argparse` for CLI Arguments
 
 TODO: Show usage output <!-- .element: class="todo" -->
 
 ===
-### gziozero
+### `gziozero` for Controlling GPIO Pins
+
+TODO: Compare and contrast with RPI.GPIO <!-- .element: class="todo" -->
 
 ===
-### typing + mypy
+### `typing` & `mypy` for Static Typing
+
+TODO: Python has static typing capabilities <!-- .element: class="todo" -->
 
 ===
-<!-- .slide: id="software-state-machines" -->
-## State Machines
+### `transitions` for Finite State Machines
+
+TODO: Explain Finite State Machines <!-- .element: class="todo" -->
 
 ===
-### transitions
+### `watchdog`, `flask` & `flask-socketio` for a Status Webserver
+
+TODO: Cover the status webserver <!-- .element: class="todo" -->

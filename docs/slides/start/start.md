@@ -64,7 +64,6 @@
     4. [Software](#/software-software)
         - [Controlling Displays](#/software-controlling-displays)
         - [Python Packages](#/software-python-packages)
-        - [State Machines](#/software-state-machines)
 
 - Column
 

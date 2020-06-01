@@ -24,20 +24,32 @@ TODO: Insert video clips of screen turning on/off in response to stimuli <!-- .e
 <iframe class="stretch" id="status-iframe"></iframe>
 
 ===
-<!-- .slide: id="conclusion-learnings" -->
-## Learnings
+<!-- .slide: class="columns layout" id="conclusion-learnings" -->
+## TODO: Learnings <!-- .element: class="todo" -->
 
-TODO: Flesh out this slide  <!-- .element: class="todo" -->
+- Column
 
-- Raspberry Pi models, capabilities, and pin features
-- PIR sensors, LEDs
-- Font terminology and features
-- Cohesive color palette selection
-- CSS variables, calculations, and scaling
-- Python language features, static typing, libraries
-- State machines
-- GitHub Pages
+    - Raspberry Pi hardware: models, capabilities, and pin features
+    - Documenting/designing circuits using Fritzing
+    - PIR sensors, LEDs and brightness variability
+    - Font terminology and features
+    - Cohesive color palette selection
+    - CSS
+        - Variables and calculations
+        - Infinitely scalable visuals
+    - GitHub Pages for hosting this presentation
 
+- Column
+
+    - Python
+        - Creating packages
+        - Managing dependencies
+        - Static typing
+        - Advanced programming techniques
+            - Multiple inheritence via mixins
+            - Immutable named tuples via dataclasses
+            - Custom iterable instances
+            - Dynamic module loading
 
 ===
 <!-- .slide: class="columns layout" id="conclusion-links" -->

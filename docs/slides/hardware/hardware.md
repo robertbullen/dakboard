@@ -85,7 +85,7 @@
 ![Fritzing Diagram](slides/hardware/fritzing-diagram.png) <!-- .element: style="max-height: 900px;" -->
 
 ===
-### Pinout.xyz Consolidates Raspberry Pi Pins Info
+### Pinout.xyz Consolidates Raspberry Pi GPIO Info
 
 <iframe class="stretch" data-src="https://pinout.xyz/"></iframe>
 
@@ -208,8 +208,8 @@
 <!-- .slide: id="hardware-comparison" -->
 ### Comparison to Off-the-Shelf DAKboard
 
-|         | Wall Display v2 Plus               | Custom                              |
-| ------- | ---------------------------------- | ----------------------------------- |
-| Cost    | \$375                              | \$24 + \$219 = \$243                |
-| Display | 24" @ 1920×1080<br/>2.07MP @ 92ppi | 25" @ 2560×1440<br/>3.69MP @ 117ppi |
-| Pi      | Pi 3                               | Pi 4                                |
+|          | Wall Display v2 Plus               | Custom                                                |
+| -------- | ---------------------------------- | ----------------------------------------------------- |
+| Cost     | \$375                              | + \$024 prototype<br/>+ \$219 final design<br>= \$243 |
+| Display  | 24" @ 1920×1080<br/>2.07MP @ 92ppi | 25" @ 2560×1440<br/>3.69MP @ 117ppi                   |
+| Pi Model | Pi 3                               | Pi 4                                                  |
