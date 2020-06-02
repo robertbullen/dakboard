@@ -8,6 +8,11 @@
 	font-family: 'Open Sans', 'Source Sans Pro', sans-serif;
 }
 
+.reveal .slides section blockquote p {
+	display: block;
+	margin: 40px;
+}
+
 .reveal .slides section button {
 	background-color: #42affa;
 	border-radius: 0;
@@ -17,18 +22,18 @@
 	padding: 10px 20px;
 }
 
-.reveal .slides section input {
-	font-family: inherit;
-	font-size: x-large;
-	padding: 10px;
-}
-
 .reveal .slides section cite {
 	font-style: italic;
 }
 
 .reveal .slides section code {
 	color: orange;
+}
+
+.reveal .slides section pre > code {
+	color: unset;
+	padding: 10px;
+	max-height: none;
 }
 
 .reveal .slides section h1,
@@ -46,19 +51,6 @@
 	background: white;
 }
 
-.reveal .slides section ul ul {
-	margin-left: 1em;
-	margin-top: 0.5em;
-}
-.reveal .slides section li {
-	margin-bottom: 0.5em;
-}
-
-.reveal .slides section blockquote p {
-	display: block;
-	margin: 40px;
-}
-
 .reveal .slides section img {
 	background-color: transparent;
 	border: none;
@@ -66,6 +58,20 @@
 	margin: 0;
 	max-height: 100%;
 	max-width: 100%;
+}
+
+.reveal .slides section input {
+	font-family: inherit;
+	font-size: x-large;
+	padding: 10px;
+}
+
+.reveal .slides section ul ul {
+	margin-left: 1em;
+	margin-top: 0.5em;
+}
+.reveal .slides section li {
+	margin-bottom: 0.5em;
 }
 
 .reveal .slides section .todo {
