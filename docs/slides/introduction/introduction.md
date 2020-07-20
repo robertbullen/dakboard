@@ -56,12 +56,6 @@
 <div class="figures equisized">
     <figure class="fragment">
         <p>
-            <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
-        </p>
-        <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
-    </figure>
-    <figure class="fragment">
-        <p>
             <img alt="DAKboard Console" src="slides/introduction/dakboard-console.png" />
         </p>
         <figcaption>Web console for configuring your dashboard content</figcaption>
@@ -71,6 +65,12 @@
             <img alt="DAKboard Dashboard" src="slides/introduction/dakboard-dashboard.jpg" />
         </p>
         <figcaption>Service that composes and delivers your dashboard as HTML</figcaption>
+    </figure>
+    <figure class="fragment">
+        <p>
+            <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
+        </p>
+        <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
     </figure>
 </div>
 
@@ -146,7 +146,7 @@
 - Column
 
     - Learn about programming electronics with Raspberry Pis
-    - Delve into the world of Python
+    - Delve deeper into the world of Python
     - Add an interesting project to my personal GitHub account
     - Excite and inspire others at Constellation to embrace Personal Hack Days
-    - Reinforce management's decision to bestow this privilege
+    - Reinforce management's decision to provide this opportunity

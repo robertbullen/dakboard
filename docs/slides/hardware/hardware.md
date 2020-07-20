@@ -164,10 +164,10 @@
 
 - Column
 
-    - A monitor stand on was chosen over wall mounting
+    - A monitor stand was chosen over wall mounting
     - Allows for independent mounting of the monitor and Pi case
     - Two other WALI stands were already present in my home office
-        - Affordable, functional, and parts are interchangable
+        - Affordable, functional, and parts are interchangeable
     - \$38
 
 - Column

@@ -5,7 +5,7 @@
 <!-- .slide: id="design-templates" -->
 ## Existing Templates
 
-- Existing templates were attractive but sparse of information
+- Existing templates are attractive but calendars are either sparse or have small text
 - I challenged myself to create a custom design that was both attractive and data-dense
 
 <div class="figures equisized">
@@ -241,7 +241,7 @@
         - Orange for Robert <!-- .element style="color: #ffb157;" -->
         - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
         - Green for Kerry <!-- .element style="color: #c9fd57;" -->
-    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette based off of Medium Violet Red
 
 - Column
 

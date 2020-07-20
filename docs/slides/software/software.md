@@ -23,7 +23,7 @@
 
 | Display           | Command      | Results | Notes                                                                                                                               |
 | ----------------- | ------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Dell U2518D       | `cec-client` | 👎       | The Dell doesn't respond to CEC commands, which makes sense because it's a computer monitor and not a home theater component.       |
+| Dell U2518D       | `cec-client` | 👎       | The Dell doesn't respond to CEC commands, which is to be expected because it's a computer monitor and not a home theater component. |
 | Dell U2518D       | `vcgencmd`   | 👍       | The Dell goes to sleep 15–20 seconds after the HDMI signal turns off, and wakes back up in about 5 seconds when the signal returns. |
 | Samsung UN32M5300 | `cec-client` | 👍       | The Samsung responds nicely to CEC commands telling the TV to enter standby mode or active mode.                                    |
 | Samsung UN32M5300 | `vcgencmd`   | 👎       | The Samsung stays on for several minutes after the HDMI signal turns off, presenting a "No Source" message, which is undesirable.   |
@@ -113,7 +113,7 @@ output arguments:
 
     Typical examples using `RPi.GPIO`:
 
-    ```python
+    <pre><code class="language-python" data-line-numbers data-trim>
     import RPi.GPIO as GPIO
 
     GPIO.setmode(GPIO.BOARD)
@@ -133,13 +133,17 @@ output arguments:
         # Wait for button to be released, then turn off the LED.
         GPIO.wait_for_edge(button_pin, GPIO.RISING)
         GPIO.output(led_pin, GPIO.LOW)
-    ```
+
+        # Some loop termination condition...
+
+    GPIO.cleanup()
+    </code></pre>
 
 - Column
 
     Higher level abstractions with `gpiozero`:
 
-    ```python
+    <pre><code class="language-python" data-line-numbers data-trim>
     from gpiozero import LED, Button
   
     button = Button('BOARD3')
@@ -147,9 +151,9 @@ output arguments:
 
     button.when_pressed = led.on
     button.when_released = led.off
-    ```
+    </code></pre>
 
-    - Reads succinctly
+    - Reads more succinctly
     - Provides mocking for unit testing
     - Takes care of threading/non-blocking
     - Takes care of cleanup
@@ -162,7 +166,15 @@ TODO: Python has static typing capabilities <!-- .element: class="todo" -->
 ===
 ### `transitions` for Finite State Machines
 
-TODO: Explain Finite State Machines <!-- .element: class="todo" -->
+<pre class="stretch">
+    <code
+        class="language-python"
+        data-line-numbers="115-150"
+        data-src="https://raw.githubusercontent.com/robertbullen/dakboard/a1f90fecc8783b1502ec57c9087b514d9a295f26/interdaktive/state_machine.py"
+        data-trim
+    >
+    </code>
+</pre>
 
 ===
 ### `watchdog`, `flask` & `flask-socketio` for a Status Webserver
