@@ -53,7 +53,25 @@
 	--news-height: calc(var(--news-content-height) + var(--block-padding) * 2);
 	--news-top: calc(100vh - var(--block-margin) - var(--news-height));
 
-	--weather-content-height: calc(373 / 1920 * 100vh);
+	--weather-temp-font-size: var(--font-size-display-1);
+	--weather-temp-line-height: 1;
+
+	--weather-summary-font-size: var(--font-size-body-2);
+	--weather-summary-margin-top: var(--content-space-4);
+
+	--weather-current-margin-bottom: var(--content-space-1);
+
+	--weather-current-content-height: calc(
+		var(--weather-temp-font-size) * var(--weather-temp-line-height) +
+			var(--weather-summary-margin-top) + var(--weather-summary-font-size) *
+			var(--line-height) * 2 + var(--weather-current-margin-bottom)
+	);
+
+	--weather-forecast-content-height: calc(210 / 1920 * 100vh);
+
+	--weather-content-height: calc(
+		var(--weather-current-content-height) + var(--weather-forecast-content-height)
+	);
 	--weather-top: var(--second-row-top);
 	--weather-height: calc(var(--weather-content-height) + var(--block-padding) * 2);
 
@@ -285,8 +303,8 @@ body {
 
 /* Adjust the line-height so that the large temperature aligns to the top of its container. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large {
-	font-size: var(--font-size-display-1) !important;
-	line-height: 1 !important;
+	font-size: var(--weather-temp-font-size) !important;
+	line-height: var(--weather-temp-line-height) !important;
 }
 
 /* Adjust the font-sizes and separation of "feels like" and summary. */
@@ -294,13 +312,13 @@ body {
 	font-size: var(--font-size-body-1) !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current .weather-summary-text {
-	font-size: var(--font-size-body-2) !important;
-	margin-top: var(--content-space-4) !important;
+	font-size: var(--weather-summary-font-size) !important;
+	margin-top: var(--weather-summary-margin-top) !important;
 }
 
 /* Add some vertical separation between "now" and the forecast. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current {
-	margin-bottom: var(--content-space-1) !important;
+	margin-bottom: var(--weather-current-margin-bottom) !important;
 }
 
 /* Change the forecast's layout to use flexbox for better horizontal utilization and separation. */
