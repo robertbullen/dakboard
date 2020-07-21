@@ -2,7 +2,7 @@
 # Software
 
 ===
-<!-- .slide: id="software-controlling-displays" -->
+<!-- .slide: class="columns layout" id="software-controlling-displays" -->
 ## Controlling Displays
 
 <style>
@@ -21,12 +21,39 @@
     }
 </style>
 
-| Display           | Command      | Results | Notes                                                                                                                               |
-| ----------------- | ------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Dell U2518D       | `cec-client` | 👎       | The Dell doesn't respond to CEC commands, which is to be expected because it's a computer monitor and not a home theater component. |
-| Dell U2518D       | `vcgencmd`   | 👍       | The Dell goes to sleep 15–20 seconds after the HDMI signal turns off, and wakes back up in about 5 seconds when the signal returns. |
-| Samsung UN32M5300 | `cec-client` | 👍       | The Samsung responds nicely to CEC commands telling the TV to enter standby mode or active mode.                                    |
-| Samsung UN32M5300 | `vcgencmd`   | 👎       | The Samsung stays on for several minutes after the HDMI signal turns off, presenting a "No Source" message, which is undesirable.   |
+| Display           | Command      | Results | Notes                                                                                                                                                                                      |
+| ----------------- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Dell U2518D       | `cec-client` | 👎       | The Dell doesn't respond to CEC commands, which is to be expected because it's a computer monitor and not a home theater component.                                                        |
+| Dell U2518D       | `vcgencmd`   | 👍       | The Dell goes to sleep 15–20 seconds after the HDMI signal turns off, and wakes back up in about 5 seconds when the signal returns.                                                        |
+| Samsung UN32M5300 | `cec-client` | 👍       | The Samsung responds nicely to CEC commands telling the TV to enter standby mode or active mode.                                                                                           |
+| Samsung UN32M5300 | `vcgencmd`   | 👎       | The Samsung stays on for several minutes after the HDMI signal turns off, presenting a "No Signal" screen, which is undesirable. It also doesn't awake when the HDMI signal turns back on. |
+
+===
+<!-- .slide: id="software-samsung-tv-features" -->
+## Samsung TV Features
+
+<style>
+    #software-samsung-tv-features img {
+        height: 600px;
+    }
+</style>
+
+<div class="figures equisized">
+    <figure>
+        <h4>No Signal Screen</h4>
+        <p>
+            <img title="Samsung TV No Signal" src="slides/software/samsung-tv-no-signal.jpg" />
+        </p>
+        <figcaption>Displays for several minutes after turning off HDMI signal&mdash;workaround is to use CEC commands</figcaption>
+    </figure>
+    <figure>
+        <h4>Input Banner</h4>
+        <p>
+            <img title="Samsung TV Input Banner" src="slides/software/samsung-tv-input-banner.jpg" />
+        </p>
+        <figcaption>Overlays for several seconds after awakening&mdash;no workaround</figcaption>
+    </figure>
+</div>
 
 ===
 <!-- .slide: id="software-python-packages" -->
@@ -157,11 +184,11 @@ output arguments:
     - Provides mocking for unit testing
     - Takes care of threading/non-blocking
     - Takes care of cleanup
+    - Uses more efficient I/O event polling
 
 ===
-### `typing` & `mypy` for Static Typing
-
-TODO: Python has static typing capabilities <!-- .element: class="todo" -->
+<h3>Finite State Machines</h3>
+<img class="stretch" src="slides/software/state-diagram.png" title="State Diagram" />
 
 ===
 ### `transitions` for Finite State Machines
@@ -169,12 +196,17 @@ TODO: Python has static typing capabilities <!-- .element: class="todo" -->
 <pre class="stretch">
     <code
         class="language-python"
-        data-line-numbers="115-150"
+        data-line-numbers="115-128"
         data-src="https://raw.githubusercontent.com/robertbullen/dakboard/a1f90fecc8783b1502ec57c9087b514d9a295f26/interdaktive/state_machine.py"
         data-trim
     >
     </code>
 </pre>
+
+===
+### `typing` & `mypy` for Static Typing
+
+TODO: Python has static typing capabilities <!-- .element: class="todo" -->
 
 ===
 ### `watchdog`, `flask` & `flask-socketio` for a Status Webserver
