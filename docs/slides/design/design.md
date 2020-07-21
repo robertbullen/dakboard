@@ -271,13 +271,14 @@
 
 ===
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->
-### CSS
-
-<style>
-    #design-css h3 {
-        display: none;
-    }
-</style>
 
 ===
-#### TODO: CSS <!-- .element: class="todo" -->
+### CSS Calculations and Viewport Units for Infinite Scalability
+
+<pre class="stretch">
+    <code
+        class="language-css"
+        data-line-numbers data-src="https://raw.githubusercontent.com/robertbullen/dakboard/master/css/purply-derply.css"
+        data-trim>
+    </code>
+</pre>
