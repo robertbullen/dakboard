@@ -1,18 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /*
- * Global style overrides.
+ * Global style overrides
  */
 
 .reveal .slides section {
 	font-family: 'Open Sans', 'Source Sans Pro', sans-serif;
 }
 
-.reveal .slides section button,
-.reveal .slides section input {
+.reveal .slides section blockquote p {
+	display: block;
+	margin: 40px;
+}
+
+.reveal .slides section button {
+	background-color: #42affa;
+	border-radius: 0;
+	color: white;
 	font-family: inherit;
 	font-size: x-large;
-	padding: 10px;
+	padding: 10px 20px;
 }
 
 .reveal .slides section cite {
@@ -21,6 +28,12 @@
 
 .reveal .slides section code {
 	color: orange;
+}
+
+.reveal .slides section pre > code {
+	color: unset;
+	padding: 10px;
+	max-height: none;
 }
 
 .reveal .slides section h1,
@@ -34,17 +47,8 @@
 	margin-bottom: 40px;
 }
 
-.reveal .slides section ul ul {
-	margin-left: 1em;
-	margin-top: 0.5em;
-}
-.reveal .slides section li {
-	margin-bottom: 0.5em;
-}
-
-.reveal .slides section blockquote p {
-	display: block;
-	margin: 40px;
+.reveal .slides iframe {
+	background: white;
 }
 
 .reveal .slides section img {
@@ -56,17 +60,30 @@
 	max-width: 100%;
 }
 
+.reveal .slides section input {
+	font-family: inherit;
+	font-size: x-large;
+	padding: 10px;
+}
+
+.reveal .slides section ul ul {
+	margin-left: 1em;
+	margin-top: 0.5em;
+}
+.reveal .slides section li {
+	margin-bottom: 0.5em;
+}
+
 .reveal .slides section .todo {
-	background-color: lightcoral;
+	background-color: lightpink;
 	color: red;
 }
 
 /*
- * Reusable slide layouts.
+ * Multi-Column slide layout
  */
 
-/* Multi-column (up to three) Layout. */
-
+/* Treat the root `ul` element much like a Bootstrap ".row". */
 .reveal .slides section .layout.columns > ul {
 	/* border: solid 1px green; */
 	align-items: stretch;
@@ -75,15 +92,19 @@
 	list-style-type: none;
 	margin: 0 -20px;
 }
+
+/* The `auto-width` mod prevents the root `ul` from stretching its width to fill its parent. */
 .reveal .slides section .layout.columns.auto-width > ul {
 	margin: 0 auto;
 	width: fit-content;
 }
 
+/* Treat each top-level `li` element much like a Bootstrap ".column". */
 .reveal .slides section .layout.columns > ul > li {
 	/* border: solid 1px red; */
 	display: block;
 	flex: 1 0 0;
+	margin: 0;
 	padding: 0 20px;
 	text-align: center;
 	width: 100%;
@@ -124,7 +145,9 @@
 	width: 80%;
 }
 
-/* A set of figures. */
+/*
+ * Figures slide layout
+ */
 
 .reveal .slides section .figures {
 	display: flex;

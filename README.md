@@ -1,21 +1,24 @@
 # dakboard
 
-This project takes a [DIY DAKboard](https://blog.dakboard.com/diy-wall-display/) and customizes it with two features:
+This project starts with a [DIY DAKboard](https://blog.dakboard.com/diy-wall-display/) and customizes it with two features:
 
--   A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
--   [Handwritten CSS](css/purply-derply.css) for a two-column portrait layout that looks like this:
+- A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
+- [Handwritten CSS](css/) for a two-column portrait layout that looks like this:
 
-    ![Screenshot](docs/dakboard/img/screenshot.jpg)
+    ![Screenshot](docs/slides/start/screenshot.jpg)
 
     _[Background photo](https://unsplash.com/photos/gE1phX0Lbos) by [Hybrid](https://unsplash.com/@artbyhybrid?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge) on [Unsplash](https://unsplash.com)._
 
 ## Presentation
 
-A slide deck about this project is available at <https://robertbullen.github.io/dakboard/>.
+I created an [online presentation](https://robertbullen.github.io/dakboard/) about this project for a talk at work:
+
+- It's a [Reveal.js](https://revealjs.com/#/) project and its source code can be found in this repo's [docs/](docs/) subdirectory. My slides, in particular, are found in [docs/slides/](docs/slides/).
+- A viewable instance is hosted by [GitHub Pages](https://pages.github.com/) at <https://robertbullen.github.io/dakboard/>.
 
 ## Credits
 
-This project was sponsored in part by my employer, [Constellation](https://constellationmutual.com/), who allocates its IT employees 12 Personal Hack Days per year to pursue technology-related personal interests as part of its growth and development strategy.
+This project was sponsored in part by my employer, [Constellation](https://constellationmutual.com/). As part of its employee growth and development strategy, Constellation allocates IT staff 12 Personal Hack Days per year to pursue self-guided technology-related interests. I used four of my Personal Hack Days (plus more of my own time) working on this project.
 
 ## Software
 
@@ -29,20 +32,17 @@ This project was sponsored in part by my employer, [Constellation](https://const
     sudo apt-get install cec-utils
     ```
 
-    With that information in hand, some trial and error lead me to the most effective command for each of the displays that I tested. Your mileage may vary and you may or may not need the CEC client.
-
-    | Display           | Command      | Notes                                                                                                                                                                                                                                                                                                   |
-    | ----------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Dell U2518D       | `vcgencmd`   | The Dell doesn't respond to CEC commands, which I suppose makes sense because the monitor wasn't designed to be connected to a chain of home theater components. It does go to sleep about 15–20 seconds after the HDMI signal turns off, and wakes back up in about 5 seconds when the signal returns. |
-    | Samsung UN32M5300 | `cec-client` | The Samsung stays on for a long while after the HDMI signal is off, presenting a "No Source" message, which is undesirable. But it responds nicely to CEC commands telling the TV to enter standby mode or active mode.                                                                                 |
+    With that information in hand, some trial and error lead me to the most effective command for each of the displays that I tested, which I documented in my [presentation](https://robertbullen.github.io/dakboard/#/software-controlling-displays). Your mileage may vary and you may or may not need the CEC client.
 
 3. _Optional_ Add and configure a USB thumb drive for swapping and logging.
 
+    Background:
+
     I never needed to configure additional swap space on the Pi 3 that I used for prototyping. But when using the Pi 4 for a matter of hours or days, the system would eventually encounter an out-of-memory scenario that manifested as a Chromium "Aww, Snap!" error. Perhaps I never ran the Pi 3 for long enough to observe the error. Or maybe running the Pi 4 at 1440p (instead of 1080p) is demanding enough to warrant additional memory. In retrospect I wish I would've opted for the 2GB or 4Gb version of the Pi 4 and avoided this issue altogether.
 
-    Raspbian ships with a preconfigured 100MB swap file at `/var/swap`, which by default resides on the SD card. Simply increasing the size of that swap file made the error go away. However, there are many warnings online advising against using the SD card for swapping because it isn't made for a lot of random I/O and can eventually become corrupted, taking the OS with it.
+    Raspbian ships with a preconfigured 100MB swap file at `/var/swap`, which by default resides on the SD card. Simply increasing the size of that swap file prevented the out-of-memory errors. However, there are many warnings online advising against using the SD card for swapping because it isn't made for a lot of random I/O and can eventually become corrupted, taking the OS with it.
 
-    In an effort to heed those warnings, I first tried using [ZRAM](https://github.com/novaspirit/rpi_zram). This approach extended the amount of time between "Aww, Snap!" occurrences, but didn't eliminate them. I settled on using a USB thumb drive for swapping, knowing full well that it isn't a terribly fast or robust solution. I'm OK with that, I just need Chromium and the system to not crash!
+    In an effort to heed those warnings, I first tried using [ZRAM](https://github.com/novaspirit/rpi_zram). This approach lengthened the amount of time between "Aww, Snap!" occurrences, but didn't eliminate them. I settled on using a USB thumb drive for swapping, knowing full well that it isn't a terribly fast or robust solution. I'm OK with that, I just need Chromium and the system to not crash!
 
     1. Format the USB drive: <https://www.pidramble.com/wiki/benchmarks/external-usb-drives#format-a-usb-connected-drive-on-the-raspberry-pi-in-raspbian>.
     2. Mount the USB drive at an exact location upon boot: <https://www.raspberrypi.org/documentation/configuration/external-storage.md>. I specified `/mnt/usb` as the mount point.

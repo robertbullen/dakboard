@@ -67,6 +67,7 @@
 			var(--line-height) * 2 + var(--weather-current-margin-bottom)
 	);
 
+	/* TODO: Make a dynamic calculation of this height. */
 	--weather-forecast-content-height: calc(210 / 1920 * 100vh);
 
 	--weather-content-height: calc(
@@ -160,6 +161,14 @@ body {
 	padding: 0 !important;
 }
 
+/* DAKboard decreases tracking in `.large` and `.medium` classes using absolute units, so change
+   them to a relative units. `.medium` tracking is insignificant in this layout so it is zeroed. */
+.block .large {
+	letter-spacing: -0.025em !important;
+}
+.block .medium {
+	letter-spacing: 0 !important;
+}
 /*
  * BACKGROUND
  */
@@ -209,6 +218,11 @@ body {
 	line-height: var(--first-row-content-height) !important;
 }
 
+/* Change padding to relative units. */
+.block#\35 dddf1d8f62f5942742ee412 .time-ampm {
+	padding-left: 0.5em;
+}
+
 /*
  * CALENDAR
  */
@@ -248,8 +262,10 @@ body {
 	font-size: var(--font-size-body-3) !important;
 }
 
-/* The agenda can get away with the tighter line height and it actually looks better that way. */
+/* Increase the font size of the calendar agenda. The agenda can get away with the tighter line
+   height and it actually looks better that way. */
 .block#\35 ddded42acf0306d7803f832 .day-container li {
+	font-size: var(--font-size-body-1) !important;
 	line-height: var(--line-height-tight) !important;
 	margin-top: var(--content-space-3) !important;
 }
@@ -261,12 +277,9 @@ body {
 
 .block#\35 ddded42acf0306d7803f832 .day-container .event-summary,
 .block#\35 ddded42acf0306d7803f832 .day-container .no-events {
-	margin-left: calc(80 / 1080 * 100vw) !important;
-}
-
-/* Increase the font size of the calendar agenda. */
-.block#\35 ddded42acf0306d7803f832 .calendar-agenda-font-large {
 	font-size: var(--font-size-body-1) !important;
+	margin-left: calc(80 / 1080 * 100vw) !important;
+	margin-top: var(--content-space-3) !important;
 }
 
 /* For better proximity, the day title and day events are moved closer together. This margin-bottom
@@ -279,6 +292,10 @@ body {
 .block#\35 ddded42acf0306d7803f832 .minute-container {
 	padding-top: 0.5em !important;
 }
+
+/*
+TODO: Switch to relative spacing in hour & minute paddings.
+*/
 
 /*
  * WEATHER
@@ -345,8 +362,10 @@ body {
 /* Layout the forecast items. */
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast {
 	display: flex !important;
+	flex: 1 0 0 !important;
 	flex-direction: row !important;
 	flex-wrap: wrap !important;
+	width: 100% !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast > * {
 	display: block !important;
@@ -359,6 +378,7 @@ body {
 	border-radius: var(--border-radius) !important;
 	font-size: var(--font-size-body-3) !important;
 	margin-top: 0 !important;
+	min-width: unset !important;
 	padding: var(--content-space-4) !important;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast span.fas {
@@ -447,6 +467,7 @@ body {
 }
 
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-item-description {
+	display: block !important;
 	font-size: var(--countdown-item-description-font-size) !important;
 }
 
@@ -465,7 +486,7 @@ body {
    the marquee element is present. It is empty but takes up vertical space, which throws off the
    other content. */
 .block#\35 dddf2ebacf030303355d494 .rss-scroll {
-	display: none;
+	display: none !important;
 }
 
 /* Give the title just one line, truncating with an ellipsis if necessary. It is capitalized to

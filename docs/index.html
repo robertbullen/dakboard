@@ -35,40 +35,36 @@
 			<div class="slides">
 				<section
 					data-markdown="slides/start/start.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
 
 				<section
 					data-markdown="slides/introduction/introduction.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
 
 				<section
 					data-markdown="slides/hardware/hardware.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
 
 				<section
 					data-markdown="slides/design/design.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
 				<script src="slides/design/design.js"></script>
 
 				<section
 					data-markdown="slides/software/software.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
-
-				<section
-					data-markdown="slides/demo/demo.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
-				></section>
-				<script src="slides/demo/demo.js"></script>
+				<script src="slides/software/software.js"></script>
 
 				<section
 					data-markdown="slides/conclusion/conclusion.md"
-					data-separator-vertical="^\r?\n===\r?\n$"
+					data-separator-vertical="(\r?\n){2}==="
 				></section>
+				<script src="slides/conclusion/conclusion.js"></script>
 			</div>
 		</div>
 
@@ -80,10 +76,12 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/markdown/marked.js', async: false },
+					{ src: 'plugin/markdown/markdown.js', async: false },
+					// { src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					// { src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
 				],
 				hash: true,
 				height: 1080,

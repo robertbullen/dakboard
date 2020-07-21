@@ -1,6 +1,11 @@
 {
+	"blanks-around-headers": {
+		"lines_above": 0
+	},
 	"default": true,
 	"line-length": false,
 	"no-inline-html": false,
-	"ul-indent": { "indent": 4 }
+	"ul-indent": {
+		"indent": 4
+	}
 }

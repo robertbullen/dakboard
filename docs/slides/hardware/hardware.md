@@ -1,11 +1,8 @@
 <!-- .slide: id="hardware-hardware" -->
-
 # Hardware
 
 ===
-
 <!-- .slide: class="columns layout" id="hardware-prototype" -->
-
 ## Prototype
 
 - Column
@@ -14,12 +11,10 @@
 
 - Column
 
-    - Experimentation started with the following hardware that I mostly already owned
+    - Experimentation started with hardware that I mostly already owned, listed on the following slides
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/)
 
 - Column
@@ -33,9 +28,7 @@
     ![Samsung 32" Class M5300 Full HD TV](slides/hardware/samsung-un32m5300.jpg)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
 - Column
@@ -50,9 +43,7 @@
     - \$0
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Adafruit PIR Sensor](https://www.adafruit.com/product/189)
 
 - Column
@@ -69,9 +60,7 @@
     ![Adafruit PIR Sensor](slides/hardware/adafruit-pir.png)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)
 
 - Column
@@ -91,29 +80,35 @@
     - \$13
 
 ===
-
-### Wiring Diagram
+### Fritzing Wiring Diagram
 
 ![Fritzing Diagram](slides/hardware/fritzing-diagram.png) <!-- .element: style="max-height: 900px;" -->
 
 ===
+### Pinout.xyz Consolidates Raspberry Pi GPIO Info
 
-<!-- .slide: id="hardware-final-design" -->
-
-## Final Design Changes
-
-- The 32" TV prototype display was unsatisfactory for the intended location
-    - Too large for the aesthetic goals
-    - Too pixelated for the viewing distance
-        - Full HD (1920×1080) on a 32" display works out to 70ppi
-        - For comparison, an iPhone 7 Plus display packs 401ppi
-- The following hardware upgrades were used for the final design
+<iframe class="stretch" data-src="https://pinout.xyz/"></iframe>
 
 ===
+<!-- .slide: class="columns layout" id="hardware-final-design" -->
+## Final Design
 
+- Column
+
+    - The 32" TV prototype display was unsatisfactory for the intended location
+        - Too large for the aesthetic goals
+        - Too pixelated for the viewing distance
+            - Full HD (1920×1080) on a 32" display works out to 70ppi
+            - For comparison, an iPhone 7 Plus display packs 401ppi
+    - The following hardware upgrades were used for the final design
+
+- Column
+
+    - TODO: Insert photo of final product <!-- .element: class="todo" -->
+
+===
 <!-- .slide: class="columns layout" -->
-
-### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories)
+### [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/ng/business/p/dell-u2518d-monitor/pd)
 
 - Column
 
@@ -128,9 +123,7 @@
     - \$125
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
 - Column
@@ -149,9 +142,7 @@
     ![Raspberry Pi 4 Model B with 1GB RAM](slides/hardware/raspberry-pi-4.jpg)
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### 2GB USB Thumb Drive
 
 - Column
@@ -168,13 +159,26 @@
     - \$0
 
 ===
+<!-- .slide: class="columns layout" -->
+### [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
 
-<!-- .slide: id="hardware-costs" -->
+- Column
 
-## Costs
+    - A monitor stand was chosen over wall mounting
+    - Allows for independent mounting of the monitor and Pi case
+    - Two other WALI stands were already present in my home office
+        - Affordable, functional, and parts are interchangeable
+    - \$38
+
+- Column
+
+    ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
 
 ===
+<!-- .slide: id="hardware-costs-and-comparisons" -->
+## Costs and Comparisons
 
+===
 ### Prototype Costs
 
 | Part                                                                                                                                                 | Cost |
@@ -186,21 +190,26 @@
 |                                                                                                                                                      | \$24 |
 
 ===
-
 ### Final Design Costs
 
 | Part                                                                                                                                                         |  Cost |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----: |
 | [Dell UltraSharp 25" QHD Monitor (U2518D)](https://www.dell.com/en-us/work/shop/dell-ultrasharp-25-monitor-u2518d/apd/210-amll/monitors-monitor-accessories) | \$125 |
 | [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) and accessories                                          |  \$45 |
+| [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                                          |  \$38 |
 | [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                                  |  \$11 |
 | 2GB USB Thumb Drive                                                                                                                                          |   \$0 |
-|                                                                                                                                                              | \$181 |
+|                                                                                                                                                              | \$219 |
 
+<!-- TODO: Include case in costs? -->
 <!-- | [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                     | \$10 | -->
 
 ===
+<!-- .slide: id="hardware-comparison" -->
+### Comparison to Off-the-Shelf DAKboard
 
-### Costs Compared to Off-the-Shelf DAKboard
-
-TODO: Cost comparison
+|          | Wall Display v2 Plus               | Custom                                                |
+| -------- | ---------------------------------- | ----------------------------------------------------- |
+| Cost     | \$375                              | + \$024 prototype<br/>+ \$219 final design<br>= \$243 |
+| Display  | 24" @ 1920×1080<br/>2.07MP @ 92ppi | 25" @ 2560×1440<br/>3.69MP @ 117ppi                   |
+| Pi Model | Pi 3                               | Pi 4                                                  |

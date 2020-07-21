@@ -1,34 +1,35 @@
 <!-- .slide: id="design-design" -->
-
 # Design
 
 ===
+<!-- .slide: id="design-templates" -->
+## Existing Templates
 
-<!-- .slide: class="columns layout" id="design-colors" -->
+- Existing templates are attractive but calendars are either sparse or have small text
+- I challenged myself to create a custom design that was both attractive and data-dense
 
-## Colors
-
-- Column
-
-    ![Background Image](slides/design/purply-derply-background.jpg)
-
-- Column
-
-    - I started with the background, which was selected from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
-    - I was looking for a natural yet daring background
-    - Ran it through [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/), which analyzed the image and came up with the following five colors
-
-    ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
+<div class="figures equisized">
+    <figure>
+        <p><img alt="DAKboard Template 1" src="slides/design/dakboard-agenda-tan.jpg" /></p>
+    </figure>
+    <figure>
+        <p><img alt="DAKboard Template 2" src="slides/design/dakboard-big-calendar.png" /></p>
+    </figure>
+    <figure>
+        <p><img alt="DAKboard Template 3" src="slides/design/dakboard-photo-frame.jpg" /></p>
+    </figure>
+    <figure>
+        <p><img alt="DAKboard Template 4" src="slides/design/dakboard-smarthome-dashboard.jpg" /></p>
+    </figure>
+</div>
 
 ===
-
 <!-- .slide: id="design-font" -->
-
 ## Font
 
 ===
-
 <!-- .slide: id="design-font-criteria" -->
+### Font Selection Criteria
 
 <style>
     #design-font-criteria .figures {
@@ -44,8 +45,6 @@
         font-size: smaller;
     }
 </style>
-
-### Font Selection Criteria
 
 <div class="figures">
     <figure class="fragment">
@@ -101,8 +100,8 @@
 <p>Graphics from <a href="https://www.fontsmith.com/blog/2016/06/29/the-a-z-of-typographic-terms">Fontsmith's <cite>The A-Z of Typographic Terms</cite></a>.</p>
 
 ===
-
 <!-- .slide: id="design-font-candidates" -->
+### Font Candidates
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -163,22 +162,122 @@
     #design-font-candidates > table > tbody > tr:nth-child(7) > td:nth-child(2) {
         font-family: 'Ubuntu';
     }
+
+    #design-font-candidates > p {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        font-size: smaller;
+    }
+
+    #design-font-candidates > p > * {
+        margin: 0 1rem;
+    }
+
+    #design-font-candidates > p > a > * {
+        vertical-align: middle;
+    }
+
+    #design-font-candidates > p > input {
+        width: 25%;
+    }
 </style>
 
-### Font Candidates
+| Name             | Example                                |                 Numbers                  |                      Letter Forms                       |               Lowercase                |                  Mark Shapes                  |
+| ---------------- | -------------------------------------- | :--------------------------------------: | :-----------------------------------------------------: | :------------------------------------: | :-------------------------------------------: |
+| Roboto (default) | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
+| Montserrat       | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Open Sans        | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
+| Oxygen           | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
+| Poppins          | 11:59 Sun aoce Illiterate Wx Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
+| PT Sans          | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
+| Ubuntu           | 11:59 Sun aoce Illiterate Wx Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
 
-| Name             | Example                                |                  Numbers                  |                       Letter Forms                       |                Lowercase                |                  Mark Shapes                   |
-| ---------------- | -------------------------------------- | :---------------------------------------: | :------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------: |
-| Roboto (default) | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |         <abbr title="Narrow apertures">🔴</abbr>         | <abbr title="Medium x-height">🟠</abbr> |            <abbr title="">🟢</abbr>            |
-| Montserrat       | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> | <abbr title="Medium apertures; circular bowls">🟠</abbr> |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Open Sans        | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-| Oxygen           | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         | <abbr title="Square tittles & colon">🔴</abbr> |
-| Poppins          | 11:59 Sun aoce Illiterate xN Jj rnm O0 | <abbr title="Variable tracking">🔴</abbr> |         <abbr title="Narrow apertures">🔴</abbr>         |  <abbr title="Single-tier a">🔴</abbr>  |      <abbr title="Square colon">🟠</abbr>      |
-| PT Sans          | 11:59 Sun aoce Illiterate xN Jj rnm O0 |   <abbr title="1 has a foot">🔴</abbr>    |                 <abbr title="">🟢</abbr>                 | <abbr title="Short x-height">🔴</abbr>  |            <abbr title="">🟢</abbr>            |
-| Ubuntu           | 11:59 Sun aoce Illiterate xN Jj rnm O0 |         <abbr title="">🟢</abbr>          |                 <abbr title="">🟢</abbr>                 |        <abbr title="">🟢</abbr>         |            <abbr title="">🟢</abbr>            |
-
-<input id="font-scale-range" max="1.0" min="0.2" step="0.2" type="range" value="1.0" />
+<p>
+    <label for="font-scale-range">Grover distance simulator:</label>
+    <a href="#" id="font-scale-farther-link">
+        <span>Far</span>
+        <img alt="Far" src="slides/design/grover-far.jpg" />
+    </a>
+    <input id="font-scale-range" max="1.0" min="0.1" step="0.1" type="range" value="1.0" />
+    <a href="#" id="font-scale-nearer-link">
+        <img alt="Near" src="slides/design/grover-near.jpg" />
+        <span>Near</span>
+    </a>
+</p>
 
 ===
+<!-- .slide: id="design-background-and-colors" -->
+## Background and Colors
 
+===
+<!-- .slide: class="columns layout" id="design-background" -->
+### Background Image and Colors
+
+- Column
+
+    ![Background Image](slides/design/purply-derply-background.jpg)
+
+- Column
+
+    - Looked for an organic, daring background
+    - Selected this one from [Unsplash's *Textures & Patterns*](https://unsplash.com/t/textures-patterns)
+    - Analyzed its color palette using [Canva's *Color Palette Generator*](https://www.canva.com/colors/color-palette-generator/)
+
+        ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
+
+    - Chose Medium Violet Red (#8C115C) as the starting point for foreground colors
+
+===
+<!-- .slide: class="columns layout" id="design-colors" -->
+### Foreground Colors
+
+- Column
+
+    - Kept white as the default foreground text, like all DAKboard templates
+    - Adopted family conventions for calendar colors&mdash;no legend or names required!
+        - Pink for Emily <!-- .element style="color: #f755b7;" -->
+        - Orange for Robert <!-- .element style="color: #ffb157;" -->
+        - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
+        - Green for Kerry <!-- .element style="color: #c9fd57;" -->
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette based off of Medium Violet Red
+
+- Column
+
+    ![Paletton.com Colors](slides/design/paletton-colors.png)
+
+===
+<!-- .slide: id="design-layout-and-css" -->
+## Layout and CSS
+
+===
+### Initial Layout to Finished Product
+
+<div class="figures equisized">
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-layout.png"></p>
+        <figcaption>Layout Designer</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-raw.png"></p>
+        <figcaption>Raw Result</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Layout" src="slides/design/design-customized.png"></p>
+        <figcaption>Customized with CSS</figcaption>
+    </figure>
+</figures>
+
+===
 <!-- .slide: data-background-image="slides/design/family-guy-css.gif" data-background-position="center" data-background-size="contain" id="design-css" -->
+### CSS
+
+<style>
+    #design-css h3 {
+        display: none;
+    }
+</style>
+
+===
+#### TODO: CSS <!-- .element: class="todo" -->

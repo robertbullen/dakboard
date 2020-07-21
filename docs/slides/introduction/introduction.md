@@ -1,10 +1,9 @@
 <!-- .slide: id="introduction-introduction" -->
-
 # Introduction
 
 ===
-
 <!-- .slide: id="introduction-inspiration" -->
+## Inspiration
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
@@ -40,8 +39,6 @@
     }
 </style>
 
-## Inspiration
-
 > "My friend has a DAKboard and I think we need one." <!-- .element: class="wife" -->
 >
 > "A what?" <!-- .element: class="me" -->
@@ -51,20 +48,12 @@
 > "I'll look into it." <!-- .element: class="me" -->
 
 ===
-
 <!-- .slide: id="introduction-dakboard" -->
-
 <!-- markdownlint-disable no-trailing-punctuation -->
-### DAKboard Is A...
+### What Is DAKboard?
 <!-- markdownlint-enable no-trailing-punctuation -->
 
 <div class="figures equisized">
-    <figure class="fragment">
-        <p>
-            <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
-        </p>
-        <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
-    </figure>
     <figure class="fragment">
         <p>
             <img alt="DAKboard Console" src="slides/introduction/dakboard-console.png" />
@@ -77,18 +66,21 @@
         </p>
         <figcaption>Service that composes and delivers your dashboard as HTML</figcaption>
     </figure>
+    <figure class="fragment">
+        <p>
+            <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
+        </p>
+        <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
+    </figure>
 </div>
 
 ===
-
 ### DAKboard Supports DIY
 
 <iframe class="stretch" data-src="https://blog.dakboard.com/diy-wall-display/"></iframe>
 
 ===
-
 <!-- .slide: id="introduction-goals" -->
-
 ## Goals
 
 - Functional
@@ -96,9 +88,7 @@
 - Personal/Professional
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### Functional Goals
 
 - Column
@@ -107,17 +97,17 @@
 
 - Column
 
+    - Display the date, time, and weather
     - Provide a consolidated family calendar
         - Become the successor to the kids' classroom monthly calendar
     - Publish *keeper* photos that are otherwise rarely viewed after capture
-    - Show the weather to prepare for the day
     - Control the display intelligently
         - Turn on only while viewing
         - Keep off during nighttime hours
 
 ===
-
 <!-- .slide: class="columns layout" id="introduction-aesthetic-goals" -->
+### Aesthetic Goals
 
 <style>
  #no-sign {
@@ -127,8 +117,6 @@
     top: -100px;
 }
 </style>
-
-### Aesthetic Goals
 
 - Column
 
@@ -144,9 +132,7 @@
     🚫<!-- .element: class="fragment fade-in" id="no-sign" -->
 
 ===
-
 <!-- .slide: class="columns layout" -->
-
 ### Personal/Professional Goals
 
 - Column
@@ -160,6 +146,7 @@
 - Column
 
     - Learn about programming electronics with Raspberry Pis
+    - Delve deeper into the world of Python
     - Add an interesting project to my personal GitHub account
-    - Excite and inspire others at Constellation
-    - Reinforce management's decision to bestow this privilege
+    - Excite and inspire others at Constellation to embrace Personal Hack Days
+    - Reinforce management's decision to provide this opportunity
