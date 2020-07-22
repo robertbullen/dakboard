@@ -75,6 +75,7 @@
 
     6. [Conclusion](#/conclusion-conclusion)
         - [Learnings](#/conclusion-learnings)
+        - [Future Plans & Ideas](#/conclusion-plans-and-ideas)
         - [Links](#/conclusion-links)
 
 <!-- markdownlint-enable ol-prefix -->

@@ -31,11 +31,12 @@
         - Utilizing finite state machines
 
 ===
-## Future Plans/Ideas
+<!-- .slide: id="conclusion-plans-and-ideas" -->
+## Future Plans and Ideas
 
-- Try pulsing instead of blinking LEDs
+- Try pulsing instead of blinking LEDs&mdash;PWM using hardware pins or software emulation
 - Create a second screen named "Bluety and the Hofish" that accommodates landscape-oriented photos and loop between it and "Purply Derply"
-- Experiment with CSS Grid for arranging tiles (as opposed to absolute positioning)
+- Experiment with CSS Grid for arranging dashboard tiles (as opposed to absolute positioning)
 - Define systemd template unit files for startup/shutdown
 
 ===
