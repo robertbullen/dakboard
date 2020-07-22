@@ -5,7 +5,7 @@ This project starts with a [DIY DAKboard](https://blog.dakboard.com/diy-wall-dis
 - A [Python package](interdaktive/) that interfaces with a PIR motion sensor to programmatically turn the display on and off.
 - [Handwritten CSS](css/) for a two-column portrait layout that looks like this:
 
-    ![Screenshot](docs/slides/start/screenshot.jpg)
+    ![Screenshot](docs/slides/screenshot.png)
 
     _[Background photo](https://unsplash.com/photos/gE1phX0Lbos) by [Hybrid](https://unsplash.com/@artbyhybrid?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge) on [Unsplash](https://unsplash.com)._
 

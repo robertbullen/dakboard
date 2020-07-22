@@ -7,7 +7,7 @@
 
     #start-title img {
         border: solid rgba(255, 255, 255, 0.05) 20px;
-        max-height: 1040px;
+        max-height: 1000px;
         width: auto;
     }
 </style>
@@ -20,7 +20,7 @@
 
 - Column
 
-    ![Screenshot](slides/start/screenshot.jpg)
+    ![Dashboard Screenshot](slides/screenshot.png)
 
 <!-- markdownlint-enable first-line-heading heading-start-left -->
 

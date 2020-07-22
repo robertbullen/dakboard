@@ -235,7 +235,7 @@
 
 - Column
 
-    - Kept white as the default foreground text, like all DAKboard templates
+    - Kept white as the default foreground text
     - Adopted family conventions for calendar colors&mdash;no legend or names required!
         - Pink for Emily <!-- .element style="color: #f755b7;" -->
         - Orange for Robert <!-- .element style="color: #ffb157;" -->
@@ -252,20 +252,54 @@
 ## Layout and CSS
 
 ===
+<!-- .slide: id="design-layout-to-finished-product" -->
 ### Initial Layout to Finished Product
+
+<style>
+    #design-layout-to-finished-product img {
+        height: 800px;
+    }
+</style>
 
 <div class="figures equisized">
     <figure>
-        <p><img alt="Layout" src="slides/design/design-layout.png"></p>
+        <p><img alt="Layout Designer" src="slides/design/design-layout.png"></p>
         <figcaption>Layout Designer</figcaption>
     </figure>
     <figure>
-        <p><img alt="Layout" src="slides/design/design-raw.png"></p>
+        <p><img alt="Raw Result" src="slides/design/design-raw.jpg"></p>
         <figcaption>Raw Result</figcaption>
     </figure>
     <figure>
-        <p><img alt="Layout" src="slides/design/design-customized.png"></p>
+        <p><img alt="Customized with CSS" src="slides/screenshot.png"></p>
         <figcaption>Customized with CSS</figcaption>
+    </figure>
+</figures>
+
+===
+<!-- .slide: id="design-influence" -->
+### Was I Influenced?
+
+<style>
+    #design-influence img {
+        height: 470px;
+        object-fit: cover;
+        object-position: 0 100% ;
+        width: 784px;
+    }
+</style>
+
+- After my design was finalized, I realized that it shared similarities with Apple CarPlay
+    - Translucent tiles
+    - Rounded corners
+    - Drop shadows
+
+<div class="figures equisized">
+    <figure>
+        <p><img alt="Apple CarPlay" src="slides/design/apple-carplay.png"></p>
+    </figure>
+    <figure>
+        <p><img alt="My Design" src="slides/screenshot.png"></p>
     </figure>
 </figures>
 
@@ -282,3 +316,25 @@
         data-trim>
     </code>
 </pre>
+
+===
+### Yields A Consistent Appearance Across Resolutions
+
+<div class="figures equisized">
+    <figure>
+        <p><img alt="Full HD" src="slides/screenshot.png"></p>
+        <figcaption>HD (720×1280)</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Full HD" src="slides/screenshot.png"></p>
+        <figcaption>Full HD (1080×1920)</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="QHD" src="slides/screenshot.png"></p>
+        <figcaption>QHD (1440×2560)</figcaption>
+    </figure>
+    <figure>
+        <p><img alt="Full HD" src="slides/screenshot.png"></p>
+        <figcaption>UHD/4K (2160×3840)</figcaption>
+    </figure>
+</figures>
