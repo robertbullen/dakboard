@@ -98,9 +98,9 @@
 - Column
 
     - Display the date, time, and weather
-    - Provide a consolidated family calendar
+    - Provide a consolidated family calendar via iCalendar
         - Become the successor to the kids' classroom monthly calendar
-    - Publish *keeper* photos that are otherwise rarely viewed after capture
+    - Publish *keeper* photos that are otherwise rarely viewed after capture via iCloud shared albums
     - Control the display intelligently
         - <span style="color: red;">Turn on only while viewing</span>
         - Keep off during nighttime hours
