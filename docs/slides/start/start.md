@@ -25,6 +25,15 @@
 <!-- markdownlint-enable first-line-heading heading-start-left -->
 
 ===
+
+<dl style="font-size: 150%;">
+    <dt>PHD</dt>
+    <dd>Personal Hack Days</dd>
+    <dt>Thesis</dt>
+    <dd>A dissertation embodying results of original research</dd>
+</dl>
+
+===
 <!-- .slide: class="auto-width columns layout" id="toc" -->
 ## Table of Contents
 
