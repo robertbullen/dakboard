@@ -51,6 +51,7 @@
     - Passive Infrared sensor detects motion from the IR emitted from our bodies
     - Runs on 5V–12V power and the Pi provides 5V
     - Sensing range is up to 7 meters within a 120-degree cone
+    - Can be configured with different triggering signals, timings, and sensitivities
     - Comes with a 1-foot cable/socket
     - There are cheaper alternatives, but product reviews were poor
     - \$11

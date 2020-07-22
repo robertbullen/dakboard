@@ -195,8 +195,7 @@ output arguments:
 <pre class="stretch">
     <code
         class="language-python"
-        data-line-numbers="115-128"
-        data-src="https://raw.githubusercontent.com/robertbullen/dakboard/a1f90fecc8783b1502ec57c9087b514d9a295f26/interdaktive/state_machine.py"
+        data-src="https://raw.githubusercontent.com/robertbullen/dakboard/master/interdaktive/state_machine.py"
         data-trim
     >
     </code>
@@ -205,9 +204,24 @@ output arguments:
 ===
 ### `typing` & `mypy` for Static Typing
 
-TODO: Python has static typing capabilities <!-- .element: class="todo" -->
+<pre class="stretch">
+    <code
+        class="language-python"
+        data-src="https://raw.githubusercontent.com/robertbullen/dakboard/master/interdaktive/display.py"
+        data-trim
+    >
+    </code>
+</pre>
 
 ===
 ### `watchdog`, `flask` & `flask-socketio` for a Status Webserver
 
-TODO: Cover the status webserver <!-- .element: class="todo" -->
+<pre class="stretch">
+    <code
+        class="language-python"
+        data-line-numbers="115-128"
+        data-src="https://raw.githubusercontent.com/robertbullen/dakboard/master/interdaktive/webserver/__main__.py"
+        data-trim
+    >
+    </code>
+</pre>

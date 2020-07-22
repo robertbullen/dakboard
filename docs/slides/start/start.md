@@ -32,7 +32,7 @@
 <style>
     #toc > ul > li > ol {
         display: block;
-        font-size: smaller;
+        font-size: 75%;
     }
 </style>
 
@@ -47,10 +47,9 @@
 
 - Column
 
-    2. [Hardware](#/hardware-hardware)
-        - [Prototype](#/hardware-prototype)
-        - [Final Design](#/hardware-final-design)
-        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
+    2. [Demos](#/demos-demos)
+        - [Dashboard](#/demos-dashboard)
+        - [Motion Detection](#/demos-motion-detection)
 
 - Column
 
@@ -60,15 +59,21 @@
         - [Layout & CSS](#/design-layout-and-css)
 
 - Column
+
+    4. [Hardware](#/hardware-hardware)
+        - [Prototype](#/hardware-prototype)
+        - [Final Design](#/hardware-final-design)
+        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
+
+- Column
   
-    4. [Software](#/software-software)
+    5. [Software](#/software-software)
         - [Controlling Displays](#/software-controlling-displays)
         - [Python Packages](#/software-python-packages)
 
 - Column
 
-    5. [Conclusion](#/conclusion-conclusion)
-        - [Demo](#/conclusion-demo)
+    6. [Conclusion](#/conclusion-conclusion)
         - [Learnings](#/conclusion-learnings)
         - [Links](#/conclusion-links)
 
