@@ -7,7 +7,7 @@
 
 ===
 <!-- .slide: id="demos-motion-detection" -->
-### Motion Detection
+## Motion Detection
 
 ===
 <form
