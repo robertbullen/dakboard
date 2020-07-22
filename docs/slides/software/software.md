@@ -184,7 +184,6 @@ output arguments:
     - Provides mocking for unit testing
     - Takes care of threading/non-blocking
     - Takes care of cleanup
-    - Uses more efficient I/O event polling
 
 ===
 <h3>Finite State Machines</h3>

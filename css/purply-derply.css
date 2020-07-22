@@ -178,6 +178,7 @@ body {
 /* Give the background a larger border radius. */
 #\35 dddeb97acf03055871e2ed4 {
 	border-radius: calc(var(--block-border-radius) + var(--block-margin)) !important;
+	box-shadow: none !important;
 }
 
 /*
