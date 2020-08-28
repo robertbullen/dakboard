@@ -56,23 +56,23 @@
 
 - Column
 
-    2. [Demos](#/demos-demos)
+    2. [Hardware](#/hardware-hardware)
+        - [Prototype](#/hardware-prototype)
+        - [Final Design](#/hardware-final-design)
+        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
+
+- Column
+
+    3. [Demos](#/demos-demos)
         - [Dashboard](#/demos-dashboard)
         - [Motion Detection](#/demos-motion-detection)
 
 - Column
 
-    3. [Design](#/design-design)
+    4. [Design](#/design-design)
         - [Font](#/design-font)
         - [Background & Colors](#/design-background-and-colors)
         - [Layout & CSS](#/design-layout-and-css)
-
-- Column
-
-    4. [Hardware](#/hardware-hardware)
-        - [Prototype](#/hardware-prototype)
-        - [Final Design](#/hardware-final-design)
-        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
 
 - Column
   

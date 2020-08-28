@@ -2,21 +2,24 @@
 # Conclusion
 
 ===
-<!-- .slide: class="columns layout" id="conclusion-learnings" -->
+<!-- .slide: class="columns layout" id="conclusion-learnings" style="font-size: smaller" -->
 ## Learnings
 
 - Column
 
-    - Raspberry Pi: models, capabilities, pin features, and programming models
-    - HDMI-CEC protocol
-    - Fritzing for documenting/designing circuits
-    - PIR sensors and basic electronics parts
-    - Font terminology and features
-    - Image color analysis and cohesive color palette selection tools
-    - CSS variables and calculations for scaling
-    - Reveal.js plugins
-    - GitHub Pages for hosting this presentation
-    - CSS grid and programmatic webcam access
+    - Hardware
+        - Raspberry Pi models, capabilities, pin features, and programming models
+        - HDMI-CEC protocol and commands
+        - PIR sensors and basic electronics parts
+        - Fritzing for documenting/designing circuits
+    - Design
+        - Font terminology and features
+        - Image color analysis and cohesive color palette selection tools
+        - CSS grid, variables, and calculations
+    - Presenting
+        - Reveal.js and creating plugins for it
+        - Programmatic webcam access
+        - GitHub Pages for hosting this presentation
 
 - Column
 

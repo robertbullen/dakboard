@@ -22,6 +22,10 @@
 	padding: 10px 20px;
 }
 
+.reveal .slides section strong {
+	color: orange;
+}
+
 .reveal .slides section cite {
 	font-style: italic;
 }

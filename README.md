@@ -32,6 +32,8 @@ This project was sponsored in part by my employer, [Constellation](https://const
     sudo apt-get install cec-utils
     ```
 
+    Another great tutorial is [Using HDMI-CEC on a Raspberry Pi](https://pimylifeup.com/raspberrypi-hdmi-cec/).
+
     With that information in hand, some trial and error lead me to the most effective command for each of the displays that I tested, which I documented in my [presentation](https://robertbullen.github.io/dakboard/#/software-controlling-displays). Your mileage may vary and you may or may not need the CEC client.
 
 3. _Optional_ Add and configure a USB thumb drive for swapping and logging.

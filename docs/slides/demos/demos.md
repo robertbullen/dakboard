@@ -2,8 +2,31 @@
 # Demos
 
 ===
-<!-- .slide: id="demos-dashboard" -->
-## Dashboard
+<!-- .slide: class="columns layout" id="demos-dashboard" -->
+
+<style>
+    #demos-dashboard h2 {
+        margin-top: 25%;
+    }
+
+    #demos-dashboard img {
+        border: solid rgba(255, 255, 255, 0.05) 20px;
+        max-height: 1000px;
+        width: auto;
+    }
+</style>
+
+<!-- markdownlint-disable first-line-heading heading-start-left -->
+
+- Column
+
+    ## Dashboard
+
+- Column
+
+    ![Dashboard Screenshot](slides/screenshot.png)
+
+<!-- markdownlint-enable first-line-heading heading-start-left -->
 
 ===
 <!-- .slide: id="demos-motion-detection" -->
@@ -37,7 +60,7 @@
     <video
         autoplay="true"
         id="demo-webcam"
-        style="align-self: end; max-height: unset; max-width: unset;"
+        style="align-self: start; max-height: unset; max-width: unset;"
     >
     </video>
 </form>

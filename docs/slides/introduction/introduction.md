@@ -101,9 +101,10 @@
     - Provide a consolidated family calendar via iCalendar
         - Become the successor to the kids' classroom monthly calendar
     - Publish *keeper* photos that are otherwise rarely viewed after capture via iCloud shared albums
-    - Control the display intelligently
-        - <span style="color: red;">Turn on only while viewing</span>
-        - Keep off during nighttime hours
+    - **Control the display intelligently**
+        - **Turn on only while viewing**
+        - **Keep off during nighttime hours**
+        - **Support manually overriding those rules**
 
 ===
 <!-- .slide: class="columns layout" id="introduction-aesthetic-goals" -->
