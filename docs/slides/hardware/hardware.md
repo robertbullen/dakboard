@@ -144,11 +144,11 @@
 
 ===
 <!-- .slide: class="columns layout" -->
-### 2GB USB Thumb Drive
+### [Samsung 120GB 2.5-inch SSD 840](https://www.samsung.com/uk/support/model/MZ-7TD120BW/)
 
 - Column
 
-    ![USB Thumb Drive](slides/hardware/usb-thumb-drive.jpg)
+    ![Samsung 120GB 2.5-inch SSD 840](slides/hardware/samsung-mz-7td120.jpg)
 
 - Column
 
@@ -157,7 +157,24 @@
     - Confusingly, measurements show only ~1/4 of RAM being used typically
     - Crashes went away with more swap space
     - Advised to not use the OS MicroSD card for swap space
+    - An old SSD that was not being used anymore
+    - Boosts performance and reliability
     - \$0
+
+===
+<!-- .slide: class="columns layout" -->
+### [SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](https://www.amazon.com/Drive-Adapter-Cable-Support-Black/dp/B07S9CKV7X)
+
+- Column
+
+    ![SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](slides/hardware/skl-tech-usb-sata-adapter.jpg)
+
+- Column
+
+    - Necessary to attach the SSD
+    - James A Chambers has a thorough [Pi 4 Bootloader guide](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/) backed by benchmark data and it recommends a similar but different product for max performance and reliability
+    - This one is cheaper and still does the job
+    - \$8
 
 ===
 <!-- .slide: class="columns layout" -->
@@ -199,8 +216,9 @@
 | [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) and accessories                                          |  \$45 |
 | [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                                          |  \$38 |
 | [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                                  |  \$11 |
-| 2GB USB Thumb Drive                                                                                                                                          |   \$0 |
-|                                                                                                                                                              | \$219 |
+| [SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](https://www.amazon.com/Drive-Adapter-Cable-Support-Black/dp/B07S9CKV7X)                                 |    $8 |
+| [Samsung 120GB 2.5-inch SSD 840](https://www.samsung.com/uk/support/model/MZ-7TD120BW/)                                                                      |   \$0 |
+|                                                                                                                                                              | \$227 |
 
 <!-- TODO: Include case in costs? -->
 <!-- | [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                     | \$10 | -->
@@ -211,6 +229,6 @@
 
 |          | Wall Display v2 Plus               | Custom                                                |
 | -------- | ---------------------------------- | ----------------------------------------------------- |
-| Cost     | \$375                              | + \$024 prototype<br/>+ \$219 final design<br>= \$243 |
+| Cost     | \$375                              | + \$024 prototype<br/>+ \$227 final design<br>= \$251 |
 | Display  | 24" @ 1920×1080<br/>2.07MP @ 92ppi | 25" @ 2560×1440<br/>3.69MP @ 117ppi                   |
 | Pi Model | Pi 3                               | Pi 4                                                  |
