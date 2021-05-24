@@ -20,6 +20,8 @@
 	--font-size-display-2: calc(var(--font-size-body-4) * 9 / 3);
 	--font-size-display-1: calc(var(--font-size-body-4) * 15 / 3);
 
+	--font-weight-display: 300;
+
 	--content-space-4: calc(var(--font-size-body-4) * 1 / 3);
 	--content-space-3: calc(var(--font-size-body-4) * 2 / 3);
 	--content-space-2: calc(var(--font-size-body-4) * 3 / 3);
@@ -182,48 +184,36 @@ body {
 }
 
 /*
- * DATE
+ * DATE/TIME
  */
 
 .block#\35 ddde18bf62f5967c36c2cc3 {
 	height: var(--first-row-height) !important;
 	left: var(--first-column-left) !important;
 	top: var(--first-row-top) !important;
-	width: var(--one-column-width) !important;
+	width: var(--two-columns-width) !important;
 }
 
-/* There is padding between the time and date. But the time is not displayed in this cell, so
-   remove that padding to left-align properly. */
+/* Make the date a large display font, but not the largest for fear of wrapping on a long date, like
+   "Wednesday, November 24". Also remove any padding it may have. */
 .block#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 {
-	padding-left: 0 !important;
+	font-size: var(--font-size-display-2) !important;
+	font-weight: var(--font-weight-display) !important;
+	line-height: var(--font-size-display-2) !important;
+	padding: 0 !important;
 }
 
-/* Place the date on two lines and take up all the vertical content space. */
-.block#\35 ddde18bf62f5967c36c2cc3 #date-5ddde18bf62f5967c36c2cc3 > div {
-	display: block !important;
-	font-size: calc(var(--first-row-content-height) / 2 / var(--line-height)) !important;
-}
-
-/*
- * TIME
- */
-
-.block#\35 dddf1d8f62f5942742ee412 {
-	height: var(--first-row-height) !important;
-	left: var(--second-column-left) !important;
-	top: var(--first-row-top) !important;
-	width: var(--one-column-width) !important;
-}
-
-/* Grow the font to take up all the vertical content space. */
-.block#\35 dddf1d8f62f5942742ee412 #time-5dddf1d8f62f5942742ee412 {
-	font-size: var(--first-row-content-height) !important;
-	line-height: var(--first-row-content-height) !important;
+/* Give the time the largest display font and move it to the right. */
+.block#\35 ddde18bf62f5967c36c2cc3 #time-5ddde18bf62f5967c36c2cc3 {
+	float: right !important;
+	font-size: var(--font-size-display-1) !important;
+	font-weight: var(--font-weight-display) !important;
+	line-height: var(--font-size-display-1) !important;
 }
 
 /* Change padding to relative units. */
-.block#\35 dddf1d8f62f5942742ee412 .time-ampm {
-	padding-left: 0.5em;
+.block#\35 ddde18bf62f5967c36c2cc3 .time-ampm {
+	padding-left: 0.5em !important;
 }
 
 /*
@@ -273,22 +263,14 @@ body {
 	margin-top: var(--content-space-3) !important;
 }
 
-/* Indent the agenda items. */
-.block#\35 ddded42acf0306d7803f832 .day-container .time-container {
-	width: calc(70 / 1080 * 100vw) !important;
-}
-
-.block#\35 ddded42acf0306d7803f832 .day-container .event-summary,
-.block#\35 ddded42acf0306d7803f832 .day-container .no-events {
-	font-size: var(--font-size-body-1) !important;
-	margin-left: calc(80 / 1080 * 100vw) !important;
-	margin-top: var(--content-space-3) !important;
-}
-
 /* For better proximity, the day title and day events are moved closer together. This margin-bottom
    negates the margin-top specified by the first <li>. */
 .block#\35 ddded42acf0306d7803f832 .day {
 	margin-bottom: calc(var(--content-space-3) * -1) !important;
+}
+
+.block#\35 ddded42acf0306d7803f832 .time-container {
+	width: var(--content-space-1);
 }
 
 /* Slightly tweak the vertical alignment of the minutes portion of the time. */
@@ -455,14 +437,8 @@ TODO: Switch to relative spacing in hour & minute paddings.
 }
 
 /* Scratch the margin on the first countdown-item. */
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(2) {
+.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(3) {
 	margin-left: 0 !important;
-}
-
-/* Hide the seconds countdown-item because it's a little obnoxious. And there are times when the
-   system is under load that the seconds aren't updated regularly. */
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(5) {
-	display: none !important;
 }
 
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-time {
