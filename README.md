@@ -49,10 +49,13 @@ This project was sponsored in part by my employer, [Constellation](https://const
     > I eventually settled on using a spare SSD to use as the boot drive, with benefits of faster and more reliable I/O.
 
     1. Configure the system to boot from an external SSD: <https://www.tomshardware.com/how-to/boot-raspberry-pi-4-usb>.
-    2. Increase the swapfile size according to the instructions at <https://nebl.io/neblio-university/enabling-increasing-raspberry-pi-swap/>. In my case, I changed to the following:
+    2. Increase the swapfile size according to the instructions at <https://nebl.io/neblio-university/enabling-increasing-raspberry-pi-swap/>. In my case, I changed the following lines:
 
         ```bash
         #CONF_SWAPSIZE=100
+        ```
+
+        ```bash
         CONF_SWAPFACTOR=2
         ```
 
@@ -63,7 +66,7 @@ This project was sponsored in part by my employer, [Constellation](https://const
     git clone https://github.com/robertbullen/dakboard.git
     ```
 
-5. Start the Python script on boot by adding this line to /etc/rc.local:
+5. Start the Python motion detector on boot by adding these lines to /etc/rc.local:
 
     ```bash
     # This assumes the user is the default (pi) and that the repository has
@@ -73,3 +76,17 @@ This project was sponsored in part by my employer, [Constellation](https://const
     sudo ./start.sh &
     popd
     ```
+
+6. Configure the system to wait for the network at boot:
+
+    Both Chrome and the Python motion detector are started ASAP, and they both require network access to function properly. Do the following to ensure they succeed:
+
+    ```bash
+    sudo raspi-config
+    ```
+
+    At the time of this writing, the menu choices to make are:
+
+    1. `1 System Options`
+    2. `S6 Network at Boot`
+    3. `<Yes>`
