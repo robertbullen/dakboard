@@ -66,7 +66,9 @@ This project was sponsored in part by my employer, [Constellation](https://const
     git clone https://github.com/robertbullen/dakboard.git
     ```
 
-5. Start the Python motion detector on boot by adding these lines to /etc/rc.local:
+5. Modify `start.sh` script's `start_detector()` function to use desired parameters. For example, you may want to change `--display-type=video-core` to `--display-type=cec` if a TV will be used for the display.
+
+6. Start the Python motion detector on boot by adding these lines to /etc/rc.local:
 
     ```bash
     # This assumes the user is the default (pi) and that the repository has
@@ -77,7 +79,7 @@ This project was sponsored in part by my employer, [Constellation](https://const
     popd
     ```
 
-6. Configure the system to wait for the network at boot:
+7. Configure the system to wait for the network at boot:
 
     Both Chrome and the Python motion detector are started ASAP, and they both require network access to function properly. Do the following to ensure they succeed:
 
