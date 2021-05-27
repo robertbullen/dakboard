@@ -16,22 +16,6 @@
 		<title>InterDAKtive Status</title>
 
 		<style>
-			/* This replicates the styling that a Bootstrap `<pre><code></code></pre>` block would
-			   have, except that it allows word wrapping and has a slightly smaller font. */
-			.pre-code {
-				color: #212529;
-				font-family: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
-					'Courier New', monospace;
-				font-size: 75%;
-				white-space: pre-wrap;
-				word-break: normal;
-			}
-
-			.hanging-indent {
-				padding-left: 2rem;
-				text-indent: -2rem;
-			}
-
 			.highlight-change-background {
 				animation-name: fade-background-from-primary;
 				animation-duration: 3s;
@@ -61,7 +45,7 @@
 					</p>
 				</div>
 
-				<div class="mb-3" id="log-container">
+				<div class="mb-3 table-responsive" id="log-container">
 					<p class="alert alert-warning" role="alert">The log is not available.</p>
 				</div>
 			</section>
@@ -117,50 +101,62 @@
 					}
 				};
 
+				const logLinesToRowsMap = new Map();
 				const updateLog = async ({ highlightChanges }) => {
-					// Find or create the log <ol> element.
+					// Find or create the log table.
 					let $log = $('#log');
 					if ($log.length === 0 && (await fetch(logRoute, { method: 'HEAD' })).ok) {
 						const $logContainer = $('#log-container');
 						$logContainer.empty();
 
-						$log = $(
-							'<ol class="d-flex flex-column-reverse list-unstyled" id="log"></ol>',
-						);
-						$logContainer.append($log);
+						$table = $('<table class="table table-borderless table-hover"></table>');
+						$tbody = $('<tbody id="log"></tbody>');
+						$logContainer.append($table.append($tbody));
+						$log = $tbody;
 					}
 
 					// Update its content.
 					if ($log.length > 0) {
+						// Get the most recent log data, keeping only the latest 50 lines.
 						const url = `${logRoute}?ts=${Date.now()}`;
 						const text = await (await fetch(url)).text();
 
-						const previousLines = $log.data('lines') || [];
-						const currentLines = text.trim().split('\n');
-						$log.data('lines', currentLines);
+						const lines = text.trim().split('\n').slice(-50);
+						const linesSet = new Set(lines);
 
-						// Remove all previous lines from the UI that are no longer present in the log.
-						const overlapFirstIndex =
-							currentLines.length > 0 ? previousLines.indexOf(currentLines[0]) : -1;
-						const removeLtIndex =
-							overlapFirstIndex >= 0 ? overlapFirstIndex : previousLines.length;
-						$log.children().slice(0, removeLtIndex).remove();
+						// Determine which lines are removed and added.
+						const removedLines = Array.from(logLinesToRowsMap.keys()).filter(
+							(line) => !linesSet.has(line),
+						);
+						const addedLines = lines.filter((line) => !logLinesToRowsMap.has(line));
 
-						// Append all current lines to the UI that are new to the log.
-						const overlapLastIndex =
-							previousLines.length > 0
-								? currentLines.lastIndexOf(previousLines[previousLines.length - 1])
-								: -1;
-						const appendGteIndex = overlapLastIndex >= 0 ? overlapLastIndex + 1 : 0;
+						// Remove rows from the UI.
+						for (const line of removedLines) {
+							const $tr = logLinesToRowsMap.get(line);
+							logLinesToRowsMap.delete(line);
+							$tr.remove();
+						}
 
-						const newChildren = currentLines.slice(appendGteIndex).map((line) => {
-							const $li = $('<li class="hanging-indent pre-code"></li>').text(line);
-							if (highlightChanges) {
-								$li.addClass('highlight-change-background');
-							}
-							return $li;
-						});
-						$log.append(newChildren);
+						// Add rows to the UI. Prepending them automatically sorts lines in
+						// descending chronological order.
+						for (const line of addedLines) {
+							const $tr = $('<tr></tr>').addClass(() =>
+								highlightChanges ? 'highlight-change-background' : '',
+							);
+							logLinesToRowsMap.set(line, $tr);
+
+							$tr.append(
+								line
+									.split('\t')
+									.map((cell) =>
+										$('<td class="py-0"></td>').append(
+											$('<samp class="small text-nowrap"></samp>').text(cell),
+										),
+									),
+							);
+
+							$log.prepend($tr);
+						}
 					}
 				};
 
