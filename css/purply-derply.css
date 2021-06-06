@@ -269,8 +269,19 @@ body {
 	margin-bottom: calc(var(--content-space-3) * -1) !important;
 }
 
-.block#\35 ddded42acf0306d7803f832 .time-container {
-	width: var(--content-space-1);
+/* Change how agenda line items are layed out. */
+.block#\35 ddded42acf0306d7803f832 li {
+	display: flex !important;
+}
+.block#\35 ddded42acf0306d7803f832 li > span {
+	display: none !important;
+}
+.block#\35 ddded42acf0306d7803f832 li .time-container {
+	flex-shrink: 0 !important;
+	width: 15% !important;
+}
+.block#\35 ddded42acf0306d7803f832 li .event-summary {
+	margin: 0 0 0 var(--content-space-2) !important;
 }
 
 /* Slightly tweak the vertical alignment of the minutes portion of the time. */
