@@ -227,8 +227,15 @@
 <!-- .slide: id="hardware-comparison" -->
 ### Comparison to Off-the-Shelf DAKboard
 
-|          | Wall Display v2 Plus               | Custom                                                |
-| -------- | ---------------------------------- | ----------------------------------------------------- |
-| Cost     | \$375                              | + \$024 prototype<br/>+ \$227 final design<br>= \$251 |
-| Display  | 24" @ 1920×1080<br/>2.07MP @ 92ppi | 25" @ 2560×1440<br/>3.69MP @ 117ppi                   |
-| Pi Model | Pi 3                               | Pi 4                                                  |
+|                       | Wall Display v2 Plus | As Built                        |
+| --------------------- | -------------------- | ------------------------------- |
+| Cost                  | \$400                | $251 (prototype + final design) |
+| Pi Model              | Pi 3                 | Pi 4                            |
+| OS Disk               | ?                    | SSD                             |
+| Display Options       | 1                    | Any Monitor or TV               |
+| Display Size          | 24"                  | 25"                             |
+| Display Resolution    | 1920×1080 @ 92ppi    | 2560×1440 @ 117ppi              |
+| Power Savings Options | Fixed Off-Hours      | Motion-Aware                    |
+| Diagnostics           | None                 | Status Website                  |
+| Font                  |                      | Improved Readability            |
+| Scalability           | Poor                 | Pixel-Perfect                   |

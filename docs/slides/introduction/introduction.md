@@ -49,8 +49,13 @@
 
 ===
 <!-- .slide: id="introduction-dakboard" -->
-<!-- markdownlint-disable no-trailing-punctuation -->
 ### What Is DAKboard?
+
+![DAKboard Shopping Site](slides/introduction/dakboard-shop.png)
+
+===
+<!-- markdownlint-disable no-trailing-punctuation -->
+### What Is DAKboard Really?
 <!-- markdownlint-enable no-trailing-punctuation -->
 
 <div class="figures equisized">
@@ -81,7 +86,7 @@
 
 ===
 <!-- .slide: id="introduction-goals" -->
-## Goals
+## DIY Goals
 
 - Functional
 - Aesthetic
@@ -98,9 +103,10 @@
 - Column
 
     - Display the date, time, and weather
-    - Provide a consolidated family calendar via iCalendar
+    - Provide a consolidated family calendar
         - Become the successor to the kids' classroom monthly calendar
-    - Publish *keeper* photos that are otherwise rarely viewed after capture via iCloud shared albums
+    - Publish *keeper* photos that are otherwise rarely viewed after capture
+    - Interact with the Apple ecosystem for calendars and photos
     - **Control the display intelligently**
         - **Turn on only while viewing**
         - **Keep off during nighttime hours**
