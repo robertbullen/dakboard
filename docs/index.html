@@ -9,23 +9,12 @@
 
 		<title>Robert Bullen's Family Dashboard</title>
 
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/reveal.css" />
-		<link rel="stylesheet" href="css/theme/black.css" />
+		<link rel="stylesheet" href="dist/reset.css" />
+		<link rel="stylesheet" href="dist/reveal.css" />
+		<link rel="stylesheet" href="dist/theme/black.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css" />
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match(/print-pdf/gi)
-				? 'css/print/pdf.css'
-				: 'css/print/paper.css';
-			document.getElementsByTagName('head')[0].appendChild(link);
-		</script>
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" />
 
 		<!-- Custom styles for this presentation -->
 		<link rel="stylesheet" href="slides/custom.css" />
@@ -72,26 +61,25 @@
 			</div>
 		</div>
 
-		<script src="js/reveal.js"></script>
-		<script src="slides/highlight-data-src.js"></script>
-
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
 			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js', async: false },
-					{ src: 'plugin/markdown/markdown.js', async: false },
-					// { src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					// { src: 'plugin/math/math.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-				],
 				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
 				height: 1080,
 				width: 1920,
 			});
 		</script>
+
+		<script src="slides/highlight-data-src.js"></script>
 	</body>
 </html>
