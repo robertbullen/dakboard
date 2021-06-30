@@ -311,4 +311,6 @@ gulp.task('serve', () => {
 
     gulp.watch(['test/*.html'], gulp.series('test'))
 
+    gulp.watch(['slides/**'], gulp.series('reload'))
+
 })
