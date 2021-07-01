@@ -11,7 +11,7 @@
 
 - Column
 
-    - Experimentation started with hardware that I mostly already owned, listed on the following slides
+    - Experimentation started with hardware that I mostly already owned...
 
 ===
 <!-- .slide: class="columns layout" -->
@@ -19,7 +19,7 @@
 
 - Column
 
-    - After moving homes we no longer had an obvious spot for this TV, so it was available for experimentation
+    - Recently retired
     - Full HD (1920×1080) resolution
     - \$0
 
@@ -48,12 +48,11 @@
 
 - Column
 
-    - Passive Infrared sensor detects motion from the IR emitted from our bodies
+    - Senses motion from the IR emitted by our bodies up to 7 meters away within a 120-degree cone
     - Runs on 5V–12V power and the Pi provides 5V
-    - Sensing range is up to 7 meters within a 120-degree cone
-    - Can be configured with different triggering signals, timings, and sensitivities
     - Comes with a 1-foot cable/socket
-    - There are cheaper alternatives, but product reviews were poor
+    - Configurable with different triggering signals, timings, and sensitivities
+    - There are cheaper alternatives, but their reviews are poor
     - \$11
 
 - Column
@@ -71,13 +70,12 @@
 - Column
 
     - Includes the following necessities and more:
-        - Breadboard,
+        - Breadboard
         - Power supply
         - LEDs
         - Resistors
         - Push buttons
         - Patch wires
-    - Owning this kit gives me some hacker cred!
     - \$13
 
 ===
@@ -91,21 +89,28 @@
 <iframe class="stretch" data-src="https://pinout.xyz/"></iframe>
 
 ===
+### Prototype Costs
+
+| Part                                                                                                                                                 | Cost |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---: |
+| [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)            | \$13 |
+| [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                          | \$11 |
+| [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/) |  \$0 |
+| [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)                                                               |  \$0 |
+|                                                                                                                                                      | \$24 |
+
+===
 <!-- .slide: class="columns layout" id="hardware-final-design" -->
 ## Final Design
 
 - Column
 
-    - The 32" TV prototype display was unsatisfactory for the intended location
-        - Too large for the aesthetic goals
-        - Too pixelated for the viewing distance
-            - Full HD (1920×1080) on a 32" display works out to 70ppi
-            - For comparison, an iPhone 7 Plus display packs 401ppi
+    - The prototype proved out the concept, so it was time to design a permanent solution
     - The following hardware upgrades were used for the final design
 
 - Column
 
-    - TODO: Insert photo of final product <!-- .element: class="todo" -->
+    ![Final Design](slides/hardware/final-design.jpg)
 
 ===
 <!-- .slide: class="columns layout" -->
@@ -117,7 +122,8 @@
 
 - Column
 
-    - Has a 25" screen, which is about the right size for this installation
+    - The 32" TV was too large and too pixelated for the intended location and viewing distance
+    - This monitor has a 25" screen, which is about the right size for this installation
     - Employs an IPS panel with good viewing angles, even in portrait mode
     - Projects a QHD resolution (2560×1440) yielding 117ppi for crisper text and sharper images
     - Purchased used from a coworker
@@ -125,22 +131,52 @@
 
 ===
 <!-- .slide: class="columns layout" -->
+### [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+
+- Column
+
+    - A monitor stand was chosen over wall mounting
+    - Two other WALI stands were already present in my home office
+        - Affordable, functional, and parts are interchangeable
+    - \$38
+
+- Column
+
+    ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
+
+===
+<!-- .slide: class="columns layout" -->
 ### [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
 - Column
 
+    ![Raspberry Pi 4 Model B with 1GB RAM](slides/hardware/raspberry-pi-4.jpg)
+
+- Column
+
     - Pi 4 is the only model capable of going above Full HD, up to 4K (3840×2160)
-    - Available with 1GB, 2GB, or 4GB of RAM
+    - Available with 1GB, 2GB, 4GB or 8GB of RAM
     - Also purchased a power supply and inexpensive 16GB microSD
     - \$45
 
     ***
 
-    - Hindsight: purchase a 2GB or 4GB Pi to avoid needing a separate swap drive (see next slide)
+    - Hindsight:
+        - Consider purchasing a Pi with more RAM to avoid needing a separate swap drive
+        - Don't use inexpensive microSD cards because they're too unreliable to be an OS drive
+
+===
+<!-- .slide: class="columns layout" -->
+### [Smraza Case for Raspberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)
 
 - Column
 
-    ![Raspberry Pi 4 Model B with 1GB RAM](slides/hardware/raspberry-pi-4.jpg)
+    - Protects and cools the Pi 4, which can run hot
+    - \$10
+
+- Column
+
+    ![Smraza Case for Raspberry Pi 4 B](slides/hardware/smraza-case.jpg)
 
 ===
 <!-- .slide: class="columns layout" -->
@@ -152,13 +188,8 @@
 
 - Column
 
-    - The prototype Pi 3 never crashed due to out of memory errors
-    - Chrome would show "Aww, Snap!" errors after hours or days on the Pi 4
-    - Confusingly, measurements show only ~1/4 of RAM being used typically
-    - Crashes went away with more swap space
-    - Advised to not use the OS MicroSD card for swap space
-    - An old SSD that was not being used anymore
     - Boosts performance and reliability
+    - Extracted from a retired computer
     - \$0
 
 ===
@@ -167,45 +198,14 @@
 
 - Column
 
-    ![SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](slides/hardware/skl-tech-usb-sata-adapter.jpg)
-
-- Column
-
     - Necessary to attach the SSD
     - James A Chambers has a thorough [Pi 4 Bootloader guide](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/) backed by benchmark data and it recommends a similar but different product for max performance and reliability
     - This one is cheaper and still does the job
     - \$8
 
-===
-<!-- .slide: class="columns layout" -->
-### [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
-
 - Column
 
-    - A monitor stand was chosen over wall mounting
-    - Allows for independent mounting of the monitor and Pi case
-    - Two other WALI stands were already present in my home office
-        - Affordable, functional, and parts are interchangeable
-    - \$38
-
-- Column
-
-    ![WALI Monitor Stand](slides/hardware/wali-monitor-stand.jpg)
-
-===
-<!-- .slide: id="hardware-costs-and-comparisons" -->
-## Costs and Comparisons
-
-===
-### Prototype Costs
-
-| Part                                                                                                                                                 | Cost |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---: |
-| [Samsung 32" Class M5300 Full HD TV](https://www.samsung.com/us/televisions-home-theater/tvs/full-hd-tvs/32--class-m5300-full-hd-tv-un32m5300afxza/) |  \$0 |
-| [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)                                                               |  \$0 |
-| [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                          | \$11 |
-| [Smraza Basic Starter Kit with Breadboard](https://www.amazon.com/gp/product/B01HRR7EBG/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)            | \$13 |
-|                                                                                                                                                      | \$24 |
+    ![SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](slides/hardware/skl-tech-usb-sata-adapter.jpg)
 
 ===
 ### Final Design Costs
@@ -216,26 +216,7 @@
 | [Raspberry Pi 4 Model B with 1GB RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) and accessories                                          |  \$45 |
 | [WALI Monitor Stand](https://www.amazon.com/gp/product/B07S1V2VN7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)                                          |  \$38 |
 | [Adafruit PIR Sensor](https://www.adafruit.com/product/189)                                                                                                  |  \$11 |
+| [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                             |  \$10 |
 | [SKL Tech USB 3.0/SATA III Hard Drive Adapter Cable](https://www.amazon.com/Drive-Adapter-Cable-Support-Black/dp/B07S9CKV7X)                                 |    $8 |
 | [Samsung 120GB 2.5-inch SSD 840](https://www.samsung.com/uk/support/model/MZ-7TD120BW/)                                                                      |   \$0 |
-|                                                                                                                                                              | \$227 |
-
-<!-- TODO: Include case in costs? -->
-<!-- | [Smraza Case for Rasberry Pi 4 B](https://www.amazon.com/gp/product/B07VDCT57F/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1)                     | \$10 | -->
-
-===
-<!-- .slide: id="hardware-comparison" -->
-### Comparison to Off-the-Shelf DAKboard
-
-|                       | Wall Display v2 Plus | As Built                        |
-| --------------------- | -------------------- | ------------------------------- |
-| Cost                  | \$400                | $251 (prototype + final design) |
-| Pi Model              | Pi 3                 | Pi 4                            |
-| OS Disk               | ?                    | SSD                             |
-| Display Options       | 1                    | Any Monitor or TV               |
-| Display Size          | 24"                  | 25"                             |
-| Display Resolution    | 1920×1080 @ 92ppi    | 2560×1440 @ 117ppi              |
-| Power Savings Options | Fixed Off-Hours      | Motion-Aware                    |
-| Diagnostics           | None                 | Status Website                  |
-| Font                  |                      | Improved Readability            |
-| Scalability           | Poor                 | Pixel-Perfect                   |
+|                                                                                                                                                              | \$237 |

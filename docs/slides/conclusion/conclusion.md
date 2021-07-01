@@ -15,7 +15,7 @@
     - Design
         - Font terminology and features
         - Image color analysis and cohesive color palette selection tools
-        - CSS grid, variables, and calculations
+        - CSS variables and calculations
     - Presenting
         - Reveal.js and creating plugins for it
         - Programmatic webcam access
@@ -37,10 +37,34 @@
 <!-- .slide: id="conclusion-plans-and-ideas" -->
 ## Future Plans and Ideas
 
-- Try pulsing instead of blinking LEDs&mdash;PWM using hardware pins or software emulation
-- Create a second screen named "Bluety and the Hofish" that accommodates landscape-oriented photos and loop between it and "Purply Derply"
+- Try pulsing instead of blinking LEDs using PWM via hardware pins or software emulation
+- Create different screen layouts with different goals and content and loop them
 - Experiment with CSS Grid for arranging dashboard tiles (as opposed to absolute positioning)
 - Define systemd template unit files for startup/shutdown
+
+===
+<!-- .slide: id="conclusion-comparisons" -->
+### Comparing DAKboards
+
+<style>
+    #conclusion-comparison table {
+        font-size: smaller;
+    }
+</style>
+
+|                                | Off-the-Shelf             | Custom-Built               |
+| ------------------------------ | ------------------------- | -------------------------- |
+| Cost                           | 🟠 \$400                   | 🟢 $261 (prototype + final) |
+| Learnings                      | 🟠 None                    | 🟢 Tons!                    |
+| Pi Model                       | 🟠 Pi 3                    | 🟢 Pi 4                     |
+| OS Disk                        | 🟠 SD Card                 | 🟢 SSD                      |
+| Display                        | 🟠 24" / 1920×1080 / 92ppi | 🟢 25" / 2560×1440 / 117ppi |
+| Power Savings Options          | 🟠 Fixed Off-Hours         | 🟢 Motion-Aware             |
+| Diagnostics                    | 🟠 None                    | 🟢 Website                  |
+| Data Density                   | 🟠 Lower                   | 🟢 Higher                   |
+| Design Readability/Scalability | 🟠 Fair                    | 🟢 Near Pixel-Perfect       |
+| Wife Acceptance Factor         | 🟠 Good                    | 🟢 Better                   |
+| Career-Changing Potential      | 🟠 None                    | 🟢 Some                     |
 
 ===
 <!-- .slide: class="columns layout" id="conclusion-links" -->

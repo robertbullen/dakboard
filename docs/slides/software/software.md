@@ -134,7 +134,7 @@ output arguments:
 
 ===
 <!-- .slide: class="columns layout" -->
-### `gziozero` for Controlling GPIO Pins
+### `gpiozero` for Controlling GPIO Pins
 
 - Column
 

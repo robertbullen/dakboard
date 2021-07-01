@@ -25,23 +25,29 @@
 <!-- markdownlint-enable first-line-heading heading-start-left -->
 
 ===
-
-<dl style="font-size: 150%;">
-    <dt>PHD</dt>
-    <dd>Personal Hack Days</dd>
-    <dt>Thesis</dt>
-    <dd>A dissertation embodying results of original research</dd>
-</dl>
-
-===
 <!-- .slide: class="auto-width columns layout" id="toc" -->
 ## Table of Contents
 
-<!-- Prevent the lists within each column from centering themselves. -->
 <style>
+    /* Prevent the lists within each column from centering themselves. */
     #toc > ul > li > ol {
         display: block;
-        font-size: 75%;
+        list-style: none;
+        margin: 0;
+    }
+
+    /* Give a sense of hierarchy without using bullets and numbering. */
+    #toc > ul > li > ol > li {
+        text-transform: uppercase;
+    }
+    #toc > ul > li > ol > li > ul {
+        font-size: 67%;
+        text-transform: initial;
+        list-style: none;
+        margin: 0;
+    }
+    #toc > ul > li > ol > li > ul > li {
+        margin: 1em 0;
     }
 </style>
 
@@ -51,7 +57,7 @@
 
     1. [Intro](#/introduction-introduction)
         - [Inspiration](#/introduction-inspiration)
-        - [What is DAKboard?](#/introduction-dakboard)
+        - [What is a DAKboard?](#/introduction-dakboard)
         - [Goals](#/introduction-goals)
 
 - Column
@@ -59,7 +65,6 @@
     2. [Hardware](#/hardware-hardware)
         - [Prototype](#/hardware-prototype)
         - [Final Design](#/hardware-final-design)
-        - [Costs & Comparisons](#/hardware-costs-and-comparisons)
 
 - Column
 
@@ -69,7 +74,7 @@
 
 - Column
 
-    4. [Design](#/design-design)
+    1. [Design](#/design-design)
         - [Font](#/design-font)
         - [Background & Colors](#/design-background-and-colors)
         - [Layout & CSS](#/design-layout-and-css)
@@ -84,7 +89,8 @@
 
     6. [Conclusion](#/conclusion-conclusion)
         - [Learnings](#/conclusion-learnings)
-        - [Future Plans & Ideas](#/conclusion-plans-and-ideas)
+        - [Future Ideas](#/conclusion-plans-and-ideas)
+        - [Comparisons](#/conclusion-comparisons)
         - [Links](#/conclusion-links)
 
 <!-- markdownlint-enable ol-prefix -->

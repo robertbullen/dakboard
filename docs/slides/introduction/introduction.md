@@ -6,7 +6,7 @@
 ## Inspiration
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
 
     #introduction-inspiration blockquote {
         font-size: larger;
@@ -18,8 +18,8 @@
     #introduction-inspiration blockquote .wife {
         color: pink;
         text-align: left;
-        font-family: 'Indie Flower', cursive;
-        font-size: 110%;
+        font-family: 'Shadows Into Light Two', cursive;
+        font-size: 90%;
     }
     #introduction-inspiration blockquote .wife::before {
         content: 'Wife:';
@@ -49,13 +49,13 @@
 
 ===
 <!-- .slide: id="introduction-dakboard" -->
-### What Is DAKboard?
+### What Is a DAKboard?
 
-![DAKboard Shopping Site](slides/introduction/dakboard-shop.png)
+![DAKboard Shopping Site](slides/introduction/dakboard-shop.png) <!-- .element: style="max-height: 900px;" -->
 
 ===
 <!-- markdownlint-disable no-trailing-punctuation -->
-### What Is DAKboard Really?
+### But What Is DAKboard Really?
 <!-- markdownlint-enable no-trailing-punctuation -->
 
 <div class="figures equisized">
@@ -105,7 +105,7 @@
     - Display the date, time, and weather
     - Provide a consolidated family calendar
         - Become the successor to the kids' classroom monthly calendar
-    - Publish *keeper* photos that are otherwise rarely viewed after capture
+    - Publish keeper photos that are otherwise rarely viewed after capture
     - Interact with the Apple ecosystem for calendars and photos
     - **Control the display intelligently**
         - **Turn on only while viewing**
@@ -120,6 +120,7 @@
  #no-sign {
     font-size: 500px;
     margin-top: -525px;
+    opacity: 0.9;
     position: relative;
     top: -100px;
 }
@@ -128,7 +129,7 @@
 - Column
 
     - Design for high data density without feeling busy or cluttered
-    - Fit into home decor
+    - Fit into a home, not a business
     - Incorporate nature into the design motif
     - Achieve a high [wife acceptance factor](https://en.wikipedia.org/wiki/Wife_acceptance_factor)
 
@@ -136,7 +137,7 @@
 
     ![Example of Ugly Dashboard](slides/introduction/ugly-dashboard.png)
 
-    🚫<!-- .element: class="fragment fade-in" id="no-sign" -->
+    🚫<!-- .element: id="no-sign" -->
 
 ===
 <!-- .slide: class="columns layout" -->
