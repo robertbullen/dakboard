@@ -20,7 +20,12 @@ window.addEventListener('load', () => {
 
 				if (navigator.mediaDevices.getUserMedia) {
 					navigator.mediaDevices
-						.getUserMedia({ video: true })
+						.getUserMedia({
+							video: {
+								width: 800,
+								height: 600,
+							},
+						})
 						.then((stream) => (video.srcObject = stream));
 				}
 			});

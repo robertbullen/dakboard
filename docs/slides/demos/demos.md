@@ -37,7 +37,7 @@
     class="stretch"
     data-fragment-index="1"
     id="status-url-form"
-    style="display: grid; gap: 1rem; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; place-items: stretch;"
+    style="display: grid; gap: 1rem; grid-template-columns: 2fr 1fr; grid-template-rows: auto 1fr; place-items: stretch;"
 >
     <input
         id="status-url"
@@ -60,7 +60,7 @@
     <video
         autoplay="true"
         id="demo-webcam"
-        style="align-self: start; max-height: unset; max-width: unset;"
+        style="align-self: start; max-height: unset; max-width: unset; transform: scaleX(-1);"
     >
     </video>
 </form>
