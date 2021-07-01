@@ -102,11 +102,13 @@
 
 - Column
 
-    - Display the date, time, and weather
-    - Provide a consolidated family calendar
-        - Become the successor to the kids' classroom monthly calendar
-    - Publish keeper photos that are otherwise rarely viewed after capture
-    - Interact with the Apple ecosystem for calendars and photos
+    - Display content
+        - Date and time
+        - Weather forecast
+        - Consolidated family calendar
+        - Photo roll
+        - Countdown to the next important event
+        - Local news headlines
     - **Control the display intelligently**
         - **Turn on only while viewing**
         - **Keep off during nighttime hours**
@@ -117,19 +119,19 @@
 ### Aesthetic Goals
 
 <style>
- #no-sign {
-    font-size: 500px;
-    margin-top: -525px;
-    opacity: 0.9;
-    position: relative;
-    top: -100px;
-}
+    #no-sign {
+        font-size: 500px;
+        margin-top: -525px;
+        opacity: 0.9;
+        position: relative;
+        top: -100px;
+    }
 </style>
 
 - Column
 
-    - Design for high data density without feeling busy or cluttered
-    - Fit into a home, not a business
+    - Accommodate all the aforementioned content without feeling busy or cluttered
+    - Fit into a home, not a business or commercial setting
     - Incorporate nature into the design motif
     - Achieve a high [wife acceptance factor](https://en.wikipedia.org/wiki/Wife_acceptance_factor)
 
@@ -141,7 +143,7 @@
 
 ===
 <!-- .slide: class="columns layout" -->
-### Personal/Professional Goals
+### Personal & Professional Goals
 
 - Column
 

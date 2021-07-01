@@ -88,9 +88,8 @@
 - Column
 
     6. [Conclusion](#/conclusion-conclusion)
-        - [Learnings](#/conclusion-learnings)
-        - [Future Ideas](#/conclusion-plans-and-ideas)
         - [Comparisons](#/conclusion-comparisons)
+        - [Learnings & Benefits](#/conclusion-learnings)
         - [Links](#/conclusion-links)
 
 <!-- markdownlint-enable ol-prefix -->

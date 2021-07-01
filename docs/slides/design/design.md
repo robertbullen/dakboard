@@ -6,7 +6,7 @@
 ## Existing Templates
 
 - Existing templates are attractive but calendars are either sparse or have small text
-- I challenged myself to create a custom design that was both attractive and data-dense
+- I challenged myself to create a custom design that was both attractive and dense with information
 
 <div class="figures equisized">
     <figure>
@@ -227,7 +227,7 @@
 
         ![Canva Palette Results](slides/design/purply-derply-canva-palette.png)
 
-    - Chose Medium Violet Red (#8C115C) as the starting point for foreground colors
+    - Chose <span style="color: #8C115C">Medium Violet Red (#8C115C)</span> as the starting point for foreground colors
 
 ===
 <!-- .slide: class="columns layout" id="design-colors" -->
@@ -241,7 +241,7 @@
         - Orange for Robert <!-- .element style="color: #ffb157;" -->
         - Blue for Brooke <!-- .element style="color: #5bc1f2;" -->
         - Green for Kerry <!-- .element style="color: #c9fd57;" -->
-    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette based off of Medium Violet Red
+    - Used [paletton.com](https://paletton.com/#uid=758180kl1Wx1x+IcEXDsUWkWEVB) to generate a coherent color palette based off of <span style="color: #8C115C">Medium Violet Red</span>
 
 - Column
 
