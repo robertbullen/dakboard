@@ -75,7 +75,7 @@
         <p>
             <img alt="DAKboard Device" src="slides/introduction/dakboard-device.jpg" />
         </p>
-        <figcaption>Raspberry Pi running Chrome in full-screen kiosk mode</figcaption>
+        <figcaption>Rendered by a Raspberry Pi running Chromium in kiosk mode</figcaption>
     </figure>
 </div>
 
@@ -112,7 +112,7 @@
     - **Control the display intelligently**
         - **Turn on only while viewing**
         - **Keep off during nighttime hours**
-        - **Support manually overriding those rules**
+        - **Support push-button overriding of those rules**
 
 ===
 <!-- .slide: class="columns layout" id="introduction-aesthetic-goals" -->
@@ -159,5 +159,5 @@
     - Delve deeper into the world of Python
     - Add an interesting project to my personal GitHub account...
     - ...With a nice presentation (you're lookin' at it!)
-    - Reinforce Constellation's decision to provide Personal Hack Days
-    - Inspire others at Constellation to embrace Personal Hack Days
+    - Reinforce my employer's decision to provide Personal Hack Days
+    - Inspire others to embrace Personal Hack Days

@@ -7,32 +7,32 @@
 
 <style>
     #conclusion-comparisons table {
-        font-size: smaller;
+        font-size: 67%;
     }
 </style>
 
-|                           | Off-the-Shelf             | Custom-Built                                    | Notes                                       |
-| ------------------------- | ------------------------- | ----------------------------------------------- | ------------------------------------------- |
-| Cost                      | 🟠 \$400                   | 🟢 $261                                          | Prototype + final                           |
-| Pi Model                  | 🟠 Pi 3                    | 🟢 Pi 4                                          | Faster CPU; supports 4K displays            |
-| OS Disk                   | 🟠 SD Card                 | 🟢 SSD                                           | Faster, more reliable I/O                   |
-| Performance & Reliability | 🟠 Fair                    | 🟢 Great                                         | No more corrupting, crashing, or stuttering |
-| Screen                    | 🟠 24" / 1920×1080 / 92ppi | 🟢 25" / 2560×1440 / 117ppi                      | Larger, sharper                             |
-| Information Density       | 🟠 Lower                   | 🟢 Higher                                        | More readable font; custom design           |
-| Design Scalability        | 🟠 Fair                    | 🟢 Near Pixel-Perfect                            | CSS with relative units and positioning     |
-| Power Savings Options     | 🟠 Fixed off-hours         | 🟢 Motion-aware with off-Hours, both overridable | On when you care, off when you don't        |
-| Diagnostics & Insights    | 🟠 None                    | 🟢 Website                                       | State machine diagram and log               |
+|                           | Off-the-Shelf             | Custom-Built               | Notes                                         |
+| ------------------------- | ------------------------- | -------------------------- | --------------------------------------------- |
+| Cost                      | 🟠 \$400                   | 🟢 $261                     | Prototype + final                             |
+| Pi Model                  | 🟠 Pi 3                    | 🟢 Pi 4                     | Faster CPU; supports 4K displays              |
+| OS Disk                   | 🟠 SD Card                 | 🟢 SSD                      | Speedier, more reliable I/O                   |
+| Performance & Reliability | 🟠 Fair                    | 🟢 Great                    | No crashing or stuttering                     |
+| Screen                    | 🟠 24" / 1920×1080 / 92ppi | 🟢 25" / 2560×1440 / 117ppi | Larger, sharper                               |
+| Information Density       | 🟠 Low                     | 🟢 High                     | More readable font; custom design             |
+| Design Scalability        | 🟠 Fair                    | 🟢 Near Pixel-Perfect       | CSS with relative units and positioning       |
+| Power Savings Options     | 🟠 Manual                  | 🟢 Auto                     | Motion-aware; off-hours; push-button-override |
+| Diagnostics & Insights    | 🟠 None                    | 🟢 Website                  | State machine diagram and log                 |
 
 ===
 <!-- .slide: id="conclusion-benefits" -->
-# Personal Benefits
+# Benefits & ROI
 
-|                        | Off-the-Shelf | Custom-Built | Notes                            |
-| ---------------------- | ------------- | ------------ | -------------------------------- |
-| Wife Acceptance Factor | 🟠 Good        | 🟢 Better     | Unique and exultable             |
-| Pride & Satisfaction   | 🟠 Some        | 🟢 More       | Regularly reminded               |
-| Learnings              | 🟠 Little      | 🟢 Tons       | See next slide                   |
-| Career-Benefitting     | 🟠 None        | 🟢 Some       | Exposure to new tech; presenting |
+|                        | Off-the-Shelf | Custom-Built | Notes                                    |
+| ---------------------- | ------------- | ------------ | ---------------------------------------- |
+| Wife Acceptance Factor | 🟠 Good        | 🟢 Better     | Appreciates uniqueness and functionality |
+| Pride & Satisfaction   | 🟠 Some        | 🟢 More       | Regularly reminded                       |
+| Learnings              | 🟠 Little      | 🟢 Tons       | See next slide                           |
+| Career-Benefitting     | 🟠 None        | 🟢 Some       | Exposure to new tech; presenting         |
 
 ===
 <!-- .slide: class="columns layout" id="conclusion-learnings" style="font-size: smaller" -->
