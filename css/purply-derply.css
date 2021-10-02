@@ -257,7 +257,8 @@ body {
 
 /* Increase the font size of the calendar agenda. The agenda can get away with the tighter line
    height and it actually looks better that way. */
-.block#\35 ddded42acf0306d7803f832 .day-container li {
+.block#\35 ddded42acf0306d7803f832 .day-container li,
+.block#\35 ddded42acf0306d7803f832 .day-container .no-events {
 	font-size: var(--font-size-body-1) !important;
 	line-height: var(--line-height-tight) !important;
 	margin-top: var(--content-space-3) !important;
@@ -282,6 +283,9 @@ body {
 }
 .block#\35 ddded42acf0306d7803f832 li .event-summary {
 	margin: 0 0 0 var(--content-space-2) !important;
+}
+.block#\35 ddded42acf0306d7803f832 .no-events {
+	margin-left: calc(15% + var(--content-space-2)) !important;
 }
 
 /* Slightly tweak the vertical alignment of the minutes portion of the time. */
