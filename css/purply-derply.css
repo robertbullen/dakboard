@@ -27,6 +27,8 @@
 	--content-space-2: calc(var(--font-size-body-4) * 3 / 3);
 	--content-space-1: calc(var(--font-size-body-4) * 9 / 3);
 
+	--content-border-radius: calc(var(--font-size-body-4) / 2);
+
 	/* Set some standards for block spacing. */
 	--block-margin: var(--font-size-body-4);
 	--block-border-radius: var(--block-margin);
@@ -248,44 +250,63 @@ body {
    its cell that agrees with all the other cells. */
 .block#\35 ddded42acf0306d7803f832 .day-container {
 	padding: 0 !important;
-	margin-bottom: var(--content-space-1) !important;
+	margin-bottom: var(--content-space-2) !important;
 }
 
-.block#\35 ddded42acf0306d7803f832 .day-container .day {
+/* For better proximity, the day title and day events are moved closer together. This margin-bottom
+   negates the margin-top specified by the first <li>. */
+.block#\35 ddded42acf0306d7803f832 .day-container .agenda-day-header {
+	background: rgba(255, 255, 255, 0.1) !important;
+	border: none !important;
+	border-radius: var(--content-border-radius);
 	font-size: var(--font-size-body-3) !important;
+	margin: 0 !important;
+	padding: var(--content-space-4) var(--content-space-2) !important;
+	text-transform: uppercase;
+}
+
+.block#\35 ddded42acf0306d7803f832 .day-container .agenda-day-header-num {
+	font-family: inherit !important;
+	font-size: inherit !important;
+	font-weight: inherit !important;
 }
 
 /* Increase the font size of the calendar agenda. The agenda can get away with the tighter line
    height and it actually looks better that way. */
 .block#\35 ddded42acf0306d7803f832 .day-container li,
-.block#\35 ddded42acf0306d7803f832 .day-container .no-events {
+.block#\35 ddded42acf0306d7803f832 .day-container .agenda-no-events {
+	border: none !important;
+	font-family: inherit !important;
 	font-size: var(--font-size-body-1) !important;
+	font-weight: inherit !important;
 	line-height: var(--line-height-tight) !important;
 	margin-top: var(--content-space-3) !important;
 }
 
-/* For better proximity, the day title and day events are moved closer together. This margin-bottom
-   negates the margin-top specified by the first <li>. */
-.block#\35 ddded42acf0306d7803f832 .day {
-	margin-bottom: calc(var(--content-space-3) * -1) !important;
-}
-
 /* Change how agenda line items are layed out. */
-.block#\35 ddded42acf0306d7803f832 li {
+.block#\35 ddded42acf0306d7803f832 .day-container li {
+	align-items: baseline !important;
 	display: flex !important;
+	padding: 0;
 }
-.block#\35 ddded42acf0306d7803f832 li > span {
-	display: none !important;
-}
-.block#\35 ddded42acf0306d7803f832 li .time-container {
+.block#\35 ddded42acf0306d7803f832 .day-container li .agenda-event-time {
+	color: white;
 	flex-shrink: 0 !important;
-	width: 15% !important;
+	font-family: inherit !important;
+	font-size: var(--font-size-body-3) !important;
+	font-weight: inherit !important;
+	opacity: 1;
+	text-align: right;
+	width: 20% !important;
 }
-.block#\35 ddded42acf0306d7803f832 li .event-summary {
+.block#\35 ddded42acf0306d7803f832 .day-container li .agenda-event-details {
+	font-family: inherit !important;
+	font-size: var(--font-size-body-1) !important;
+	font-weight: inherit !important;
 	margin: 0 0 0 var(--content-space-2) !important;
 }
-.block#\35 ddded42acf0306d7803f832 .no-events {
-	margin-left: calc(15% + var(--content-space-2)) !important;
+.block#\35 ddded42acf0306d7803f832 .agenda-no-events {
+	margin-left: calc(20% + var(--content-space-2)) !important;
 }
 
 /* Slightly tweak the vertical alignment of the minutes portion of the time. */
@@ -374,12 +395,14 @@ TODO: Switch to relative spacing in hour & minute paddings.
 	padding: 0 !important;
 	width: 100% !important;
 }
-.block#\35 ddde3570f6c13261a03da45 .weather-forecast .day {
-	border-radius: calc(var(--block-border-radius) / 2) !important;
+.block#\35 ddde3570f6c13261a03da45 .weather-forecast > div:first-child {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: var(--content-border-radius) !important;
 	font-size: var(--font-size-body-3) !important;
 	margin-top: 0 !important;
 	min-width: unset !important;
 	padding: var(--content-space-4) !important;
+	text-transform: uppercase;
 }
 .block#\35 ddde3570f6c13261a03da45 .weather-forecast span.fas {
 	font-size: var(--font-size-display-2) !important;
@@ -442,7 +465,7 @@ TODO: Switch to relative spacing in hour & minute paddings.
    as long as all countdown-items are assigned the same width, the width is small enough to not
    cause wrapping of the line, and they are allowed to expand to fill the row. */
 .block#\35 dde031336984f176045f044 > .countdown > .countdown-item {
-	border-radius: calc(var(--block-border-radius) / 2) !important;
+	border-radius: var(--content-border-radius) !important;
 	flex-grow: 1 !important;
 	float: none !important;
 	line-height: 1 !important;
