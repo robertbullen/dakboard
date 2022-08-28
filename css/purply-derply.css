@@ -346,7 +346,16 @@ TODO: Switch to relative spacing in hour & minute paddings.
 	font-size: var(--weather-temp-font-size) !important;
 	line-height: var(--weather-temp-line-height) !important;
 }
-
+/* Nudge the degrees symbol closer to the number. */
+.block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div.large > sup {
+	margin-left: -0.25rem !important;
+}
+/* Adjust the display of the "feels like" text block so that it's :after pseudo element is on the
+   same line and the degrees symbol closer to the number. */
+#\35 ddde3570f6c13261a03da45 > div > div.weather-item.weather-current > div:nth-child(2) > div.feels-like-text {
+	display: inline !important;
+	margin-right: -0.5rem !important;
+}
 /* Adjust the font-sizes and separation of "feels like" and summary. */
 .block#\35 ddde3570f6c13261a03da45 .weather-item.weather-current > div:nth-child(2) {
 	font-size: var(--font-size-body-1) !important;
@@ -450,14 +459,15 @@ TODO: Switch to relative spacing in hour & minute paddings.
 }
 
 /* Make the layout of the countdown a little more workable. */
-.block#\35 dde031336984f176045f044 > .countdown {
+#\35 dde031336984f176045f044 > .countdown .countdown-timer {
 	display: flex !important;
 	flex-direction: row !important;
 	flex-wrap: wrap !important;
+	margin: 0 !important;
 }
 
 /* Set the dimensions of the title on a line all its own. */
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-title {
+.block#\35 dde031336984f176045f044 > .countdown .countdown-title {
 	font-size: var(--countdown-title-font-size) !important;
 	margin-bottom: var(--countdown-title-margin-bottom) !important;
 	width: 100% !important;
@@ -466,7 +476,7 @@ TODO: Switch to relative spacing in hour & minute paddings.
 /* Ensure that all remaining countdown-items are evenly spaced. The actual width isn't important,
    as long as all countdown-items are assigned the same width, the width is small enough to not
    cause wrapping of the line, and they are allowed to expand to fill the row. */
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item {
+.block#\35 dde031336984f176045f044 > .countdown .countdown-item {
 	background-color: var(--content-background-color-frosty) !important;
 	border-radius: var(--content-border-radius) !important;
 	flex-grow: 1 !important;
@@ -478,15 +488,15 @@ TODO: Switch to relative spacing in hour & minute paddings.
 }
 
 /* Scratch the margin on the first countdown-item. */
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item:nth-child(3) {
+.block#\35 dde031336984f176045f044 > .countdown .countdown-item:nth-child(3) {
 	margin-left: 0 !important;
 }
 
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-time {
+.block#\35 dde031336984f176045f044 > .countdown .countdown-item > .countdown-time {
 	font-size: var(--countdown-item-number-font-size) !important;
 }
 
-.block#\35 dde031336984f176045f044 > .countdown > .countdown-item > .countdown-item-description {
+.block#\35 dde031336984f176045f044 > .countdown .countdown-item > .countdown-item-description {
 	display: block !important;
 	font-size: var(--countdown-item-description-font-size) !important;
 }
